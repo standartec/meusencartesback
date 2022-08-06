@@ -1,10 +1,11 @@
-import { getCustomRepository, Repository } from "typeorm";
+import { EntityRepository, getCustomRepository, Repository } from "typeorm";
 import Publish from "../entities/Publish";
 
 interface IRequest {
     description: string;
 }
-class PublishRepository extends Repository<Publish>{
+@EntityRepository(Publish)
+export default class PublishRepository extends Repository<Publish>{
 
     public async findByName({description}: IRequest): Promise<Publish | undefined> {
 

@@ -1,9 +1,9 @@
-import { Column, Entity } from "typeorm";
+import { Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity('publish')
 export default class Publish {
 
-    @Column()
+    @PrimaryColumn()
     id: string;
 
     @Column()
