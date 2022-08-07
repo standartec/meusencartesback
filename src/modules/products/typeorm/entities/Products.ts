@@ -1,4 +1,5 @@
 import OrdersProducts from '@modules/orders/typeorm/entities/OrdersProducts';
+import ProductCustomer from '@modules/productCustomer/typeorm/entities/ProductCustomer';
 import {Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn} from 'typeorm';
 
 @Entity('products')
@@ -8,25 +9,61 @@ class Product {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @OneToMany(() => OrdersProducts, order_products => order_products.order, {
+    @OneToMany(() => ProductCustomer, product_customer => product_customer.id_product, {
         cascade: true,
     })
-    order_products: OrdersProducts[];
+    product_customer: ProductCustomer[];
    
     @Column()
     name: string;
 
-    @Column('decimal')
-    price: number;
+    @Column()
+    description: string;
 
-    @Column('int')
-    quantity: number;
+    @Column()
+    id_owner: number;
 
-    @CreateDateColumn()
-    created_at: Date;
+    @Column()
+    id_cathegory: number;
 
-    @UpdateDateColumn()
-    updated_at: Date;
+    @Column()
+    image_link: string;
+
+    @Column()
+    bar_code: string;
+
+    @Column()
+    status: number;
+
+    @Column()
+    image_name_origin: string;
+
+    @Column()
+    image_width: string;
+
+    @Column()
+    image_height: string;
+
+    @Column()
+    shop_type: string;
+
+    @Column()
+    ean: string;
+
+    @Column()
+    ncm: string;
+
+    @Column()
+    cathegory_desc: string;
+
+    @Column()
+    cest: string;
+
+    @Column()
+    image_status: string;
+
+    @Column()
+    date_creation: string;
 
 
 }

@@ -1,0 +1,12 @@
+mkdir $1
+mkdir $1/controllers
+mkdir $1/routes 
+mkdir $1/services 
+mkdir $1/typeorm
+mkdir $1/typeorm/entities
+mkdir $1/typeorm/repositories
+touch $1/controllers/$2Controller.ts
+touch $1/routes/$1.routes.ts
+touch $1/services/Create$2Service.ts
+touch $1/typeorm/entities/$2.ts
+touch $1/typeorm/repositories/$2Repository.ts

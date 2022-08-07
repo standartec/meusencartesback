@@ -1,10 +1,10 @@
 {
-    "type": "postgres",
-    "host": "localhost",
-    "port": 5432,
-    "username": "postgres",
-    "password": "rnk30g",
-    "database": "apivendas",
+    "type": "mysql",
+    "host": "onecart.mysql.dbaas.com.br",
+    "port": 3306,
+    "username": "onecart",
+    "password": "Rnk30ghhh",
+    "database": "onecart",
     "migrations": [
         "./src/shared/typeorm/migrations/*.ts"
     ],
@@ -16,3 +16,4 @@
     }
     
 }
+
