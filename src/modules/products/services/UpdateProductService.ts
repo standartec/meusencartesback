@@ -7,13 +7,12 @@ import { ProductRepository } from "@modules/products/typeorm/repositories/Produc
 interface IRequest {
     id: String;
     name: string;
-    price: number;
-    quantity: number
+    description: string;
 }
 
 class UpdateProductService {
 
-    public async execute ({id, name, price, quantity}: IRequest): Promise<Product> {
+    public async execute ({id, name, description}: IRequest): Promise<Product> {
 
         const productsRepository = getCustomRepository(ProductRepository);
 
@@ -35,8 +34,7 @@ class UpdateProductService {
 
 
         product.name = name;
-        product.price = price;
-        product.quantity = quantity;
+        product.description = description;
         
         await productsRepository.save(product);
 

@@ -6,7 +6,7 @@ import isAuthenticated from '@shared/http/middleware/isAuthenticated';
 const productsRouter = Router();
 const productsController = new ProducsController();
 
-productsRouter.get('/', isAuthenticated, productsController.index);
+productsRouter.get('/', productsController.listProductFlyer);
 
 /*Included celebrate to validate request. Middleware on celebrate function
 Import here and server.ts

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import CreateProductService from '../services/CreateProductService';
 import DeleteProductService from '../services/DeleteProductService';
+import ListProductFlyerService from '../services/ListProductFlyerService';
 import ListProductService from '../services/ListProductService';
 import ShowProductService from '../services/ShowProductService';
 import UpdateProductService from '../services/UpdateProductService';
@@ -66,6 +67,16 @@ export default class ProducsController {
         await deleteProduct.execute({id});
 
         return response.json([]);
+    }
+
+    public async listProductFlyer (request: Request, response: Response): Promise<Response> {
+
+        const flyerProduct = new ListProductFlyerService();
+
+        const findProductFlyer = await flyerProduct.execute();
+        console.log(findProductFlyer);
+        return response.json(findProductFlyer);
+
     }
 
 }

@@ -6,13 +6,12 @@ import RedisCache from "@shared/cache/RedisCache";
 
 interface IRequest {
     name: string;
-    price: number;
-    quantity: number;
+    description: string;
 }
 
 class CreateProductService {
 
-    public async execute({name, price, quantity}: IRequest ): Promise<Product> {
+    public async execute({name, description}: IRequest ): Promise<Product> {
 
         const productsRepository = getCustomRepository(ProductRepository);
         const productExists = await productsRepository.findByName(name);
@@ -24,8 +23,7 @@ class CreateProductService {
 
         const product = productsRepository.create({
             name,
-            price,
-            quantity,
+            description,
         });
 
         await redisCache.invalidate('api-sales-LIST_PRODUCT', '');
