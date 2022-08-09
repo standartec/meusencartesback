@@ -7,7 +7,6 @@ import {errors} from 'celebrate';
 import {pagination} from 'typeorm-pagination';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
-
 //Já importa e le o arquivo ormconfig
 import '@shared/typeorm';
 import uploadConfig from '@config/upload';
@@ -16,6 +15,10 @@ import rateLimiter from '@shared/http/middleware/rateLimiter';
 
 const app = express();
 app.use(cors());
+
+// Setting up EJS to generate view
+app.set('view engine', 'ejs');
+app.set('views', './src/modules/flyers/views/');
 
 app.use(express.json());
 

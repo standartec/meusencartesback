@@ -6,6 +6,8 @@ import PublishController from "@modules/flyers/controllers/PublishControllers";
 const publishController = new PublishController();
 const publishRouter = Router();
 
-publishRouter.get('/', publishController.list);
+//publishRouter.get('/', publishController.list);
+
+publishRouter.get('/', publishController.showFlyer);
 
 export default publishRouter;

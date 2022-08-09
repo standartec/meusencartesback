@@ -8,8 +8,8 @@ export default class ListProductFlyerService {
 
         const productRepository = getCustomRepository(ProductRepository);
 
-        const productFlyer = productRepository.findProductFlyer();
-
+        const productFlyer = await productRepository.findProductFlyer();
+     
         return productFlyer;
 
     }
