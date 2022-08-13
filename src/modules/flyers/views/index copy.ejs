@@ -252,7 +252,26 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica">
 
-<body>
+<script src="<?php echo base_url('public/vendor/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="<?php echo base_url('public/vendor/jquery/html2canvas.js'); ?>"></script>
+<script src="<?php echo base_url('public/vendor/mask/jquery.mask.min.js'); ?>"></script>
+<script src="<?php echo base_url('public/vendor/mask/app.js'); ?>"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JY9TND5J09"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'G-JY9TND5J09');
+</script>
+
 <div id="content">
 </div>
 <table>
@@ -270,7 +289,15 @@
       <br /><br />
     </td>
     <td>
-     
+      <a style=" background-color: #008CBA; /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;" href="<?php echo base_url('encarte/productList1');?>">Concluir</a>
+
       <br /><br />
     </td>
 
@@ -295,40 +322,85 @@
   <!-- style="background-color: #FFFFFF;  width: 452px; height: 1025px;" -->
 
   <div class="container_text_button">
-  
-  <% 
-const template = '';
-const user_detail = '';
-const publish = '';
+    <% 
+      const template = '';
+      const user_detail = '';
+      const publish = '';
+      
+      if (template.has_logo == 0) { %>
+    <img class="logo" src="http://meusencartes.com.br/fivecart3/images/logos/" + <% user_detail.image_link; if (user_detail.image_width || user_detail.image_height) { %> style="width: <% user_detail.image_width %>
+    height: <% user_detail.image_height %>   
+    
+    <% } 
+      } %>
+      <img  src=" http://meusencartes.com.br/fivecart3/images/templates/" <% template.header_image %> " width=" 455" height="200">
 
-if (template.has_logo == 0) { %>
-<img class="logo" src="http://meusencartes.com.br/fivecart3/images/logos/">
+    <div class="text_button_right"> <% if (publish.header2 != '') { %> <p>
+        <%=  publish.header2 } %> </p> <% else { %> <p> <%= template.header_text_right } %> </p>
+    </div>
 
-<% } %>
+    <% if (template.header_left_text != '') { %>
+    <div class="text_button_left"> <% template.header_left_text %> </div>
+      <% } %>
+    </div>
+    <div class="grid-container">
+      <% for (var i=0; i< flyer.length; i++) { %>
+
+      <div class="gallery">
+        <div class="container_picture">
+
+
+          <img src="http://meusencartes.com.br/fivecart3/images/Products/" + <%= flyer[i].image_link %> alt="Snow" width="100" height="130" <% if (flyer[i].image_width || flyer[i].image_height) {%> style="width:  <%=flyer[i].image_width %>
+    height:   <%=flyer[i].image_height    } %>
+        
+        
+
+        <div class=" textocentro"> R$ <%=flyer[i].price %>
+        </div>
+      </div>
+      <div class="desc"><%=flyer[i].name %></div>
+    </div>
+    <% } %>
+  </div>
+
+
+
+  <div class="container_text_button">
+    <img src="http://meusencartes.com.br/fivecart3/images/templates/" <%=template.footer_image %>" width="455" height="50">
+    <% if ($template->has_footer_text == 0) {
+        //Must observate it, becouse sometimes the template will be complete.
+          %>
+
+    <div class='container2'>
+      <div class="left">
+        <img src='http://meusencartes.com.br/fivecart3/images/icons/watsapp_icon.png' class='iconDetails'>
+      </div>
+      <div class="right">
+        <h4><% if (user_detail.footer_text != '') { %>
+          <p>
+            <% user_detail.footer_text %>
+          <p> <% } else { template.footer_text } %>
+        </h4>
+        <div style="font-size:.7em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <% if (user_detail.footer_text2 != '') { user_detail.footer_text2 } else { template.footer_text2 } %> </div>
+      </div>
+    </div>
+    <% } %>
+
+  </div>
+</div>
 </div>
 
 
 
 
-<div class="grid-container">
+<body>
+  <h1>Hello New Flyer</h1>
+  <% for (var i=0; i< flyer.length; i++) { %>
+  <%=flyer[i].description%>
+  <%=flyer[i].name%>
 
-<% for (var i=0; i< flyer.length; i++) { %>
-
-
-<div class="gallery">
-  <div class="container_picture">
-    <img src= <%= 'http://meusencartes.com.br/fivecart3/images/Products/' + flyer[i].image_link%>  alt="Snow" width="100" height="130"/>
-  
-  <div class="textocentro"> R$ <%=flyer[i].price %> </div>
-</div>
-<div class="desc"><%=flyer[i].name %></div>
-
-
-</div>
-<% } %>
-</div>
-
-
+  <% } %>
+  <img src='https://image.shutterstock.com/image-photo/sunrise-on-beatch-morning-600w-1936240633.jpg'>
 </body>
 
 </html>

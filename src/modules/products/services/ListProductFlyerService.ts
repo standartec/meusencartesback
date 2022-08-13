@@ -5,7 +5,7 @@ export default class ListProductFlyerService {
 
 
     public async execute() {
-
+        console.log('Teste');
         const productRepository = getCustomRepository(ProductRepository);
 
         const productFlyer = await productRepository.findProductFlyer();

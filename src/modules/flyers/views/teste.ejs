@@ -1,0 +1,67 @@
+<% 
+const template = '';
+const user_detail = '';
+const publish = '';
+
+if (template.has_logo == 0) { %>
+<img class="logo" src="http://meusencartes.com.br/fivecart3/images/logos/" + <% user_detail.image_link; if (user_detail.image_width || user_detail.image_height) { %> style="width: <% user_detail.image_width %>
+height: <% user_detail.image_height %>   
+
+<% } 
+} %>
+<img  src=" http://meusencartes.com.br/fivecart3/images/templates/" <% template.header_image %> " width=" 455" height="200">
+
+<div class="text_button_right"> <% if (publish.header2 != '') { %> <p>
+  <%=  publish.header2 } %> </p> <% else { %> <p> <%= template.header_text_right } %> </p>
+</div>
+
+<% if (template.header_left_text != '') { %>
+<div class="text_button_left"> <% template.header_left_text %> </div>
+<% } %>
+</div>
+<div class="grid-container">
+<% for (var i=0; i< flyer.length; i++) { %>
+
+<div class="gallery">
+  <div class="container_picture">
+
+
+    <img src="http://meusencartes.com.br/fivecart3/images/Products/" + <%= flyer[i].image_link %> alt="Snow" width="100" height="130" <% if (flyer[i].image_width || flyer[i].image_height) {%> style="width:  <%=flyer[i].image_width %>
+height:   <%=flyer[i].image_height    } %>
+  
+  
+
+  <div class=" textocentro"> R$ <%=flyer[i].price %>
+  </div>
+</div>
+<div class="desc"><%=flyer[i].name %></div>
+</div>
+<% } %>
+</div>
+
+
+
+<div class="container_text_button">
+<img src="http://meusencartes.com.br/fivecart3/images/templates/" <%=template.footer_image %>" width="455" height="50">
+<% if ($template->has_footer_text == 0) {
+  //Must observate it, becouse sometimes the template will be complete.
+    %>
+
+<div class='container2'>
+<div class="left">
+  <img src='http://meusencartes.com.br/fivecart3/images/icons/watsapp_icon.png' class='iconDetails'>
+</div>
+<div class="right">
+  <h4><% if (user_detail.footer_text != '') { %>
+    <p>
+      <% user_detail.footer_text %>
+    <p> <% } else { template.footer_text } %>
+  </h4>
+  <div style="font-size:.7em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <% if (user_detail.footer_text2 != '') { user_detail.footer_text2 } else { template.footer_text2 } %> </div>
+</div>
+</div>
+<% } %>
+
+</div>
+</div>
+</div>
