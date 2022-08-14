@@ -19,6 +19,7 @@ app.use(cors());
 // Setting up EJS to generate view
 app.set('view engine', 'ejs');
 app.set('views', './src/modules/flyers/views/');
+app.use(express.static("./src/modules/flyers/views/css"));
 
 app.use(express.json());
 
