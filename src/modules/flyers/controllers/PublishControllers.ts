@@ -3,6 +3,7 @@ import ListPublishService from "../services/ListPublishService";
 import ejs from 'ejs';
 import ListProductFlyerService from "@modules/products/services/ListProductFlyerService";
 import htmlToImage from "./htmlToImage";
+import ShowtTemplateService from "@modules/template/services/ShowTemplateService";
 
 export default class PublishControllers {
 
@@ -56,10 +57,17 @@ export default class PublishControllers {
           console.log(JSON.parse(JSON.stringify(findProductFlyer)));
         const flyers = JSON.parse(JSON.stringify(findProductFlyer));
 
+
+        const showtTemplateService = new ShowtTemplateService();
+       
+        const templateData = await showtTemplateService.execute(8);
+        const showTemplate = JSON.parse(JSON.stringify(templateData));
+        console.log(showTemplate);
+
         // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
         let fileHTML = '';
         // Frirst Way
-        ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers}, 
+        ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers, showTemplate: showTemplate}, 
         {}, function (err, template) {
         if (err) {
             throw err;
@@ -69,7 +77,7 @@ export default class PublishControllers {
         }
     });
 
-        console.log(fileHTML);
+      //  console.log(fileHTML);
 
         const imageBuffer = await htmlToImage(fileHTML);
 

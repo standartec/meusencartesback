@@ -300,7 +300,7 @@ if (template.has_logo == 0) { %>
 <% } %>
 </div>
 
-<img  src="http://meusencartes.com.br/fivecart3/images/templates/1_super_ofertas_header.jpg" width="455" height="200">  
+<img src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.header_image %> width="455" height="200">
 
 
 <div class="grid-container">
@@ -318,7 +318,10 @@ if (template.has_logo == 0) { %>
 </div>
 <% } %>
 </div>
-<img src="http://meusencartes.com.br/fivecart3/images/templates/1_super_ofertas_footer.png" width="455" height="50">
+<%
+console.log("================")
+console.log(showTemplate) %>
+<img src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.footer_image %> width="455" height="50">
 
 </div>
 </body>
