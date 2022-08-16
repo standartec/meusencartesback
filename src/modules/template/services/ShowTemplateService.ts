@@ -3,13 +3,10 @@ import { getCustomRepository } from "typeorm";
 import Template from "../typeorm/entities/Template";
 import TemplateRepository from "../typeorm/repositories/TemplateRepository";
 
-interface IRequest {
-    id: number;
-}
 export default class ShowtTemplateService {
 
-    public async execute ({id}:IRequest): Promise<Template> {
-
+    public async execute (id: number): Promise<Template> {
+        console.log("ID TEMPLATE RECEIVED" + id);
         const repository = getCustomRepository(TemplateRepository);
 
         const template = await repository.findOne(id);

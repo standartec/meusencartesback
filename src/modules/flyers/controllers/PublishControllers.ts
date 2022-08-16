@@ -53,22 +53,21 @@ export default class PublishControllers {
 
     public async generateImage(request: Request, response: Response): Promise<void> {
 
-        const productRepository = getCustomRepository(ProductRepository);
-
-        /* 34,84 - Working will mart
-        TODO: Validate if products exist
-        */
-        const findProductFlyer = await productRepository.findProductFlyer(34,84);
+        const listProductFlyerService = new ListProductFlyerService();
+        
+        const {idUser, idFlyer} = request.params;
+        
+        const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer});
     
         console.log(JSON.parse(JSON.stringify(findProductFlyer)));
+        
         const flyers = JSON.parse(JSON.stringify(findProductFlyer));
 
-
         const showtTemplateService = new ShowtTemplateService();
-       /** 8 Mine publisn, 83,84,76 Willmart */
+       
         const templateData = await showtTemplateService.execute(findProductFlyer[0].id_template);
+
         const showTemplate = JSON.parse(JSON.stringify(templateData));
-        console.log(showTemplate);
 
         // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
         let fileHTML = '';
