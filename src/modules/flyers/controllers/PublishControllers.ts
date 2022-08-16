@@ -4,6 +4,8 @@ import ejs from 'ejs';
 import ListProductFlyerService from "@modules/products/services/ListProductFlyerService";
 import htmlToImage from "./htmlToImage";
 import ShowtTemplateService from "@modules/template/services/ShowTemplateService";
+import { getCustomRepository } from "typeorm";
+import { ProductRepository } from "@modules/products/typeorm/repositories/ProductsRepository";
 
 export default class PublishControllers {
 
@@ -51,16 +53,20 @@ export default class PublishControllers {
 
     public async generateImage(request: Request, response: Response): Promise<void> {
 
-        const flyerProduct = new ListProductFlyerService();
+        const productRepository = getCustomRepository(ProductRepository);
 
-        const findProductFlyer = await flyerProduct.execute();
-          console.log(JSON.parse(JSON.stringify(findProductFlyer)));
+        /* 34,84 - Working will mart
+        TODO: Validate if products exist
+        */
+        const findProductFlyer = await productRepository.findProductFlyer(34,84);
+    
+        console.log(JSON.parse(JSON.stringify(findProductFlyer)));
         const flyers = JSON.parse(JSON.stringify(findProductFlyer));
 
 
         const showtTemplateService = new ShowtTemplateService();
-       
-        const templateData = await showtTemplateService.execute(8);
+       /** 8 Mine publisn, 83,84,76 Willmart */
+        const templateData = await showtTemplateService.execute(findProductFlyer[0].id_template);
         const showTemplate = JSON.parse(JSON.stringify(templateData));
         console.log(showTemplate);
 
