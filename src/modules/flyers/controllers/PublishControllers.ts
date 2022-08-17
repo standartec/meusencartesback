@@ -6,6 +6,8 @@ import htmlToImage from "./htmlToImage";
 import ShowtTemplateService from "@modules/template/services/ShowTemplateService";
 import { getCustomRepository } from "typeorm";
 import { ProductRepository } from "@modules/products/typeorm/repositories/ProductsRepository";
+import ShowUserDetail from "@modules/users/services/ShowUserDetailService";
+import ShowUserDetailService from "@modules/users/services/ShowUserDetailService";
 
 export default class PublishControllers {
 
@@ -25,7 +27,7 @@ export default class PublishControllers {
         const flyerProduct = new ListProductFlyerService();
 
         const findProductFlyer = await flyerProduct.execute();
-          console.log(JSON.parse(JSON.stringify(findProductFlyer)));
+        console.log(JSON.parse(JSON.stringify(findProductFlyer)));
         const flyers = JSON.parse(JSON.stringify(findProductFlyer));
 
         // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
@@ -69,10 +71,14 @@ export default class PublishControllers {
 
         const showTemplate = JSON.parse(JSON.stringify(templateData));
 
+        const showUserDetail = new ShowUserDetailService();
+
+        const userData = await showUserDetail.execute({idUser});
+        console.log(userData);
         // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
         let fileHTML = '';
         // Frirst Way
-        ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers, showTemplate: showTemplate}, 
+        ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData}, 
         {}, function (err, template) {
         if (err) {
             throw err;
@@ -82,7 +88,7 @@ export default class PublishControllers {
         }
     });
 
-      //  console.log(fileHTML);
+       console.log(fileHTML);
 
         const imageBuffer = await htmlToImage(fileHTML);
 

@@ -208,7 +208,7 @@ div.desc {
   width: 140px;
   height: 90px;
   position: absolute;
-  align: center;
+  align-content: center;
   object-position: bottom;
 
 }
@@ -295,15 +295,18 @@ body {
 const template = '';
 const user_detail = '';
 const publish = '';
-
-if (template.has_logo == 0) { %>
-<img class="logo" src="http://meusencartes.com.br/fivecart3/images/logos/">
+if (showTemplate.has_logo == 0) {
+  %>
+<img class="logo" src= <%= 'http://meusencartes.com.br/fivecart3/images/logos/' + userData.image_link %> 
+<% if (userData.image_width || userData.image_height) {%> style="width: <%=userData.image_width%>;
+height: <%=userData.image_height%>;"  <% } %>
+>
 <% } %>
 </div>
 
 <img src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.header_image %> width="455" height="200">
 
-
+</div>
 <div class="grid-container">
 
 <% for (var i=0; i< flyer.length; i++) { %>
