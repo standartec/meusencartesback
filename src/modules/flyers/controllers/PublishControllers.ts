@@ -58,23 +58,21 @@ export default class PublishControllers {
         const listProductFlyerService = new ListProductFlyerService();
         
         const {idUser, idFlyer} = request.params;
-        
+      
         const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer});
-    
-        console.log(JSON.parse(JSON.stringify(findProductFlyer)));
-        
+
         const flyers = JSON.parse(JSON.stringify(findProductFlyer));
 
         const showtTemplateService = new ShowtTemplateService();
-       
+      
         const templateData = await showtTemplateService.execute(findProductFlyer[0].id_template);
-
+        
         const showTemplate = JSON.parse(JSON.stringify(templateData));
 
         const showUserDetail = new ShowUserDetailService();
 
         const userData = await showUserDetail.execute({idUser});
-        console.log(userData);
+
         // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
         let fileHTML = '';
         // Frirst Way
@@ -88,7 +86,7 @@ export default class PublishControllers {
         }
     });
 
-       console.log(fileHTML);
+      // console.log(fileHTML);
 
         const imageBuffer = await htmlToImage(fileHTML);
 
