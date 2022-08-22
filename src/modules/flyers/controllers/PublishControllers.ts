@@ -27,7 +27,7 @@ export default class PublishControllers {
         const flyerProduct = new ListProductFlyerService();
 
         const findProductFlyer = await flyerProduct.execute();
-        console.log(JSON.parse(JSON.stringify(findProductFlyer)));
+        
         const flyers = JSON.parse(JSON.stringify(findProductFlyer));
 
         // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
@@ -85,8 +85,6 @@ export default class PublishControllers {
 
         }
     });
-
-      // console.log(fileHTML);
 
         const imageBuffer = await htmlToImage(fileHTML);
 
