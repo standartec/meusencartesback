@@ -155,13 +155,20 @@ div.desc {
   padding-top: 2px;
   bottom: 0px;
   right: 20px;
-  background-color: #FF0000; /* Was dinamic here*/
-  color: #000000; /* Was dinamic here*/
+  background-color: <%=showTemplate.main_color%>;  /* Was dinamic here*/
+  color: <%=showTemplate.font_color%>; /* Was dinamic here*/
   padding-left: 20px;
   padding-right: 20px;
 
 }
 
+.container_text_button_1 {
+  position: relative;
+  display: grid;
+  width: 300px;
+  padding: 0px;
+  
+}
 
 .container_text_button {
   position: relative;
@@ -242,9 +249,10 @@ div.desc {
   color: white;
   position: absolute;
   bottom: 0;
+  margin-bottom: 0px;
   left: 10px;
   height: auto;
-  padding: 1.5%;
+  padding: 2%;
   float: left;
 }
 
@@ -270,6 +278,7 @@ h4 {
 body {
     max-width: 452px;
     background-color: #FFFFFF; 
+
     /*
      min-height: 100vh;
          margin: 0 auto;
@@ -283,13 +292,6 @@ body {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica">
 
 <body>
-
-
-<div id="encarte" style="background-color: #FFFFFF; width: 452px; ">
-  <!-- I used to set width and height of div becouse of image generation, to generate in same size.
-    But I watched that depending of products and image exceded image limit. I decided to remove 
-    this tag to test and worked. I went to container2 and decrease padding of 1% to 0% and and bottom to 0-->
-  <!-- style="background-color: #FFFFFF;  width: 452px; height: 1025px;" -->
 
   <div class="container_text_button">
   
@@ -327,14 +329,16 @@ body {
     <div class="desc"><%=flyer[i].name %></div>
 
     </div>
-<% } %>
+
+    <% } %>
 
 </div>
 
 
 
-<div class="container_text_button">
-  <img src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.footer_image %> width="455" height="50">
+
+<div class="container_text_button_1">
+    <img src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.footer_image %> width="455" height="50">
 
   <% 
   
@@ -355,6 +359,7 @@ body {
 
 
 </div>
+
 </body>
 
 </html>
