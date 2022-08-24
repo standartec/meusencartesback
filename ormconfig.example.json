@@ -1,0 +1,19 @@
+{
+    "type": "mysql",
+    "host": "",
+    "port": 3306,
+    "username": "onecart",
+    "password": "",
+    "database": "onecart",
+    "migrations": [
+        "./dist/shared/typeorm/migrations/*.js"
+    ],
+    "entities": [
+        "./dist/modules/**/typeorm/entities/*.js"
+    ],
+    "cli": {
+        "migrationsDir": "./dist/shared/typeorm/migrations/"
+    }
+    
+}
+

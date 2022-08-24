@@ -35,6 +35,7 @@ export default class PublishControllers {
         // Frirst Way
         ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers}, 
         {}, function (err, template) {
+            
         if (err) {
             throw err;
         } else {
