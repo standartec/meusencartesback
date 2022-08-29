@@ -62,58 +62,6 @@ div.gallery img {
   align: center;
 
 
-  /**The problem with this configuration is that images is generated with difrent sizes and becoume layout
-  ugly. */
-  /** Altura da foto*/
-  /*
-  width: 80%;
-  height: 180px;*/
-
-
-  /**The problem with this configuration is that a image stay with the same size and is necessary
-  to adjust the must manualy. */
-  /*
-  width: 100%;
-  height: auto;*/
-
-
-  /**This is the best option now, but sometimes is necessary adjust manualy the images. */
-  /*
-      width:  75%;
-      height: 150px;
-      object-position: bottom;
-    
-      The best way is use to use object-fit: scale-down;, but html2canvas didn't support.
-      I saw it in https://html2canvas.hertzen.com/features/
-      Whit object-fit is not necessary manual adjusments: .
-
-      object-fit: scale-down;
-      width:  100%;
-      height: 150px;
-      object-position: bottom;
-      
-      
-  /** I decied to go in this way and chage in the future, this is a MVP, is a test, I 
-      won't spent more time with this now
-      I cant decrease the width and heigh less than width:  75%; height: 150%;, because of quality
-      */
-      
-      /*
-  width: 100%;
-  height: 150px;
-  object-position: bottom;
-*/
-
-/* 14-08-2022 
-Now using SSR the best way is this 
-
-  object-fit: scale-down;
-      width:  100%;
-      height: 150px;
-      object-position: bottom;
-      
-
-*/
 
       object-fit: scale-down;
       width:  150px;
@@ -155,8 +103,8 @@ div.desc {
   padding-top: 2px;
   bottom: 0px;
   right: 20px;
-  background-color: <%=showTemplate.main_color%>;  /* Was dinamic here*/
-  color: <%=showTemplate.font_color%>; /* Was dinamic here*/
+  background-color: <%=showTemplate.main_color%>; 
+  color: <%=showTemplate.font_color%>; 
   padding-left: 20px;
   padding-right: 20px;
 
@@ -184,7 +132,7 @@ div.desc {
   font-size: 12px;
   bottom: 8px;
   left: 250px;
-  color: white;
+  color: <%=showTemplate.font_color%>; 
   text: bold;
   width: 200px;
   padding-left: 60px;
@@ -199,7 +147,7 @@ div.desc {
   position: absolute;
   bottom: 70px;
   left: 10px;
-  color: yellow;
+  color: <%=showTemplate.font_color%>; 
   text: bold;
   width: 300px;
   padding-left: 0px;
@@ -226,14 +174,13 @@ div.desc {
   position: absolute;
   bottom: 10;
   left: 10px;
-  color: yellow;
+  color: <%=showTemplate.font_color%>; 
   text: bold;
   padding-left: 20px;
   padding-right: 20px;
   align: left;
 
 }
-
 
 .iconDetails {
   margin-left: 2%;
@@ -259,6 +206,7 @@ div.desc {
 h4 {
   margin: 0;
   width: 400px;
+  color: <%=showTemplate.font_color%>; 
   text-transform: capitalize;
 }
 
@@ -278,14 +226,8 @@ h4 {
 body {
     max-width: 452px;
     background-color: #FFFFFF; 
-
-    /*
-     min-height: 100vh;
-         margin: 0 auto;
-
-    */
 }
-  </style>
+</style>
 
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
@@ -326,16 +268,13 @@ body {
       
       <div class="textocentro"> R$ <%=flyer[i].price %> </div>
       </div>
-    <div class="desc"><%=flyer[i].name %></div>
+    <div class="desc"><%=flyer[i].name_product %></div>
 
     </div>
 
     <% } %>
 
 </div>
-
-
-
 
 <div class="container_text_button_1">
     <img src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.footer_image %> width="455" height="50">
@@ -356,10 +295,6 @@ body {
 </div>
 <% } %>
 
-
-
 </div>
-
 </body>
-
 </html>
