@@ -40,13 +40,12 @@ export default class PublishControllers {
             throw err;
         } else {
             response.end(template);
-
         }
     });
 
     //Second way
     // response.render('index', {flyer: flyers});
-        
+       
    
 
 
@@ -86,7 +85,7 @@ export default class PublishControllers {
 
         }
     });
-
+   // console.log(fileHTML);
         const imageBuffer = await htmlToImage(fileHTML);
 
         response.set("Content-Type", "image/png");

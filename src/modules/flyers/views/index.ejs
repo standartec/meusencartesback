@@ -72,6 +72,12 @@ div.gallery img {
 }
 
 div.desc {
+  width: 12,5em;
+  word-break: break-all;
+  text-align: left;
+  text-justify: inter-word;
+  white-space: break-spaces;
+
   font-family: "Helvetica", sans-serif;
   padding: 4px;
   text-transform: uppercase;
@@ -268,7 +274,7 @@ body {
       
       <div class="textocentro"> R$ <%=flyer[i].price %> </div>
       </div>
-    <div class="desc"><%=flyer[i].name_product %></div>
+    <div class="desc"><%=flyer[i].name_product%></div>
 
     </div>
 
@@ -288,9 +294,30 @@ body {
       <div class="left">
           <img src='http://meusencartes.com.br/fivecart3/images/icons/watsapp_icon.png' class='iconDetails'>
       </div>  
-  <div   class="right" >
-  <% if (userData.footer_text != '') { %> <h4> <%=userData.footer_text %> </h4>  <% } else { %> <h4> <%=showTemplate.footer_text %> </h4> <% } %> </h4>
-  <div style="font-size:.6em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <% if (userData.footer_text2 != '') { %> <h4> <%=userData.footer_text2 %> </h4> <% } else { %> <h4> <%=showTemplate.footer_text2 %> <h4> <% } %></div>
+  <div class="right">
+
+<%
+let footer_text = "";
+let footer_text2 = "";
+
+if (flyer[0].footer_text) {
+  footer_text = flyer[0].footer_text;
+  footer_text2 = flyer[0].footer_text2;
+}else if (userData.footer_text) {
+  footer_text = userData.footer_text;
+  footer_text2 = userData.footer_text2;
+} else if (showTemplate.footer_text2) {
+  footer_text = showTemplate.footer_text;
+  footer_text2 = showTemplate.footer_text2;
+
+  
+}
+console.log(userData);
+//console.log("ShowTemplate" + showTemplate);
+%>
+
+ <h4> <%=footer_text %> </h4> 
+  <div style="font-size:.6em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <h4> <%=footer_text2 %> </h4> </div>
   </div>
 </div>
 <% } %>
