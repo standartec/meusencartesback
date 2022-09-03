@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+<% let widthFlyer = 812; %>
+<!-- 162 each column more
+650 - 4 columns 
+812 - 5 Columns
+-->
 <style>
+
 
 #salvar {
   top: 0;
@@ -13,10 +19,16 @@
   padding: 30px 30px;
 }
 
+.image_format {
+  width: 100%;
+}
+
 .grid-container {
   display: grid;
   width: 300px;
-  grid-template-columns: auto auto auto;
+  
+  /* CHANGE 3*/
+  grid-template-columns: auto auto auto auto auto;
   padding: 0px;
 
 }
@@ -119,7 +131,6 @@ div.desc {
 .container_text_button_1 {
   position: relative;
   display: grid;
-  width: 300px;
   padding: 0px;
   
 }
@@ -137,11 +148,15 @@ div.desc {
   position: absolute;
   font-size: 12px;
   bottom: 8px;
-  left: 250px;
+  
+  padding-left: 80%;
   color: <%=showTemplate.font_color%>; 
   text: bold;
   width: 200px;
+  /*
   padding-left: 60px;
+  */
+  
   padding-right: 10px;
   align: right;
 }
@@ -164,7 +179,10 @@ div.desc {
 .logo {
   border-radius: 0px;
   padding: 100px;
+  /* CHANGE 2 
   padding-left: 140px;
+  */
+  padding-left: 50%;
   bottom: -99px;
   width: 140px;
   height: 90px;
@@ -230,7 +248,9 @@ h4 {
 }
 
 body {
-    max-width: 490px;
+    width: <%=widthFlyer%>px;
+    /* CHANGE 2 */
+   
     background-color: #FFFFFF; 
 }
 </style>
@@ -251,8 +271,8 @@ body {
     height: <%=userData.image_height%>;"  <% } %> >
 
 <% } %>
-
-<img src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.header_image %> width="490" height="200">
+<!-- CHANGE 1-->
+<img class = "image_format" src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.header_image %>  height="200">
 
 
 <div class="text_button_right"><% if (flyer[0].header2 != '') { %> <p> <%=flyer[0].header2  %> </p> <% } else { %> <p> <%=showTemplate.header_text_right %> </p> <% } %></div>
@@ -283,7 +303,7 @@ body {
 </div>
 
 <div class="container_text_button_1">
-    <img src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.footer_image %> width="490" height="50">
+    <img class ="image_format" src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.footer_image %>  height="50">
 
   <% 
   
