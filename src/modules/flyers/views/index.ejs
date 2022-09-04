@@ -4,8 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<% let widthFlyer = 812; %>
+
+
+<%
+let widthFlyer = 490;
+let column_amount = 'auto auto auto';
+if (flyer[0].column_amount == 4) {
+  column_amount = 'auto auto auto auto';
+  widthFlyer = 650
+} else if (flyer[0].column_amount == 5) {
+  column_amount = 'auto auto auto auto auto';
+  widthFlyer = 812
+} else if (flyer[0].column_amount == 6) {
+  column_amount = 'auto auto auto auto auto auto';
+  widthFlyer = 974
+}
+
+
+
+%>
 <!-- 162 each column more
+490 - 3 columns 
 650 - 4 columns 
 812 - 5 Columns
 -->
@@ -28,7 +47,7 @@
   width: 300px;
   
   /* CHANGE 3*/
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: <%=column_amount%>;
   padding: 0px;
 
 }
