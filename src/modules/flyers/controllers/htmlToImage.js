@@ -7,6 +7,13 @@ export default async (html = "") => {
   await page.setContent(html);
 
   const content = await page.$("body");
+
+  //I started to use this parameters to improme image generation.
+  await page.setViewport({
+    width: 1440,
+    height: 900,
+    deviceScaleFactor: 2
+  });
   const imageBuffer = await content.screenshot({ omitBackground: true });
 
   await page.close();
