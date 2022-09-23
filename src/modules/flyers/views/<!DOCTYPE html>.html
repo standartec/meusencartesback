@@ -6,33 +6,7 @@
 </head>
 
 
-<%
-let imageLogoWidth = 120;
-let imageLogoHeight = 120;
 
- if (userData.image_width) {
-  imageLogoWidth = userData.image_width;
- } 
- if (userData.image_height) {
-  imageLogoHeight = userData.image_height;
-  }
-
-let widthFlyer = 490;
-let column_amount = 'auto auto auto';
-if (flyer[0].column_amount == 4) {
-  column_amount = 'auto auto auto auto';
-  widthFlyer = 650
-} else if (flyer[0].column_amount == 5) {
-  column_amount = 'auto auto auto auto auto';
-  widthFlyer = 812
-} else if (flyer[0].column_amount == 6) {
-  column_amount = 'auto auto auto auto auto auto';
-  widthFlyer = 974
-}
-
-
-
-%>
 <!-- 162 each column more
 490 - 3 columns 
 650 - 4 columns 
@@ -57,7 +31,7 @@ if (flyer[0].column_amount == 4) {
   width: 300px;
   
   /* CHANGE 3*/
-  grid-template-columns: <%=column_amount%>;
+  grid-template-columns: auto auto auto;
   padding: 0px;
 
 }
@@ -162,12 +136,13 @@ div.desc {
   position: absolute;
   padding-top: 2px;
   display: flex;
+  align-items: center;
   bottom: 0px;
   right: 20px;
-  background-color: <%=showTemplate.main_color%>; 
-  color: <%=showTemplate.font_color%>; 
-  padding-left: 10px;
-  padding-right: 10px;
+  background-color: #D0395E; 
+  color: #FFFFFF; 
+  padding-left: 20px;
+  padding-right: 20px;
 
 }
 
@@ -193,7 +168,7 @@ div.desc {
   bottom: 8px;
   
   padding-left: 70%;
-  color: <%=showTemplate.font_color%>; 
+  color: #FFFFFF; 
   text: bold;
   width: 200px;
   /*
@@ -211,7 +186,7 @@ div.desc {
   position: absolute;
   bottom: 80px;
   left: 10px;
-  color: <%=showTemplate.font_color%>; 
+  color: #FFFFFF; 
   text: bold;
   width: 300px;
   padding-left: 0px;
@@ -227,10 +202,8 @@ div.desc {
   */
   padding-left: 40%;
   bottom: -95px;
-  width: <%=imageLogoWidth%>px;
-  height: <%=imageLogoHeight%>px;
-   
-
+  width: 140px;
+  height: 90px;
   position: absolute;
   align-content: center;
   object-position: bottom;
@@ -244,11 +217,11 @@ div.desc {
   font-size: 25px;
   padding-left: 30%;
   bottom: -145px;
-  color: <%=showTemplate.font_color%>; 
+  color: #FFFFFF; 
   font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
   font-stretch: condensed;
     -webkit-text-stroke-width: 1px; /* largura da borda */
-    -webkit-text-stroke-color: <%=showTemplate.font_color%>; /* cor da borda */
+    -webkit-text-stroke-color: #FFFFFF; /* cor da borda */
   width: 165px;
   height: 90px;
   position: absolute;
@@ -263,7 +236,7 @@ div.desc {
   position: absolute;
   bottom: 10;
   left: 10px;
-  color: <%=showTemplate.font_color%>; 
+  color: #FFFFFF; 
   text: bold;
   padding-left: 20px;
   padding-right: 20px;
@@ -295,7 +268,7 @@ div.desc {
 h4 {
   margin: 0;
   width: 400px;
-  color: <%=showTemplate.font_color%>; 
+  color: #FFFFFF; 
   text-transform: capitalize;
 }
 
@@ -313,7 +286,7 @@ h4 {
 }
 
 body {
-    width: <%=widthFlyer%>px;
+    width: 490px;
     /* CHANGE 2 */
    
     background-color: #FFFFFF; 
@@ -328,100 +301,121 @@ body {
 
   <div class="container_text_button">
   
-<% if (showTemplate.has_logo == 0) { 
-  
-  if (userData.image_link) {
-  %>
-    <img class="logo" src= <%= 'http://meusencartes.com.br/fivecart3/images/logos/' + userData.image_link %> 
 
- 
-<% } else { %>
-  <h3 class="companyName"><%=userData.company_name%></h3>
+    <img class="logo" src= http://meusencartes.com.br/fivecart3/images/logos/53_20220919-17-59-59.jpeg 
 
-  <% } %>
+     >
 
-<% } %>
+
+
 <!-- CHANGE 1-->
-<img class = "image_format" src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.header_image %>  height="200">
+<img class = "image_format" src= http://meusencartes.com.br/fivecart3/images/templates/Modelo-Encarte-Moana009---001---Woman-Store---Moana---Pink---Header.png  height="200">
 
 
-<div class="text_button_right"><% if (flyer[0].header2 != '') { %> <p> <%=flyer[0].header2  %> </p> <% } else { %> <p> <%=showTemplate.header_text_right %> </p> <% } %></div>
+<div class="text_button_right"> <p>  </p> </div>
 
 
-<% if (flyer[0].header_left_text != '') { %>
-  <div class="text_button_left"> <p><%=flyer[0].header_left_text %> </p></div>
-<% } %>
+
+  <div class="text_button_left"> <p> </p></div>
+
 
 </div>
 
 <div class="grid-container">
 
-<% for (var i=0; i< flyer.length; i++) { %>
+
 
     <div class="gallery">
       <div class="container_picture">
-        <img src= <%= 'http://meusencartes.com.br/fivecart3/images/Products/' + flyer[i].image_link%>  alt="Snow" width="100" height="130"/>
-        <% var actPrice = flyer[i].price; 
-        var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
-        %>
+        <img src= http://meusencartes.com.br/fivecart3/images/Products/bolo-choco-bauni-casa-suiça.jpg  alt="Snow" width="100" height="130"/>
+        
 
       <div class="textocentro">
         <div class="textUpper">R$</div>
-        <div class="textBellow"><%=newPrice %></div>
+        <div class="textBellow">600,00</div>
       </div>
 
 
 </div>
-    <div class="desc"><%=flyer[i].name_product%></div>
+    <div class="desc">BOLO CHOCO BAUNI CASA SUIÇA   </div>
 
     </div>
 
-    <% } %>
+    
+
+    <div class="gallery">
+      <div class="container_picture">
+        <img src= http://meusencartes.com.br/fivecart3/images/Products/53_20220920-13-43-09.jpeg  alt="Snow" width="100" height="130"/>
+        
+
+      <div class="textocentro">
+        <div class="textUpper">R$</div>
+        <div class="textBellow">6.000,00</div>
+      </div>
+
+
+</div>
+    <div class="desc">Armário de cozinha             </div>
+
+    </div>
+
+    
+
+    <div class="gallery">
+      <div class="container_picture">
+        <img src= http://meusencartes.com.br/fivecart3/images/Products/53_20220920-13-43-38.jpeg  alt="Snow" width="100" height="130"/>
+        
+
+      <div class="textocentro">
+        <div class="textUpper">R$</div>
+        <div class="textBellow">2.000,00</div>
+      </div>
+
+
+</div>
+    <div class="desc">Armário quarto 1               </div>
+
+    </div>
+
+    
+
+    <div class="gallery">
+      <div class="container_picture">
+        <img src= http://meusencartes.com.br/fivecart3/images/Products/53_20220920-13-44-05.jpeg  alt="Snow" width="100" height="130"/>
+        
+
+      <div class="textocentro">
+        <div class="textUpper">R$</div>
+        <div class="textBellow">5.000,00</div>
+      </div>
+
+
+</div>
+    <div class="desc">Armário quarto 2               </div>
+
+    </div>
+
+    
 
 </div>
 
 <div class="container_text_button_1">
-    <img class ="image_format" src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.footer_image %>  height="50">
+    <img class ="image_format" src= http://meusencartes.com.br/fivecart3/images/templates/Modelo-Encarte-Moana009---001---Woman-Store---Moana---Pink---Footer.png  height="50">
 
-  <% 
   
-  if (showTemplate.has_footer_text == 0) {
-  //Must observate it, becouse sometimes the template will be complete.
-    %>
   <div class='container2'>
       <div class="left">
           <img src='http://meusencartes.com.br/fivecart3/images/icons/watsapp_icon.png' class='iconDetails'>
       </div>  
   <div class="right">
 
-<%
-let footer_text = "";
-let footer_text2 = "";
 
-if (flyer[0].footer_text) {
-  footer_text = flyer[0].footer_text;
-  footer_text2 = flyer[0].footer_text2;
-}else if (userData.footer_text) {
- 
 
-  footer_text = userData.footer_text;
-  footer_text2 = userData.footer_text2;
-} else if (showTemplate.footer_text2) {
-  console.log("ENTROU 3");
-
-  footer_text = showTemplate.footer_text;
-  footer_text2 = showTemplate.footer_text2;
-
-  
-}
-
-%>
-
- <h4> <%=footer_text %> </h4> 
-  <div style="font-size:.6em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <h4> <%=footer_text2 %> </h4> </div>
+ <h4> Faça seu pedido pelo telefone: 61984402868 </h4> 
+  <div style="font-size:.6em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <h4> Rua 19 Norte </h4> </div>
   </div>
 </div>
-<% } %>
+
 
 </div>
 </body>
