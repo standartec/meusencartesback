@@ -10,14 +10,17 @@ export default async (html = "") => {
 
   //I started to use this parameters to improme image generation.
   await page.setViewport({
-    width: 1440,
-    height: 900,
+    width: 1080,
+    height: 1080,
     deviceScaleFactor: 2
   });
   const imageBuffer = await content.screenshot({ omitBackground: true });
 
   await page.close();
   await browser.close();
+  
+  console.log('Case 2 - Width  :', page.viewport().width);  // Width  : 800
+  console.log('Case 2 - Height :', page.viewport().height); // Height : 600
 
   return imageBuffer;
 };
