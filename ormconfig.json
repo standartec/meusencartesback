@@ -3,7 +3,7 @@
     "host": "onecart.mysql.dbaas.com.br",
     "port": 3306,
     "username": "onecart",
-    "password": "Rnk30ghhh",
+    "password": "",
     "database": "onecart",
     "migrations": [
         "./src/shared/typeorm/migrations/*.ts"
