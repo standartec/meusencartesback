@@ -57,9 +57,9 @@ export default class PublishControllers {
 
         const listProductFlyerService = new ListProductFlyerService();
         
-        const {idUser, idFlyer} = request.params;
+        const {idUser, idFlyer, idProductPublish} = request.params;
       
-        const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer});
+        const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer, idProductPublish});
 
         const flyers = JSON.parse(JSON.stringify(findProductFlyer));
 
@@ -76,7 +76,18 @@ export default class PublishControllers {
         // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
         let fileHTML = '';
         // Frirst Way
-        ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData}, 
+        let fileLoad = '';
+        if (templateData.type_template == 2) {
+            
+            let fileLoad = 'instagram.ejs';
+        } 
+        if (templateData.type_template == 1) {
+            let fileLoad = 'index.ejs';
+
+        }
+       
+        ejs.renderFile('./src/modules/flyers/views/instagram.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData}, 
+
         {}, function (err, template) {
         if (err) {
             throw err;

@@ -9,14 +9,12 @@
 <%
 let imageLogoWidth = 120;
 let imageLogoHeight = 120;
-
  if (userData.image_width) {
   imageLogoWidth = userData.image_width;
  } 
  if (userData.image_height) {
   imageLogoHeight = userData.image_height;
   }
-
 let widthFlyer = 490;
 let column_amount = 'auto auto auto';
 if (flyer[0].column_amount == 4) {
@@ -29,9 +27,6 @@ if (flyer[0].column_amount == 4) {
   column_amount = 'auto auto auto auto auto auto';
   widthFlyer = 974
 }
-
-
-
 %>
 <!-- 162 each column more
 490 - 3 columns 
@@ -39,19 +34,15 @@ if (flyer[0].column_amount == 4) {
 812 - 5 Columns
 -->
 <style>
-
-
 #salvar {
   top: 0;
   right: 0;
   height: 20px;
   padding: 30px 30px;
 }
-
 .image_format {
   width: 100%;
 }
-
 .grid-container {
   display: grid;
   width: 300px;
@@ -59,11 +50,8 @@ if (flyer[0].column_amount == 4) {
   /* CHANGE 3*/
   grid-template-columns: <%=column_amount%>;
   padding: 0px;
-
 }
-
 div.gallery {
-
   margin: 5px;
   border: 0px solid #ccc;
   float: left;
@@ -71,54 +59,38 @@ div.gallery {
   margin-bottom: -1;
   display: inline-block;
   align-self: flex-end;
-
 }
-
 div.gallery:hover {
   border: 1px solid #777;
 }
-
-
 .container_picture {
-
   position: relative;
   text-align: center;
   align: right;
-
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
   height: 100%;
-
 }
-
 div.gallery img {
   padding-left: 60px;
   margin-top: -1px;
-
   /** @todo Ficou feio isso, esse -70 pra alinhar a esquerda */
   margin-left: -70px;
-
   align: center;
-
-
-
       object-fit: scale-down;
       width:  150px;
       height: 150px;
       object-position: bottom;
       
-
 }
-
 div.desc {
   width: 12,5em;
   word-break: break-all;
   text-align: left;
   text-justify: inter-word;
   white-space: break-spaces;
-
   font-family: "Helvetica", sans-serif;
   padding: 4px;
   text-transform: uppercase;
@@ -128,9 +100,7 @@ div.desc {
   margin-left: 1px;
   margin-right: 1px;
   margin-bottom: 0;
-
 }
-
 /* Bottom right text */
 .text-block {
   position: relative;
@@ -142,21 +112,16 @@ div.desc {
   padding-left: 20px;
   padding-right: 20px;
 }
-
-
 .textUpper {
             font-size: 15px;
             bottom: 0;
             display: flex;
             align-items: center;
             left: 0;
-
 }
 .textBellow {
   font-size: 25px;
-
 }
-
 .textocentro {
   font-family: "Helvetica", sans-serif;
   position: absolute;
@@ -168,24 +133,19 @@ div.desc {
   color: <%=showTemplate.font_color%>; 
   padding-left: 10px;
   padding-right: 10px;
-
 }
-
 .container_text_button_1 {
   position: relative;
   display: grid;
   padding: 0px;
   
 }
-
 .container_text_button {
   position: relative;
 }
-
 .tudo {
   position: relative;
 }
-
 .text_button_right {
   font-family: "Helvetica", sans-serif;
   position: absolute;
@@ -203,7 +163,6 @@ div.desc {
   padding-right: 10px;
   align: right;
 }
-
 .text_button_left {
   line-height: 125%;
   font-family: "Sofia", sans-serif;
@@ -218,7 +177,6 @@ div.desc {
   padding-right: 20px;
   align: center;
 }
-
 .logo {
   border-radius: 0px;
   padding: 100px;
@@ -230,14 +188,10 @@ div.desc {
   width: <%=imageLogoWidth%>px;
   height: <%=imageLogoHeight%>px;
    
-
   position: absolute;
   align-content: center;
   object-position: bottom;
-
 }
-
-
 .companyName {
   border-radius: 0px;
   padding: 100px;
@@ -254,10 +208,7 @@ div.desc {
   position: absolute;
   align-content: center;
   object-position: bottom;
-
 }
-
-
 .footer_text {
   font-size: 20px;
   position: absolute;
@@ -268,16 +219,13 @@ div.desc {
   padding-left: 20px;
   padding-right: 20px;
   align: left;
-
 }
-
 .iconDetails {
   margin-left: 2%;
   float: left;
   height: 30px;
   width: 30px;
 }
-
 .container2 {
   text-transform: capitalize;
   font-family: "Helvetica", sans-serif;
@@ -291,27 +239,21 @@ div.desc {
   padding: 2%;
   float: left;
 }
-
 h4 {
   margin: 0;
   width: 400px;
   color: <%=showTemplate.font_color%>; 
   text-transform: capitalize;
 }
-
 .left {
   float: left;
   width: 45px;
-
 }
-
 .right {
-
   float: left;
   margin: 0 0 0 5px;
   width: 215px;
 }
-
 body {
     width: <%=widthFlyer%>px;
     /* CHANGE 2 */
@@ -333,13 +275,10 @@ body {
   if (userData.image_link) {
   %>
     <img class="logo" src="<%='http://meusencartes.com.br/fivecart3/images/logos/' + userData.image_link %>"
-
  
 <% } else { %>
   <h3 class="companyName"><%=userData.company_name%></h3>
-
   <% } %>
-
 <% } %>
 <!-- CHANGE 1-->
 <img class = "image_format" src="<%='http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.header_image %>"  height="200">
@@ -357,25 +296,19 @@ body {
 <div class="grid-container">
 
 <% for (var i=0; i< flyer.length; i++) { %>
-
     <div class="gallery">
       <div class="container_picture">
         <img src="<%= 'http://meusencartes.com.br/fivecart3/images/Products/' + flyer[i].image_link%>"  alt="Snow" width="100" height="130"/>
         <% var actPrice = flyer[i].price; 
         var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
         %>
-
       <div class="textocentro">
         <div class="textUpper">R$</div>
         <div class="textBellow"><%=newPrice %></div>
       </div>
-
-
 </div>
     <div class="desc"><%=flyer[i].name_product%></div>
-
     </div>
-
     <% } %>
 
 </div>
@@ -393,30 +326,23 @@ body {
           <img src='http://meusencartes.com.br/fivecart3/images/icons/watsapp_icon.png' class='iconDetails'>
       </div>  
   <div class="right">
-
 <%
 let footer_text = "";
 let footer_text2 = "";
-
 if (flyer[0].footer_text) {
   footer_text = flyer[0].footer_text;
   footer_text2 = flyer[0].footer_text2;
 }else if (userData.footer_text) {
  
-
   footer_text = userData.footer_text;
   footer_text2 = userData.footer_text2;
 } else if (showTemplate.footer_text2) {
   console.log("ENTROU 3");
-
   footer_text = showTemplate.footer_text;
   footer_text2 = showTemplate.footer_text2;
-
   
 }
-
 %>
-
  <h4> <%=footer_text %> </h4> 
   <div style="font-size:.6em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <h4> <%=footer_text2 %> </h4> </div>
   </div>

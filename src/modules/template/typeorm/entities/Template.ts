@@ -68,4 +68,13 @@ export default class Template {
 
     @Column()
     id_model_type: number;
+
+    @Column()
+    type_template: number;
+
+    @Column()
+    middle_image: string;
+
+    @Column()
+    font_collor_bottom: string;
 }

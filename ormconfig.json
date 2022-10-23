@@ -1,9 +1,10 @@
+
 {
     "type": "mysql",
     "host": "onecart.mysql.dbaas.com.br",
     "port": 3306,
     "username": "onecart",
-    "password": "",
+    "password": "Fr48915199",
     "database": "onecart",
     "migrations": [
         "./src/shared/typeorm/migrations/*.ts"

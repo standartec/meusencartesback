@@ -33,10 +33,14 @@ export class ProductRepository extends Repository<Product> {
         return existProducts;
     }
     
-    public async findProductFlyer(idUser: string, idFlyer: string): Promise<undefined> {
+    public async findProductFlyer(idUser: string, idFlyer: string, idProductPublish: string): Promise<undefined> {
 
         const entityManager = getManager();
-
+        let filterProduct = '';
+        console.log('-->>>><>>>>>>>>>'+idProductPublish );
+        if (idProductPublish != '0') {
+            filterProduct = ' and pp.id = ' + idProductPublish;
+        }
         const productFlyer = await entityManager.query(`
         select pc.id,p.description,pc.id_product,SUBSTRING(rpad(prod.name, 31, " "), 1,31) as name_product,pp.product_price price,
         prod.image_link, pp.id_publish, pp.id as id_product_publish,
@@ -44,7 +48,7 @@ export class ProductRepository extends Repository<Product> {
         from product_publish pp inner join publish p on p.id = pp.id_publish
         inner join product_customer pc on pc.id = pp.id_product_customer
         inner join products prod on prod.id = pc.id_product
-        where p.id_user = ` + idUser + ` and pp.status =  1 and p.id = ` + idFlyer);
+        where p.id_user = ` + idUser + ` and pp.status =  1 and p.id = ` + idFlyer +  filterProduct );
 
         return productFlyer
 
