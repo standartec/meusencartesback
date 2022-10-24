@@ -7,14 +7,30 @@
 
 
 <%
-let imageLogoWidth = 120;
-let imageLogoHeight = 120;
- if (userData.image_width) {
-  imageLogoWidth = userData.image_width;
- } 
- if (userData.image_height) {
-  imageLogoHeight = userData.image_height;
-  }
+let imageLogoWidth = '';
+let imageLogoHeight = '';
+
+if (showTemplate.type_template == 1) {
+     imageLogoWidth = 120;
+     imageLogoHeight = 120;
+        if (userData.image_width) {
+          imageLogoWidth = userData.image_width;
+        } 
+        if (userData.image_height) {
+          imageLogoHeight = userData.image_height;
+          }
+
+} else if (showTemplate.type_template == 2) {
+  imageLogoWidth = 300;
+  imageLogoHeight = 300;
+        if (userData.image_width_big) {
+          imageLogoWidth = userData.image_width_big;
+        } 
+        if (userData.image_height_big) {
+          imageLogoHeight = userData.image_height_big;
+          }
+}
+
 let widthFlyer = 490;
 let column_amount = 'auto auto auto';
 if (flyer[0].column_amount == 4) {
