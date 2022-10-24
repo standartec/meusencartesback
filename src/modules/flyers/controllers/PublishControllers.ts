@@ -77,16 +77,12 @@ export default class PublishControllers {
         let fileHTML = '';
         // Frirst Way
         let fileLoad = '';
-        if (templateData.type_template == 2) {
-            
-            let fileLoad = 'instagram.ejs';
-        } 
+    
         if (templateData.type_template == 1) {
-            let fileLoad = 'index.ejs';
-
-        }
-       
-        ejs.renderFile('./src/modules/flyers/views/instagram.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData}, 
+     
+        
+     
+        ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData}, 
 
         {}, function (err, template) {
         if (err) {
@@ -96,11 +92,28 @@ export default class PublishControllers {
 
         }
     });
+} else if (templateData.type_template == 2) {
+    ejs.renderFile('./src/modules/flyers/views/instagram.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData}, 
+
+    {}, function (err, template) {
+    if (err) {
+        throw err;
+    } else {
+        fileHTML = template;
+
+    }
+});
+
+
+}
+
         console.log(fileHTML);
         const imageBuffer = await htmlToImage(fileHTML);
 
         response.set("Content-Type", "image/png");
         response.send(imageBuffer);
+
+        
 
     }
 
