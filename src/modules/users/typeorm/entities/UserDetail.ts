@@ -42,5 +42,13 @@ export default class UserDetail {
     @Column()
     image_width: string;
 
+    @Column()
+    beta_tester: string;
+
+    @Column()
+    image_height_big: string;
+
+    @Column()
+    image_width_big: string;
 
 }
