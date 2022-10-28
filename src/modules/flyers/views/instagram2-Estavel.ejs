@@ -71,8 +71,8 @@ if (showTemplate.type_template == 1) {
         .logo {
     
       
-      width: <%=imageLogoWidth%>px;
-      height: <%=imageLogoHeight%>px;
+      width: 400px;
+      height: 400px;
       margin-left: 650px;
       margin-top: 5px;
       position: absolute;
@@ -89,7 +89,7 @@ if (showTemplate.type_template == 1) {
     
       div.gallery {
     /* Ajuste 1: POSIÇÃO DO PRODUTO*/
-    margin-top: -80px;
+    margin-top: -50px;
         
     
     }
@@ -99,14 +99,14 @@ if (showTemplate.type_template == 1) {
     
       /** @todo Ficou feio isso, esse -70 pra alinhar a esquerda */
       margin-left: -70px;
-          margin-top: 10px;
+    
     
     
           object-fit: scale-down;
            /*Aqui 2 - Tamanho imagem*/
-          width:  650px;
-          height: 650px;
-     
+          width:  700px;
+          height: 700px;
+        
           object-position: bottom;
 
     
@@ -114,65 +114,71 @@ if (showTemplate.type_template == 1) {
     }
     
     div.desc {
-      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
-  font-stretch: condensed;
       text-align: left;
     
       font-family: "Helvetica", sans-serif;
      
       text-transform: uppercase;
       /*Aqui 2 - Tamanho texto produto*/
-      font-size: 35px;
+      font-size: 40px;
 
       /* Ajuste 2: Tamanho da caixa do produto*/
-      width: 800px;
+      width: 500px;
      
-      color: <%=showTemplate.font_collor_product%>; 
+      color: <%=showTemplate.font_collor_bottom%>; 
       margin-left: 140px;
-        margin-top: 6rem;
+        margin-top: -60px;
         /*Espaço entre nome do produto e texto do rodapé.*/
     padding-bottom: 40px;
     }
     
     
     .textUpper {
-      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
-  font-stretch: condensed;
                 font-size: 15px;
                 bottom: 0;
-              /*  display: flex;*/
+                display: flex;
                 align-items: center;
                 left: 0;
     
     }
     .textBellow {
-      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
-  font-stretch: condensed;
       /*Aqui 2 - Tamanho preço*/
       font-size: 60px;
       
     
     }
     
+    .textocentro1 {
+      font-family: "Helvetica", sans-serif;
+      position: absolute;
+      padding-top: 4px;
+      margin-bottom: 400px;
+      margin-left: 40px;
+      display: flex;
+        /*Aqui 2 - Texto- Alinhamento número*/
+      bottom: 90px;
+      left: 450px;
+      background-color: <%=showTemplate.main_color%>;  
+      color: <%=showTemplate.font_color%>; 
+      padding-left: 20px;
+      padding-right: 10px;
+    
+
+      
+    }
     
     .textocentro {
-      
       font-family: "Helvetica", sans-serif;
-      
-      /*CHANGED*/
-      position: relative;
+      position: absolute;
       padding-top: 4px;
   
-      /*CHANGED*/
-      /*display: flex;*/
+      display: flex;
         /*Aqui 2 - Texto- Alinhamento número*/
    
       color: <%=showTemplate.font_color%>; 
       padding-left: 20px;
       padding-right: 10px;
-      
-      /*CHANGED*/
-      /*margin-top: -210px;*/
+      margin-top: -210px;
 
     }
    
@@ -223,68 +229,35 @@ if (showTemplate.type_template == 1) {
 
 }
 .child1 {
-
-  /*CHANGED*/
-  /*display: flex;*/
+  display: flex;
   
   horizontal-align:  middle;
   margin-left: 20px;
   width: 100%;
 }
 .child2 {
-  /*CHANGED*/
-  /*display: flex;*/
+  display: flex;
   
-  /*CHANGED*/
-  margin-top: -270px;
-
   horizontal-align:  middle;
   margin-left: 600px;
   width: 100%;
 }
 
 .dot {
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   background-color: <%=showTemplate.main_color%>;  
   border-radius: 50%;
-  
-  /*CHANGED*/
-  display: inline-block;
-  
   font-size: 30px;
   color: #fff;
   text-align: center;
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: text-bottom;
   
 }
 
-.container_picture {
-  position: relative;
-  text-align: center;
-  align: right;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  height: 100%;
-}
 
-.retangulo {
-  background-color: <%=showTemplate.main_color%>;  
-  border-radius: 6%;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  width: 250px;
-}
 
-.formatar {
-
-  margin-bottom: 10px;
-}
     </style>
     
     <head></head>
@@ -333,7 +306,6 @@ if (showTemplate.type_template == 1) {
         <% var actPrice = flyer[i].price; 
         var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
         %>
-        
       </div>
           </div>      
           <div class='child2'>
@@ -386,13 +358,8 @@ if (showTemplate.type_template == 1) {
             
           }
           %>
-          <%           if (footer_text) { %>
-           <h5 class="retangulo formatar"> <%=footer_text %> </h5> 
-           <%}%>
-           <%           if (footer_text2) { %>
-
-            <div> <h5 class="retangulo"> <%=footer_text2 %> </h5> </div>
-            <%}%>
+           <h5> <%=footer_text %> </h5> 
+            <div style="font-size:.6em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <h5> <%=footer_text2 %> </h5> </div>
             </div>
           </div>
           <% } %>

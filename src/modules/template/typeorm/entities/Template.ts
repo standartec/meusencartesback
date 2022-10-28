@@ -77,4 +77,7 @@ export default class Template {
 
     @Column()
     font_collor_bottom: string;
+
+    @Column()
+    font_collor_product: string;
 }
