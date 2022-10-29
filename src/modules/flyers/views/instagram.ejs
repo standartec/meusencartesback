@@ -123,6 +123,7 @@ if (showTemplate.type_template == 1) {
       text-transform: uppercase;
       /*Aqui 2 - Tamanho texto produto*/
       font-size: 35px;
+      font-weight: 900;
 
       /* Ajuste 2: Tamanho da caixa do produto*/
       width: 800px;
@@ -143,6 +144,8 @@ if (showTemplate.type_template == 1) {
               /*  display: flex;*/
                 align-items: center;
                 left: 0;
+                color: <%=showTemplate.font_color%>; 
+
     
     }
     .textBellow {
@@ -150,7 +153,8 @@ if (showTemplate.type_template == 1) {
   font-stretch: condensed;
       /*Aqui 2 - Tamanho preço*/
       font-size: 60px;
-      
+      color: <%=showTemplate.font_color%>; 
+      font-weight: 900;
     
     }
     
@@ -162,7 +166,7 @@ if (showTemplate.type_template == 1) {
       /*CHANGED*/
       position: relative;
       padding-top: 4px;
-  
+      font-weight: 900;
       /*CHANGED*/
       /*display: flex;*/
         /*Aqui 2 - Texto- Alinhamento número*/
@@ -203,7 +207,7 @@ if (showTemplate.type_template == 1) {
       font-size: 22px;
       margin: 0;
       width: 400px;
-      color: <%=showTemplate.font_collor_bottom%>; 
+      color: <%=showTemplate.collor_form_font_bottom%>; 
       text-transform: capitalize;
     }
 
@@ -270,16 +274,18 @@ if (showTemplate.type_template == 1) {
   width: 100%;
   height: 100%;
 }
-
+  
 .retangulo {
-  background-color: <%=showTemplate.main_color%>;  
+  background-color: <%=showTemplate.collor_form_bottom%>;  
   border-radius: 6%;
   padding-bottom: 5px;
-  padding-left: 5px;
+  padding-left: 10px;
   padding-right: 5px;
   padding-top: 5px;
-  width: 250px;
+  width: 100%;
+ 
 }
+
 
 .formatar {
 

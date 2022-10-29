@@ -61,7 +61,7 @@ export default class Template {
     status: string;
 
     @Column()
-    font_color: number;
+    font_color: string;
 
     @Column()
     id_model: number;
@@ -80,4 +80,14 @@ export default class Template {
 
     @Column()
     font_collor_product: string;
+
+    @Column()
+    collor_form_font_bottom: string;
+
+    @Column()
+    collor_form_bottom: string;
+
+   
+
+    
 }
