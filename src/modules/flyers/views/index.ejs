@@ -43,6 +43,13 @@ if (flyer[0].column_amount == 4) {
   column_amount = 'auto auto auto auto auto auto';
   widthFlyer = 974
 }
+
+background_image = '';
+if (flyer[0].show_background == 1) {
+  background_image = showTemplate.background_image;
+} 
+
+
 %>
 <!-- 162 each column more
 490 - 3 columns 
@@ -276,6 +283,14 @@ body {
    
     background-color: #FFFFFF; 
 }
+
+
+.imagem {
+  
+        background-image: url('<%='http://meusencartes.com.br/fivecart3/images/templates/' + background_image %>');
+      
+        background-size: 100%;
+      }
 </style>
 
 
@@ -283,7 +298,7 @@ body {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica">
 
 <body>
-
+<div class="imagem">
   <div class="container_text_button">
   
 <% if (showTemplate.has_logo == 0) { 
@@ -298,7 +313,6 @@ body {
 <% } %>
 <!-- CHANGE 1-->
 <img class = "image_format" src= <%= 'http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.header_image %>  height="200">
-
 
 <div class="text_button_right"><% if (flyer[0].header2 != '') { %> <p> <%=flyer[0].header2  %> </p> <% } else { %> <p> <%=showTemplate.header_text_right %> </p> <% } %></div>
 
@@ -365,6 +379,7 @@ if (flyer[0].footer_text) {
 </div>
 <% } %>
 
+</div>
 </div>
 </body>
 </html>

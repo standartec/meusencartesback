@@ -87,7 +87,9 @@ export default class Template {
     @Column()
     collor_form_bottom: string;
 
-   
+    @Column()
+    background_image: string;
+
 
     
 }
