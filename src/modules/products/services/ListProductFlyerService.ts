@@ -6,12 +6,13 @@ interface IRequest {
     idUser: string;
     idFlyer: string;
     idProductPublish: string;
+    imageQuality: string;
 }
 
 export default class ListProductFlyerService {
 
 
-    public async execute({idUser,idFlyer, idProductPublish}: IRequest): Promise<undefined> {
+    public async execute({idUser,idFlyer, idProductPublish, imageQuality}: IRequest): Promise<undefined> {
   
         const productRepository = getCustomRepository(ProductRepository);
 

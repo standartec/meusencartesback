@@ -3,6 +3,9 @@ import ListPublishService from "../services/ListPublishService";
 import ejs from 'ejs';
 import ListProductFlyerService from "@modules/products/services/ListProductFlyerService";
 import htmlToImage from "./htmlToImage";
+import htmlToImageLow from "./htmlToImageLow";
+import fs from "fs";
+
 import ShowtTemplateService from "@modules/template/services/ShowTemplateService";
 import { getCustomRepository } from "typeorm";
 import { ProductRepository } from "@modules/products/typeorm/repositories/ProductsRepository";
@@ -57,9 +60,9 @@ export default class PublishControllers {
 
         const listProductFlyerService = new ListProductFlyerService();
         
-        const {idUser, idFlyer, idProductPublish} = request.params;
+        const {idUser, idFlyer, idProductPublish,imageQuality} = request.params;
       
-        const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer, idProductPublish});
+        const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer, idProductPublish,imageQuality});
 
         const flyers = JSON.parse(JSON.stringify(findProductFlyer));
 
@@ -107,12 +110,26 @@ export default class PublishControllers {
 
 }
 
-        console.log(fileHTML);
-        const imageBuffer = await htmlToImage(fileHTML);
+       // console.log(fileHTML);
+       if (imageQuality == 0) {
+
+        let imageBuffer = await htmlToImageLow(fileHTML);
+        console.log("QUALITY LOW-->> "+imageQuality);
+
+     
 
         response.set("Content-Type", "image/png");
         response.send(imageBuffer);
+       } else {
+        let imageBuffer = await htmlToImage(fileHTML);
+        console.log("QUALITY HIGTH-->> "+imageQuality);
 
+     
+        response.set("Content-Type", "image/png");
+        response.send(imageBuffer);
+
+
+       }
         
 
     }

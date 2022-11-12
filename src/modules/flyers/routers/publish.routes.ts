@@ -8,6 +8,6 @@ const publishRouter = Router();
 
 //publishRouter.get('/', publishController.list);
 
-publishRouter.get('/:idUser/:idFlyer/:idProductPublish', publishController.generateImage);
+publishRouter.get('/:idUser/:idFlyer/:idProductPublish/:imageQuality', publishController.generateImage);
 
 export default publishRouter;

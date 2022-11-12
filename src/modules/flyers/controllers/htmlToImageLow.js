@@ -19,7 +19,7 @@ height: 1080,
   await page.setViewport({
     width: 1080,
     height: 1080,
-    deviceScaleFactor: 1
+    deviceScaleFactor: 0.3
   });
   const imageBuffer = await content.screenshot({ omitBackground: true });
 
