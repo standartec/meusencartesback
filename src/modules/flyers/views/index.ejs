@@ -45,10 +45,15 @@ if (flyer[0].column_amount == 4) {
 }
 
 /*Show image backgroud*/
-background_image = '';
+let background_image = '';
+let textProductCollor = '';
+console.log(showTemplate);
 if (flyer[0].show_background == 1) {
   background_image = showTemplate.background_image;
-} 
+  textProductCollor = showTemplate.product_collor_with_background;
+} else {
+  textProductCollor = showTemplate.font_collor_product;
+}
 
 
 %>
@@ -116,6 +121,7 @@ div.desc {
   text-justify: inter-word;
   white-space: break-spaces;
   font-family: "Helvetica", sans-serif;
+  color: <%=textProductCollor%>; 
   padding: 4px;
   text-transform: uppercase;
   font-size: 11px;
@@ -266,7 +272,7 @@ div.desc {
 h4 {
   margin: 0;
   width: 400px;
-  color: <%=showTemplate.font_color%>; 
+  color: <%=showTemplate.font_collor_bottom%>; 
   text-transform: capitalize;
 }
 .left {

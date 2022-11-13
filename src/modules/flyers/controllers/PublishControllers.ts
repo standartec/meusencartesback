@@ -110,7 +110,7 @@ export default class PublishControllers {
 
 }
 
-       // console.log(fileHTML);
+        console.log(fileHTML);
        if (imageQuality == 0) {
 
         let imageBuffer = await htmlToImageLow(fileHTML);
