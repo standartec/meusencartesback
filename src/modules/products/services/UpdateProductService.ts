@@ -1,4 +1,3 @@
-import RedisCache from "@shared/cache/RedisCache";
 import AppError from "@shared/errors/AppError";
 import { getCustomRepository, getRepository } from "typeorm";
 import Product from "@modules/products/typeorm/entities/Products";

@@ -1,7 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import Product from "../typeorm/entities/Products";
 import { ProductRepository } from "../typeorm/repositories/ProductsRepository";
-import RedisCache from "@shared/cache/RedisCache";
 
 class ListProductService {
 
@@ -20,7 +19,6 @@ class ListProductService {
         //If not exist, find in database and save on redis again
         if (!products) {
             products = await productsRepository.find();
-            await redisCache.save( 'api-sales-LIST_PRODUCT', products);
         }
 
         return products;

@@ -61,7 +61,7 @@ export default class PublishControllers {
         const listProductFlyerService = new ListProductFlyerService();
         
         const {idUser, idFlyer, idProductPublish,imageQuality} = request.params;
-      
+        console.log("Params" + request.params.idUser)
         const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer, idProductPublish,imageQuality});
 
         const flyers = JSON.parse(JSON.stringify(findProductFlyer));
