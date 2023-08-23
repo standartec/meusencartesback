@@ -336,10 +336,14 @@ body {
 
 <div class="grid-container">
 
-<% for (var i=0; i< flyer.length; i++) { %>
+<% for (var i=0; i< flyer.length; i++) { 
+  var image_address = flyer[i].image_address + flyer[i].image_link;  
+
+  console.log("Image>>> " + image_address);
+  %>
     <div class="gallery">
       <div class="container_picture">
-        <img src= <%= address + '/images/Products/' + flyer[i].image_link%>  alt="Snow" width="100" height="130"/>
+        <img src= <%=image_address %>  alt="Snow" width="100" height="130"/>
         <% var actPrice = flyer[i].price; 
         var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
         %>

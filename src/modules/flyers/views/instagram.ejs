@@ -350,8 +350,11 @@ body {
   
 
     <div class="gallery">
-             
-              <img src="<%= 'http://meusencartes.com.br/fivecart3/images/Products/' + flyer[i].image_link%>"  alt="Snow" width="100" height="130"/>
+             <% var image_address = flyer[i].image_address + flyer[i].image_link;  
+             console.log("Image>> "+image_address);
+
+             %>
+              <img src="<%=image_address %>"  alt="Snow" width="100" height="130"/>
         <% var actPrice = flyer[i].price; 
         var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
         %>
