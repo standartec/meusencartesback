@@ -314,9 +314,9 @@ body {
   
 <% if (showTemplate.has_logo == 0) { 
   
-  if (userData.image_link) {
+  if (userData.image_link) {   image_address
   %>
-    <img class="logo" src= <%= address + '/images/logos/' + userData.image_link %> 
+    <img class="logo" src= <%= userData.image_address + userData.image_link %> 
  
 <% } else { %>
   <h3 class="companyName"><%=userData.company_name%></h3>

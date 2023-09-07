@@ -51,4 +51,7 @@ export default class UserDetail {
     @Column()
     image_width_big: string;
 
+    @Column()
+    image_address: string;
+
 }

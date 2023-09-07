@@ -318,10 +318,12 @@ body {
           <div class="container_text_button">
   
             <% if (showTemplate.has_logo == 0) { 
-              
-              if (userData.image_link) {
+              console.log(userData.image_address);
+              console.log(userData.image_link);
+
+              if (userData.image_link) { userData.image_address
               %>
-                <img class="logo" src="<%='http://meusencartes.com.br/fivecart3/images/logos/' + userData.image_link %>"
+                <img class="logo" src="<%= userData.image_address + userData.image_link %>"
              
             <% } else { %>
               <h4 class="companyName"> <%=userData.company_name%></h4>
