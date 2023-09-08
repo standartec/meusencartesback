@@ -374,19 +374,37 @@ body {
 <%
 let footer_text = "";
 let footer_text2 = "";
+
 if (flyer[0].footer_text) {
   footer_text = flyer[0].footer_text;
-  footer_text2 = flyer[0].footer_text2;
 }else if (userData.footer_text) {
  
   footer_text = userData.footer_text;
-  footer_text2 = userData.footer_text2;
+} else if (showTemplate.footer_text2) {
+
+  footer_text = showTemplate.footer_text;
+  
+}
+
+if (flyer[0].footer_text2) {
+  footer_text2 = flyer[0].footer_text2;
+  console.log("ENTROU 1 >>>> >>>> ");
+
+}else if (userData.footer_text2) {
+  console.log("ENTROU 2 >>>> >>>> ");
+
+   footer_text2 = userData.footer_text2;
 } else if (showTemplate.footer_text2) {
   console.log("ENTROU 3");
-  footer_text = showTemplate.footer_text;
   footer_text2 = showTemplate.footer_text2;
   
 }
+
+
+
+
+
+
 %>
  <h4> <%=footer_text %> </h4> 
   <div style="font-size:.6em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <h4> <%=footer_text2 %> </h4> </div>
