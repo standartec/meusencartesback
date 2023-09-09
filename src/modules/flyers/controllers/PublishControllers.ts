@@ -5,12 +5,14 @@ import ListProductFlyerService from "@modules/products/services/ListProductFlyer
 import htmlToImage from "./htmlToImage";
 import htmlToImageLow from "./htmlToImageLow";
 import fs from "fs";
+import * as path from 'path';
 
 import ShowtTemplateService from "@modules/template/services/ShowTemplateService";
 import { getCustomRepository } from "typeorm";
 import { ProductRepository } from "@modules/products/typeorm/repositories/ProductsRepository";
 import ShowUserDetail from "@modules/users/services/ShowUserDetailService";
 import ShowUserDetailService from "@modules/users/services/ShowUserDetailService";
+import { DIR_SAVE_IMAGES, IMAGE_ADDRESS } from "@modules/constants";
 
 export default class PublishControllers {
 
@@ -56,7 +58,7 @@ export default class PublishControllers {
     }
 
 
-    public async generateImage(request: Request, response: Response): Promise<void> {
+    public async generateImage(request: Request, response: Response): Promise<Response> {
 
         const listProductFlyerService = new ListProductFlyerService();
         
@@ -111,6 +113,12 @@ export default class PublishControllers {
 }
 
         console.log(fileHTML);
+
+        const targetDirectory = DIR_SAVE_IMAGES;  // Change this to where you want to save images.
+        const filename = idUser + '_'  + idFlyer +  '_' + idProductPublish + '_' + `${Date.now()}.png`; // Generates a unique name for each image. 
+        const filePath = path.join(targetDirectory, filename);
+        
+
        if (imageQuality == 0) {
 
         let imageBuffer = await htmlToImageLow(fileHTML);
@@ -118,18 +126,51 @@ export default class PublishControllers {
 
      
 
-        response.set("Content-Type", "image/png");
-        response.send(imageBuffer);
+      //  response.set("Content-Type", "image/png");
+      //  response.send(imageBuffer);
+
+        await fs.promises.writeFile(filePath, imageBuffer);
+
+
        } else {
+
         let imageBuffer = await htmlToImage(fileHTML);
+
         console.log("QUALITY HIGTH-->> "+imageQuality);
 
      
-        response.set("Content-Type", "image/png");
-        response.send(imageBuffer);
+      //  response.set("Content-Type", "image/png");
+      //  response.send(imageBuffer);
 
+        await fs.promises.writeFile(filePath, imageBuffer);
 
        }
+
+
+       //IF TYPE_TEMPLATE == 1 - SALVAR TABELA PUBLISH - INSTAGRAM
+       if (templateData.type_template == 2) {
+        console.log("ENTROU >>>>LLLL ");
+         await listProductFlyerService.updatePictureNameFlyer(idFlyer, filename, IMAGE_ADDRESS);
+         await listProductFlyerService.updatePictureNameProductPublish(idProductPublish, filename, IMAGE_ADDRESS);
+
+       } else if (templateData.type_template == 1) { //ENCARTE
+        console.log("ENTROU >>>>LLLL  2");
+
+        await listProductFlyerService.updatePictureNameFlyer(idFlyer, filename,IMAGE_ADDRESS);
+
+       }
+       console.log("ENTROU >>>>LLLL 3");
+
+       const returnImage = IMAGE_ADDRESS + filename;
+       //IF TYPE_TEMPLATE == 2 - SAVAR TABELA PRODUCT PUBLISH
+
+       // Choose quality based on imageQuality parameter
+       //let imageBuffer = imageQuality == 0 ? await htmlToImageLow(fileHTML) : await htmlToImage(fileHTML);
+
+       // Save the image buffer to disk
+       
+       // Return only the filename to the client
+       return response.json({ filename: returnImage });
         
 
     }

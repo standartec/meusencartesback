@@ -26,5 +26,27 @@ export default class ListProductFlyerService {
         return productFlyer;
 
     }
+
+    async updatePictureNameProductPublish(idProductPublish: string, filename: string, imageAddress: string) {
+        
+
+        const productRepository = getCustomRepository(ProductRepository);
+
+        const productFlyer = await productRepository.updatePictureNameProductPublish(idProductPublish, filename, imageAddress);
+        
+    }
+    
+    async updatePictureNameFlyer(idFlyer: string, filename: string, imageAddress: string) {
+        console.log("ENTROU >>>>LLLL updatePictureNameFlyer");
+
+        const productRepository = getCustomRepository(ProductRepository);
+
+        const productFlyer = await productRepository.updatePictureNameFlyer(idFlyer, filename, imageAddress);
+     
+    }
+
+
+
+
     
 }

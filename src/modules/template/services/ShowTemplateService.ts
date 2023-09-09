@@ -6,6 +6,7 @@ interface IRequest {
 id: string;
 }
 export default class ShowtTemplateService {
+ 
 
     public async execute ( id: number): Promise<Template> {
         console.log("ID TEMPLATE RECEIVED" + id);
@@ -22,6 +23,8 @@ export default class ShowtTemplateService {
 
 
     }
+
+
 
 }
 

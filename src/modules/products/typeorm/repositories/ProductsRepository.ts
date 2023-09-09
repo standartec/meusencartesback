@@ -1,6 +1,8 @@
 import { EntityRepository, In, Repository } from "typeorm";
 import { getManager } from "typeorm";
 import Product from '../entities/Products';
+import { Request, Response } from 'express';
+import { sq } from "date-fns/locale";
 
 interface IFindProducts {
     id: string;
@@ -13,6 +15,29 @@ interface IFindProductFlyer {
 
 @EntityRepository(Product)
 export class ProductRepository extends Repository<Product> {
+
+   async updatePictureNameFlyer(idFlyer: string, filename: string, imageAddress: string) {
+   
+        const entityManager = getManager();
+        console.log(">>> updatePictureNameFlyerupdatePictureNameFlyer");
+        var sql = `update publish set image_post_url = "` + imageAddress + `"  ,  image_post_name = "` + filename + `"  where id = ` + idFlyer;
+        console.log(sql);
+        const response = await entityManager.query(sql);
+
+        return response
+  
+    }
+
+  async updatePictureNameProductPublish(idProductPublish: any, filename: any, imageAddress: string) {
+        const entityManager = getManager();
+
+        var sql = `update product_publish set image_post_url = "` + imageAddress + `"  ,  image_post_name = "` + filename + `"  where id = ` + idProductPublish;
+        console.log(sql);
+        const response = await entityManager.query(sql);
+
+        return response
+
+    }
 
     public async findByName(name: string): Promise<Product | undefined> {
         const product = this.findOne({
