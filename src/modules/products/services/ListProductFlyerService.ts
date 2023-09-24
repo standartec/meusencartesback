@@ -27,6 +27,20 @@ export default class ListProductFlyerService {
 
     }
 
+
+    public async getDataFlyer({idUser,idFlyer, idProductPublish, imageQuality}: IRequest): Promise<undefined> {
+        
+        console.log("####");
+        const productRepository = getCustomRepository(ProductRepository);
+
+        const productFlyer = await productRepository.getDataFlyer(idUser, idFlyer, idProductPublish);
+     
+        
+       // console.log(productFlyer);
+        return productFlyer;
+
+    }
+
     async updatePictureNameProductPublish(idProductPublish: string, filename: string, imageAddress: string) {
         
 

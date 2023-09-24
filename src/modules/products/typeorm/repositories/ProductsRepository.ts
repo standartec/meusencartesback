@@ -81,4 +81,25 @@ export class ProductRepository extends Repository<Product> {
         return productFlyer
 
     }
+
+
+    public async getDataFlyer(idUser: string, idFlyer: string, idProductPublish: string): Promise<undefined> {
+
+        const entityManager = getManager();
+        let filterProduct = '';
+        console.log('-->>>><>>>>>>>>>'+idProductPublish );
+        
+        const sql = `
+        select p.description,
+        
+        p.id_user as id_user_publish, p.header2, p.id_template as id_template1,p.*
+        from publish p 
+        where p.id_user = ` + idUser + ` and p.id = ` + idFlyer 
+
+        console.log(sql)
+        const productFlyer = await entityManager.query(sql);
+
+        return productFlyer[0]
+
+    }
 }

@@ -59,35 +59,64 @@ export default class PublishControllers {
 
 
     public async generateImage(request: Request, response: Response): Promise<Response> {
-
+        
         const listProductFlyerService = new ListProductFlyerService();
         
         const {idUser, idFlyer, idProductPublish,imageQuality} = request.params;
         console.log("Params" + request.params.idUser)
-        const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer, idProductPublish,imageQuality});
-
-        const flyers = JSON.parse(JSON.stringify(findProductFlyer));
 
         const showtTemplateService = new ShowtTemplateService();
-      
-        const templateData = await showtTemplateService.execute(findProductFlyer[0].id_template);
-        
+
+        var flyers;
+
+         //Pegar os dados do flye para todos 
+         const getFlyer = await listProductFlyerService.getDataFlyer({idUser, idFlyer, idProductPublish,imageQuality});
+         var flyersData = JSON.parse(JSON.stringify(getFlyer));
+
+         console.log('template data fluerdata =='+flyersData);
+
+         console.log('template data HERE'+flyersData.id_template1);
+
+        const templateData = await showtTemplateService.execute(flyersData.id_template1);
+       
+        console.log('template data HERE');
+
+        console.log(templateData);
+       
+       
+        console.log('HERE HERE');
+
+       // console.log(flyersData);
+
+        if (templateData.type_template != 3 ) {
+         const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer, idProductPublish,imageQuality});
+   
+         flyers = JSON.parse(JSON.stringify(findProductFlyer));
+        }
+
+        console.log(templateData.type_template == 3);
+
         const showTemplate = JSON.parse(JSON.stringify(templateData));
 
         const showUserDetail = new ShowUserDetailService();
 
         const userData = await showUserDetail.execute({idUser});
 
+        console.log(userData);
         // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
         let fileHTML = '';
         // Frirst Way
         let fileLoad = '';
     
+        console.log("type template ????");
+
+
+
         if (templateData.type_template == 1) {
      
         
      
-        ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData}, 
+        ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData, flyersData: flyersData}, 
 
         {}, function (err, template) {
         if (err) {
@@ -98,7 +127,22 @@ export default class PublishControllers {
         }
     });
 } else if (templateData.type_template == 2) {
-    ejs.renderFile('./src/modules/flyers/views/instagram.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData}, 
+    ejs.renderFile('./src/modules/flyers/views/instagram.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData}, 
+
+    {}, function (err, template) {
+    if (err) {
+        throw err;
+    } else {
+        fileHTML = template;
+
+    }
+});
+
+
+} else if (templateData.type_template == 3) {
+    console.log("type template 3");
+    flyers = null;
+    ejs.renderFile('./src/modules/flyers/views/news.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData}, 
 
     {}, function (err, template) {
     if (err) {
@@ -122,7 +166,7 @@ export default class PublishControllers {
        if (imageQuality == 0) {
 
         let imageBuffer = await htmlToImageLow(fileHTML);
-        console.log("QUALITY LOW-->> "+imageQuality);
+      //  console.log("QUALITY LOW-->> "+imageQuality);
 
      
 
