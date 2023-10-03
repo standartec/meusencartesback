@@ -192,7 +192,7 @@ export default class PublishControllers {
 
 
        //IF TYPE_TEMPLATE == 1 - SALVAR TABELA PUBLISH - INSTAGRAM
-       if (templateData.type_template == 2) {
+       if (templateData.type_template == 2 || templateData.type_template == 3) {
         console.log("ENTROU >>>>LLLL ");
          await listProductFlyerService.updatePictureNameFlyer(idFlyer, filename, IMAGE_ADDRESS);
          await listProductFlyerService.updatePictureNameProductPublish(idProductPublish, filename, IMAGE_ADDRESS);
