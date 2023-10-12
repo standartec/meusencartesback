@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+      <%
+let imageLogoWidth = '';
+let imageLogoHeight = '';
+
+if (showTemplate.type_template == 1) {
+     imageLogoWidth = 120;
+     imageLogoHeight = 120;
+        if (userData.image_width) {
+          imageLogoWidth = userData.image_width;
+        } 
+        if (userData.image_height) {
+          imageLogoHeight = userData.image_height;
+          }
+
+} else if (showTemplate.type_template == 2) {
+  imageLogoWidth = 300;
+  imageLogoHeight = 300;
+        if (userData.image_width_big) {
+          imageLogoWidth = userData.image_width_big;
+        } 
+        if (userData.image_height_big) {
+          imageLogoHeight = userData.image_height_big;
+          }
+}
+      
+      %>
+    <style>
+ 
+
+ 
+
+.companyName {
+  font-size: 70px;
+  margin-left: 450px;
+    margin-top: 5px;
+    position: absolute;
+    
+    
+      align-content: center;
+      object-position: bottom;
+      color: <%=showTemplate.main_color%>; 
+  font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+  font-stretch: condensed;
+    -webkit-text-stroke-width: 1px; /* largura da borda */
+    -webkit-text-stroke-color: <%=showTemplate.font_color%>; /* cor da borda */
+
+    width: 350px;
+      height: 350px;
+    
+  align-content: center;
+  object-position: bottom;
+}
+
+        .div-1 {
+            background-color: #EBEBEB;
+        }
+        
+        .div-2 {
+            
+            height: 1080px;
+            width: 1920px;
+    
+      
+        }
+        
+        .div-3 {
+          background-color: #FBD603;
+        }
+    
+        .logo {
+    
+      
+      width: <%=imageLogoWidth%>px;
+      height: <%=imageLogoHeight%>px;
+      margin-left: 650px;
+      margin-top: 5px;
+      position: absolute;
+      align-content: center;
+      object-position: bottom;
+    
+    }
+    
+    .imagem {
+        background-image: url('<%='http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.middle_image %>');
+      
+        background-size: 100%;
+      }
+    
+      div.gallery {
+    /* Ajuste 1: POSIÇÃO DO PRODUTO*/
+    margin-bottom: -110px;
+        
+    
+    }
+    
+      div.gallery img {
+    
+    
+      /** @todo Ficou feio isso, esse -70 pra alinhar a esquerda */
+      margin-left: -100px;
+          margin-top: -10px;
+    
+    
+          object-fit: scale-down;
+           /*Aqui 2 - Tamanho imagem*/
+          width:  750px;
+          height: 750px;
+     
+          object-position: bottom;
+
+    
+    
+    }
+    
+    div.desc {
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+  font-stretch: condensed;
+      text-align: left;
+    
+      font-family: "Helvetica", sans-serif;
+     
+      text-transform: uppercase;
+      /*Aqui 2 - Tamanho texto produto*/
+      font-size: 35px;
+      font-weight: 900;
+
+      /* Ajuste 2: Tamanho da caixa do produto*/
+      width: 800px;
+     
+      color: <%=showTemplate.font_collor_product%>; 
+      margin-left: 140px;
+        margin-top: 8rem;
+        /*Espaço entre nome do produto e texto do rodapé.*/
+    padding-bottom: 68px;
+    }
+    
+    
+    .textUpper {
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+  font-stretch: condensed;
+                font-size: 15px;
+                bottom: 0;
+              /*  display: flex;*/
+                align-items: center;
+                left: 0;
+                color: <%=showTemplate.font_color%>; 
+
+    
+    }
+    .textBellow {
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+  font-stretch: condensed;
+      /*Aqui 2 - Tamanho preço*/
+      font-size: 60px;
+      color: <%=showTemplate.font_color%>; 
+      font-weight: 900;
+    
+    }
+    
+    
+    .textocentro {
+      
+      font-family: "Helvetica", sans-serif;
+      
+      /*CHANGED*/
+      position: relative;
+      padding-top: 4px;
+      font-weight: 900;
+      /*CHANGED*/
+      /*display: flex;*/
+        /*Aqui 2 - Texto- Alinhamento número*/
+   
+      color: <%=showTemplate.font_color%>; 
+      padding-left: 20px;
+      padding-right: 10px;
+      
+      /*CHANGED*/
+      /*margin-top: -210px;*/
+
+    }
+   
+
+    .container_text_button_1 {
+      position: relative;
+      display: grid;
+    
+      
+    }
+    .container2 {
+      text-transform: capitalize;
+      font-family: "Helvetica", sans-serif;
+      font-size: 15px;
+      color: #000000;
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 2px;
+      left: 43px;
+      height: auto;
+      padding: 0%;
+      float: left;
+    }
+    
+    h5 {
+      text-transform: capitalize;
+      font-family: "Helvetica", sans-serif;
+      font-size: 22px;
+      margin: 0;
+      width: 400px;
+      color: <%=showTemplate.collor_form_font_bottom%>; 
+      text-transform: capitalize;
+    }
+
+
+.parent {
+
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: left;
+  
+}
+.child {
+  display: inline-block;
+  padding: 1rem 1rem;
+
+  margin-left: 20px;
+
+}
+.child1 {
+
+  /*CHANGED*/
+  /*display: flex;*/
+  
+  horizontal-align:  middle;
+  margin-left: 20px;
+  width: 100%;
+}
+.child2 {
+  /*CHANGED*/
+  /*display: flex;*/
+  
+  /*CHANGED*/
+  margin-top: -270px;
+
+  horizontal-align:  middle;
+  margin-left: 600px;
+  width: 100%;
+}
+
+.dot {
+  height: 150px;
+  width: 150px;
+  background-color: <%=showTemplate.main_color%>;  
+  border-radius: 50%;
+  
+  /*CHANGED*/
+  display: inline-block;
+  
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  
+}
+
+.container_picture {
+  position: relative;
+  text-align: center;
+  align: right;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+}
+  
+.retangulo {
+  background-color: <%=showTemplate.collor_form_bottom%>;  
+  border-radius: 6%;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 5px;
+  padding-top: 5px;
+  width: 100%;
+ 
+}
+
+
+.formatar {
+
+  margin-bottom: 10px;
+}
+
+body {
+    width: 1000px;
+    height: 1000px;
+
+    /* CHANGE 2 */
+   
+    background-color: #FFFFFF; 
+}
+
+
+    </style>
+    
+    <head></head>
+    
+    <body>
+        <div class="div-2 imagem">
+    
+    
+          <div class="container_text_button">
+  
+            <% if (showTemplate.has_logo == 0) { 
+              console.log(userData.image_address);
+              console.log(userData.image_link);
+
+              if (userData.image_link) { userData.image_address
+              %>
+                <img class="logo" src="<%= userData.image_address + userData.image_link %>"
+             
+            <% } else { %>
+              <h4 class="companyName"> <%=userData.company_name%></h4>
+              <% } %>
+            <% } %>
+            <!-- FICAVA AQUI O TEMPLATE DO CABEÇALHO 1-->
+         
+            
+            <div class="text_button_right"><% if (flyer[0].header2 != '') { %> <p> <%=flyer[0].header2  %> </p> <% } else { %> <p> <%=showTemplate.header_text_right %> </p> <% } %></div>
+            
+            
+            <% if (flyer[0].header_left_text != '') { %>
+              <div class="text_button_left"> <p><%=flyer[0].header_left_text %> </p></div>
+            <% } %>
+            
+            </div>
+        
+        
+            <% for (var i=0; i< flyer.length; i++) { %>
+        
+
+  <div class='parent'>
+    <div class='child'>
+   
+
+  
+
+    <div class="gallery">
+             <% var image_address = flyer[i].image_address + flyer[i].image_link;  
+             console.log("Image>> "+image_address);
+
+             %>
+              <img src="<%=image_address %>"  alt="Snow" width="100" height="130"/>
+        <% var actPrice = flyer[i].price; 
+        var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
+        %>
+        
+      </div>
+          </div>      
+          <div class='child2'>
+        
+              <div class="textocentro dot">
+        <div class="textUpper">R$</div>
+        <div class="textBellow"><%=newPrice %></div>
+      </div>
+        
+     </div>
+       
+    <div class='child1'>
+      <div class="desc"><%=flyer[i].name_product%></div>
+    </div>
+            
+      <% } %>       
+    </div>
+        
+        
+        
+        
+            
+        
+    
+    
+            <div class="container_text_button_1">
+          
+            <% 
+            
+            if (showTemplate.has_footer_text == 0) {
+            //Must observate it, becouse sometimes the template will be complete.
+              %>
+            <div class='container2'>
+            
+            <div class="right">
+          <%
+          let footer_text = "";
+          let footer_text2 = "";
+
+          
+if (flyer[0].footer_text) {
+  footer_text = flyer[0].footer_text;
+}else if (userData.footer_text) {
+ 
+  footer_text = userData.footer_text;
+} else if (showTemplate.footer_text2) {
+
+  footer_text = showTemplate.footer_text;
+  
+}
+
+
+
+if (flyer[0].footer_text2) {
+  footer_text2 = flyer[0].footer_text2;
+  console.log("ENTROU 1 >>>> >>>> ");
+
+}else if (userData.footer_text2) {
+  console.log("ENTROU 2 >>>> >>>> ");
+
+   footer_text2 = userData.footer_text2;
+} else if (showTemplate.footer_text2) {
+  console.log("ENTROU 3");
+  footer_text2 = showTemplate.footer_text2;
+  
+}
+
+
+
+
+
+
+
+          %>
+          <%           if (footer_text) { %>
+           <h5 class="retangulo formatar"> <%=footer_text %> </h5> 
+           <%}%>
+           <%           if (footer_text2) { %>
+
+            <div> <h5 class="retangulo"> <%=footer_text2 %> </h5> </div>
+            <%}%>
+            </div>
+          </div>
+          <% } %>
+          
+          </div>
+
+    
+        
+     
+  
+    </div>
+  
+    </body>
+    
+    </html>

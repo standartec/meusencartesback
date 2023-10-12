@@ -156,7 +156,7 @@ export default class PublishControllers {
 
 }
 
-        console.log(fileHTML);
+       console.log(fileHTML);
 
         const targetDirectory = DIR_SAVE_IMAGES;  // Change this to where you want to save images.
         const filename = idUser + '_'  + idFlyer +  '_' + idProductPublish + '_' + `${Date.now()}.png`; // Generates a unique name for each image. 
@@ -164,7 +164,7 @@ export default class PublishControllers {
         
 
        if (imageQuality == 0) {
-
+        console.log("LOW LOW")
         let imageBuffer = await htmlToImageLow(fileHTML);
       //  console.log("QUALITY LOW-->> "+imageQuality);
 
@@ -180,7 +180,6 @@ export default class PublishControllers {
 
         let imageBuffer = await htmlToImage(fileHTML);
 
-        console.log("QUALITY HIGTH-->> "+imageQuality);
 
      
       //  response.set("Content-Type", "image/png");
@@ -193,17 +192,15 @@ export default class PublishControllers {
 
        //IF TYPE_TEMPLATE == 1 - SALVAR TABELA PUBLISH - INSTAGRAM
        if (templateData.type_template == 2 || templateData.type_template == 3) {
-        console.log("ENTROU >>>>LLLL ");
+        
          await listProductFlyerService.updatePictureNameFlyer(idFlyer, filename, IMAGE_ADDRESS);
          await listProductFlyerService.updatePictureNameProductPublish(idProductPublish, filename, IMAGE_ADDRESS);
 
        } else if (templateData.type_template == 1) { //ENCARTE
-        console.log("ENTROU >>>>LLLL  2");
 
         await listProductFlyerService.updatePictureNameFlyer(idFlyer, filename,IMAGE_ADDRESS);
 
        }
-       console.log("ENTROU >>>>LLLL 3");
 
        const returnImage = IMAGE_ADDRESS + filename;
        //IF TYPE_TEMPLATE == 2 - SAVAR TABELA PRODUCT PUBLISH

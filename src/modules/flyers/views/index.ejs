@@ -78,7 +78,6 @@ if (flyer[0].show_background == 1) {
 }
 .grid-container {
   display: grid;
-  width: 300px;
   
   /* CHANGE 3*/
   grid-template-columns: <%=column_amount%>;
@@ -290,6 +289,7 @@ h4 {
 }
 body {
     width: <%=widthFlyer%>px;
+    
     /* CHANGE 2 */
    
     background-color: #FFFFFF; 
@@ -297,10 +297,15 @@ body {
 
 
 .imagem {
-  
+  width: 100%; 
         background-image: url('<%= address + '/images/templates/' + background_image %>');
       
-        background-size: 100%;
+        background-size: cover;
+
+         /*   background-size: contain;*/
+    background-repeat: no-repeat;
+    background-position: center;
+
       }
 </style>
 
@@ -309,7 +314,6 @@ body {
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Helvetica">
 
 <body>
-<div class="imagem">
   <div class="container_text_button">
   
 <% if (showTemplate.has_logo == 0) { 
@@ -323,7 +327,7 @@ body {
   <% } %>
 <% } %>
 <!-- CHANGE 1-->
-<img class = "image_format" src= <%= address + '/images/templates/' + showTemplate.header_image %>  height="200">
+<img class = "image_format" src= <%= address + '/images/templates/' + showTemplate.header_image %>>
 
 <div class="text_button_right"><% if (flyer[0].header2 != '') { %> <p> <%=flyer[0].header2  %> </p> <% } else { %> <p> <%=showTemplate.header_text_right %> </p> <% } %></div>
 
@@ -333,6 +337,7 @@ body {
 <% } %>
 
 </div>
+<div class="imagem">
 
 <div class="grid-container">
 
@@ -357,9 +362,10 @@ body {
     <% } %>
 
 </div>
+</div>
 
 <div class="container_text_button_1">
-    <img class ="image_format" src= <%= address + '/images/templates/' + showTemplate.footer_image %>  height="50">
+    <img class ="image_format" src= <%= address + '/images/templates/' + showTemplate.footer_image %>>
 
   <% 
   
@@ -413,6 +419,6 @@ if (flyer[0].footer_text2) {
 <% } %>
 
 </div>
-</div>
+
 </body>
 </html>

@@ -10,7 +10,7 @@ export default async (html = "") => {
 
 /**
  
-width: 1080,
+width: 1080,z
 height: 1080,
 
  */
@@ -19,7 +19,7 @@ height: 1080,
   await page.setViewport({
     width: 1080,
     height: 1080,
-    deviceScaleFactor: 0.4
+    deviceScaleFactor: 1
   });
   const imageBuffer = await content.screenshot({ omitBackground: true });
 
