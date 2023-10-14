@@ -243,7 +243,7 @@ div.desc {
   object-position: bottom;
 }
 .footer_text {
-  font-size: 20px;
+  font-size: 25px;
   position: absolute;
   bottom: 10;
   left: 10px;
@@ -274,6 +274,7 @@ div.desc {
 }
 h4 {
   margin: 0;
+  font-size: 16px;
   width: 400px;
   color: <%=showTemplate.font_collor_bottom%>; 
   text-transform: capitalize;
@@ -327,7 +328,7 @@ body {
   <% } %>
 <% } %>
 <!-- CHANGE 1-->
-<img class = "image_format" src= <%= address + '/images/templates/' + showTemplate.header_image %>>
+<img class = "image_format" src= <%= address + '/images/templates/' + showTemplate.header_image %> >
 
 <div class="text_button_right"><% if (flyer[0].header2 != '') { %> <p> <%=flyer[0].header2  %> </p> <% } else { %> <p> <%=showTemplate.header_text_right %> </p> <% } %></div>
 
@@ -365,7 +366,7 @@ body {
 </div>
 
 <div class="container_text_button_1">
-    <img class ="image_format" src= <%= address + '/images/templates/' + showTemplate.footer_image %>>
+    <img class ="image_format" src= <%= address + '/images/templates/' + showTemplate.footer_image %> height="50">
 
   <% 
   
@@ -374,7 +375,7 @@ body {
     %>
   <div class='container2'>
       <div class="left">
-          <img src= <%=address + '/images/icons/watsapp_icon.png' %> class='iconDetails'>
+          <img src= <%=address + '/images/icons/watsapp_icon1.png' %> class='iconDetails'>
       </div>  
   <div class="right">
 <%

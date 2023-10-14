@@ -114,8 +114,8 @@ export default class PublishControllers {
 
         if (templateData.type_template == 1) {
      
-        
-     
+        //Incluir regra do template específico a ser vinculado. 
+
         ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData, flyersData: flyersData}, 
 
         {}, function (err, template) {
@@ -127,6 +127,8 @@ export default class PublishControllers {
         }
     });
 } else if (templateData.type_template == 2) {
+
+
     ejs.renderFile('./src/modules/flyers/views/instagram.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData}, 
 
     {}, function (err, template) {
@@ -180,7 +182,7 @@ export default class PublishControllers {
 
         let imageBuffer = await htmlToImage(fileHTML);
 
-
+        console.log("HTML TO IMAGE")
      
       //  response.set("Content-Type", "image/png");
       //  response.send(imageBuffer);
