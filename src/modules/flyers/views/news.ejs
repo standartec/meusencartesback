@@ -51,7 +51,7 @@ let imageHeight = '';
         }
         
         .div-2 {
-            
+            position: relative;
             height: 1000px;
             width: 1000px;
     
@@ -67,11 +67,13 @@ let imageHeight = '';
       
       width: <%=imageLogoWidth%>px;
       height: <%=imageLogoHeight%>px;
-      margin-left: 500px;
+      margin-right: 0px;
       margin-top: -50px;
       position: absolute;
       align-content: center;
       object-position: bottom;
+      right: 0px;    /* <-- This aligns the logo to the right with a 5px margin */
+      top: 2px; 
     
     }
     
