@@ -8,26 +8,15 @@
 let imageLogoWidth = '';
 let imageLogoHeight = '';
 
-if (showTemplate.type_template == 1) {
-     imageLogoWidth = 120;
-     imageLogoHeight = 120;
-        if (userData.image_width) {
-          imageLogoWidth = userData.image_width;
-        } 
-        if (userData.image_height) {
-          imageLogoHeight = userData.image_height;
-          }
-
-} else if (showTemplate.type_template == 2) {
-  imageLogoWidth = 300;
-  imageLogoHeight = 300;
+  imageLogoWidth = 430;
+  imageLogoHeight = 430;
         if (userData.image_width_big) {
           imageLogoWidth = userData.image_width_big;
         } 
         if (userData.image_height_big) {
           imageLogoHeight = userData.image_height_big;
           }
-}
+
       
       %>
     <style>
@@ -62,9 +51,12 @@ if (showTemplate.type_template == 1) {
         }
         
         .div-2 {
-            
-            height: 1000px;
-            width: 1000px;
+          position: relative;
+    height: 1000px;
+    width: 1000px;
+    display: flex;           
+    flex-direction: column;  
+    justify-content: flex-end; 
     
       
         }
@@ -76,14 +68,16 @@ if (showTemplate.type_template == 1) {
         .logo {
     
       
-      width: <%=imageLogoWidth%>px;
-      height: <%=imageLogoHeight%>px;
-      margin-left: 650px;
+      max-width: <%=imageLogoWidth%>px;
+      max-height: <%=imageLogoHeight%>px;
+      margin-right: 0px;
+
       margin-top: 5px;
       position: absolute;
       align-content: center;
       object-position: bottom;
-    
+      right: 50px;    /* <-- This aligns the logo to the right with a 5px margin */
+      top: 1px; 
     }
     
     .imagem {
@@ -94,7 +88,7 @@ if (showTemplate.type_template == 1) {
     
       div.gallery {
     /* Ajuste 1: POSIÇÃO DO PRODUTO*/
-    margin-bottom: -110px;
+    margin-bottom: -80px;
         
     
     }
@@ -109,8 +103,8 @@ if (showTemplate.type_template == 1) {
     
           object-fit: scale-down;
            /*Aqui 2 - Tamanho imagem*/
-          width:  750px;
-          height: 750px;
+          width:  650px;
+          height: 650px;
      
           object-position: bottom;
 
@@ -189,7 +183,7 @@ if (showTemplate.type_template == 1) {
     .container_text_button_1 {
       position: relative;
       display: grid;
-    
+      margin-bottom: 10px;
       
     }
     .container2 {

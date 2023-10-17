@@ -8,8 +8,8 @@
 let imageWidth = '';
 let imageHeight = '';
 
-  imageLogoWidth = 500;
-  imageLogoHeight = 500;
+  imageLogoWidth = 430;
+  imageLogoHeight = 430;
         if (userData.image_width_big) {
           imageLogoWidth = userData.image_width_big;
         } 
@@ -64,16 +64,15 @@ let imageHeight = '';
     
         .logo {
     
-      
+      position: absolute;
       width: <%=imageLogoWidth%>px;
       height: <%=imageLogoHeight%>px;
       margin-right: 0px;
-      margin-top: -50px;
-      position: absolute;
+     
       align-content: center;
       object-position: bottom;
-      right: 0px;    /* <-- This aligns the logo to the right with a 5px margin */
-      top: 2px; 
+      right: 3px;    /* <-- This aligns the logo to the right with a 5px margin */
+      top: 1px; 
     
     }
     
