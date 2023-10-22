@@ -10,6 +10,11 @@
 <%
 
 let address =  addressServer + '/fivecart3';
+let address_footer = address + '/images/templates/' + showTemplate.footer_image;
+let address_header = address + '/images/templates/' + showTemplate.header_image;
+
+
+
 //let address = 'http://localhost:8888/fivecart3';
 
 
@@ -44,7 +49,7 @@ let background_image = '';
 let textProductCollor = '';
 console.log(showTemplate);
 if (flyer[0].show_background == 1) {
-  background_image = showTemplate.background_image;
+  background_image = address + '/images/templates/' + showTemplate.background_image;
   textProductCollor = showTemplate.product_collor_with_background;
 } else {
   textProductCollor = showTemplate.font_collor_product;
@@ -289,7 +294,7 @@ body {
 
 .imagem {
   width: 100%; 
-        background-image: url('<%= address + '/images/templates/' + background_image %>');
+        background-image: url("<%= background_image %>");
       
         background-size: cover;
 
@@ -319,7 +324,7 @@ body {
 <!-- CHANGE 1-->
 <div class="image_format">
 
-<img class = "image_format" src= <%= address + '/images/templates/' + showTemplate.header_image %> >
+<img class = "image_format" src= "<%= address_header %>" >
 <img class="logo" src= <%= userData.image_address + userData.image_link %> 
 </div>
 <div class="text_button_right"><% if (flyer[0].header2 != '') { %> <p> <%=flyer[0].header2  %> </p> <% } else { %> <p> <%=showTemplate.header_text_right %> </p> <% } %></div>
@@ -358,7 +363,7 @@ body {
 </div>
 
 <div class="container_text_button_1">
-    <img class ="image_format" src= <%= address + '/images/templates/' + showTemplate.footer_image %> height="70">
+    <img class ="image_format" src= "<%= address_footer %>" height="70">
 
   <% 
   

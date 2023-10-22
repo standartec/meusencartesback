@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +8,12 @@
 
 
 <%
-let address = 'http://meusencartes.com.br/fivecart3';
+
+let address =  addressServer + '/fivecart3';
 //let address = 'http://localhost:8888/fivecart3';
 
+let address_footer = address + '/images/templates/' + showTemplate.footer_image;
+let address_header = address + '/images/templates/' + showTemplate.header_image;
 
 let imageLogoWidth = '';
 let imageLogoHeight = '';
@@ -53,7 +57,7 @@ let background_image = '';
 let textProductCollor = '';
 console.log(showTemplate);
 if (flyer[0].show_background == 1) {
-  background_image = showTemplate.background_image;
+  background_image = address + '/images/templates/' + showTemplate.background_image;
   textProductCollor = showTemplate.product_collor_with_background;
 } else {
   textProductCollor = showTemplate.font_collor_product;
@@ -299,7 +303,7 @@ body {
 
 .imagem {
   width: 100%; 
-        background-image: url('<%= address + '/images/templates/' + background_image %>');
+        background-image: url("<%= background_image %>");
       
         background-size: cover;
 
@@ -328,7 +332,7 @@ body {
   <% } %>
 <% } %>
 <!-- CHANGE 1-->
-<img class = "image_format" src= <%= address + '/images/templates/' + showTemplate.header_image %> >
+<img class = "image_format" src= "<%= address_header %>" >
 
 <div class="text_button_right"><% if (flyer[0].header2 != '') { %> <p> <%=flyer[0].header2  %> </p> <% } else { %> <p> <%=showTemplate.header_text_right %> </p> <% } %></div>
 
@@ -364,9 +368,10 @@ body {
 
 </div>
 </div>
-
 <div class="container_text_button_1">
-    <img class ="image_format" src= <%= address + '/images/templates/' + showTemplate.footer_image %> height="70">
+
+
+    <img class ="image_format" src= "<%= address_footer %>" height="70">
 
   <% 
   
@@ -411,7 +416,7 @@ if (flyer[0].footer_text2) {
 
 
 
-
+console.log("index.ejs")
 %>
  <h4> <%=footer_text %> </h4> 
   <div style="font-size:.6em;width:400px;float:left; padding-top:5px; text-transform: capitalize;"> <h4> <%=footer_text2 %> </h4> </div>
