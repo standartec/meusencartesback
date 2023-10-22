@@ -93,4 +93,8 @@ export default class Template {
 
     @Column()
     product_collor_with_background: string;
+
+    @Column()
+    template_name: string;
+
 }

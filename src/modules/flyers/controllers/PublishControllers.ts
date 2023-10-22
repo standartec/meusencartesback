@@ -12,7 +12,7 @@ import { getCustomRepository } from "typeorm";
 import { ProductRepository } from "@modules/products/typeorm/repositories/ProductsRepository";
 import ShowUserDetail from "@modules/users/services/ShowUserDetailService";
 import ShowUserDetailService from "@modules/users/services/ShowUserDetailService";
-import { DIR_SAVE_IMAGES, IMAGE_ADDRESS } from "@modules/constants";
+import { DIR_SAVE_IMAGES, IMAGE_ADDRESS,ADDRESS_MEUS_ENCARTES,TEMPLATES_EJS } from "@modules/constants";
 
 export default class PublishControllers {
 
@@ -113,10 +113,10 @@ export default class PublishControllers {
 
 
         if (templateData.type_template == 1) {
-     
+            console.log("###############################################################################"+templateData.template_name)
         //Incluir regra do template específico a ser vinculado. 
 
-        ejs.renderFile('./src/modules/flyers/views/index.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData, flyersData: flyersData}, 
+        ejs.renderFile(TEMPLATES_EJS+templateData.template_name, {flyer: flyers, showTemplate: showTemplate, userData: userData, flyersData: flyersData, addressServer: ADDRESS_MEUS_ENCARTES}, 
 
         {}, function (err, template) {
         if (err) {
@@ -129,7 +129,7 @@ export default class PublishControllers {
 } else if (templateData.type_template == 2) {
 
 
-    ejs.renderFile('./src/modules/flyers/views/instagram.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData}, 
+    ejs.renderFile(TEMPLATES_EJS+templateData.template_name, {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData, addressServer: ADDRESS_MEUS_ENCARTES}, 
 
     {}, function (err, template) {
     if (err) {
@@ -144,7 +144,7 @@ export default class PublishControllers {
 } else if (templateData.type_template == 3) {
     console.log("type template 3");
     flyers = null;
-    ejs.renderFile('./src/modules/flyers/views/news.ejs', {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData}, 
+    ejs.renderFile(TEMPLATES_EJS+templateData.template_name, {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData, addressServer: ADDRESS_MEUS_ENCARTES}, 
 
     {}, function (err, template) {
     if (err) {
@@ -166,7 +166,7 @@ export default class PublishControllers {
         
 
        if (imageQuality == 0) {
-        console.log("LOW LOW")
+        
         let imageBuffer = await htmlToImageLow(fileHTML);
       //  console.log("QUALITY LOW-->> "+imageQuality);
 
