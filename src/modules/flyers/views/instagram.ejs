@@ -5,7 +5,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
       <%
-      let address_serv =  addressServer + '/fivecart3';
 
       let imageLogoWidth = '';
 let imageLogoHeight = '';
@@ -18,7 +17,6 @@ let imageLogoHeight = '';
         if (userData.image_height_big) {
           imageLogoHeight = userData.image_height_big;
           }
-
       
       %>
     <style>
@@ -83,7 +81,7 @@ let imageLogoHeight = '';
     }
     
     .imagem {
-        background-image: url('<%=address_serv+'/fivecart3/images/templates/' + showTemplate.middle_image %>');
+        background-image: url('<%=addressServer + showTemplate.middle_image %>');
       
         background-size: 100%;
       }

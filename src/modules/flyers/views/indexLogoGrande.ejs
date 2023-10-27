@@ -9,9 +9,8 @@
 
 <%
 
-let address =  addressServer + '/fivecart3';
-let address_footer = address + '/images/templates/' + showTemplate.footer_image;
-let address_header = address + '/images/templates/' + showTemplate.header_image;
+let address_footer = addressServer + showTemplate.footer_image;
+let address_header = addressServer + showTemplate.header_image;
 
 
 
@@ -49,7 +48,7 @@ let background_image = '';
 let textProductCollor = '';
 console.log(showTemplate);
 if (flyer[0].show_background == 1) {
-  background_image = address + '/images/templates/' + showTemplate.background_image;
+  background_image = addressServer + showTemplate.background_image;
   textProductCollor = showTemplate.product_collor_with_background;
 } else {
   textProductCollor = showTemplate.font_collor_product;
