@@ -5,7 +5,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
       <%
-let imageLogoWidth = '';
+      let address_serv =  addressServer + '/fivecart3';
+
+      let imageLogoWidth = '';
 let imageLogoHeight = '';
 
   imageLogoWidth = 430;
@@ -81,7 +83,7 @@ let imageLogoHeight = '';
     }
     
     .imagem {
-        background-image: url('<%='http://meusencartes.com.br/fivecart3/images/templates/' + showTemplate.middle_image %>');
+        background-image: url('<%=address_serv+'/fivecart3/images/templates/' + showTemplate.middle_image %>');
       
         background-size: 100%;
       }

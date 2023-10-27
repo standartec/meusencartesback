@@ -120,6 +120,8 @@ export default class PublishControllers {
 
         {}, function (err, template) {
         if (err) {
+            console.error('Erro ao renderizar o EJS:', err.message, err.stack);
+
             throw err;
         } else {
             fileHTML = template;
@@ -133,6 +135,8 @@ export default class PublishControllers {
 
     {}, function (err, template) {
     if (err) {
+        console.error('Erro ao renderizar o EJS:', err.message, err.stack);
+
         throw err;
     } else {
         fileHTML = template;
@@ -148,6 +152,8 @@ export default class PublishControllers {
 
     {}, function (err, template) {
     if (err) {
+        console.error('Erro ao renderizar o EJS:', err.message, err.stack);
+       
         throw err;
     } else {
         fileHTML = template;

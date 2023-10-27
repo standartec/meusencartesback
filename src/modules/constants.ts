@@ -6,7 +6,7 @@ export const TEMPLATES_EJS = './src/modules/flyers/views\/';
 //export const TEMPLATES_EJS = '/Users/fabricio/Documents/projects/templates_ejs\/';
 
 
-export const ADDRESS_MEUS_ENCARTES = 'http://www.meusencartes.com.br';
+export const ADDRESS_MEUS_ENCARTES = 'http://www.meusencartes.com.brs';
 
 //export const DIR_SAVE_IMAGES = '/var/www/html/images/posts';
 //export const IMAGE_ADDRESS = 'http://postater.com/images/posts\/';
