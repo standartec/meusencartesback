@@ -13,7 +13,7 @@
 export const DIR_SAVE_IMAGES = '/var/www/html/images/posts';
 export const IMAGE_ADDRESS = 'http://postater.com/images/posts\/';
 export const TEMPLATES_EJS = './src/modules/flyers/views\/';
-export const ADDRESS_TEMPLATES = 'http://postater.com/images/templates\/';
+export const ADDRESS_TEMPLATES = 'http://postater.com/images/posts/templates\/';
 
 
 
