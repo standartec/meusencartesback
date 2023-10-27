@@ -17,6 +17,7 @@ import { DIR_SAVE_IMAGES, IMAGE_ADDRESS,ADDRESS_TEMPLATES,TEMPLATES_EJS } from "
 export default class PublishControllers {
 
 
+
     public async list (request: Request, response: Response): Promise<Response> {
 
         const listPublishService = new ListPublishService();
@@ -64,6 +65,7 @@ export default class PublishControllers {
         
         const {idUser, idFlyer, idProductPublish,imageQuality} = request.params;
         console.log("Params" + request.params.idUser)
+       
 
         const showtTemplateService = new ShowtTemplateService();
 
@@ -184,17 +186,37 @@ export default class PublishControllers {
 
 
        } else {
+
+        
         console.time('htmlToImageLow');
+        const startHtmlToImage = process.hrtime();
+
+        let htmlToImageInit = new Date();
 
         let imageBuffer = await htmlToImage(fileHTML);
+        
+        const diffHtmlToImage = process.hrtime(startHtmlToImage);
+        
+
         console.timeEnd('htmlToImageLow');
 
         console.time('writeFile');
 
+        const startHtmlWriteImage = process.hrtime();
+
         await fs.promises.writeFile(filePath, imageBuffer);
-        console.timeEnd('writeFile');
+
+        const diffWriteHtmlToImage = process.hrtime(startHtmlWriteImage);
+
+
+        await PublishControllers.saveFile (diffWriteHtmlToImage, diffHtmlToImage,htmlToImageInit, request.params.idUser, request.params.idFlyer);
+        
+    
 
        }
+
+      
+
 
 
        //IF TYPE_TEMPLATE == 1 - SALVAR TABELA PUBLISH - INSTAGRAM
@@ -223,6 +245,19 @@ export default class PublishControllers {
 
     }
 
+    public static async saveFile (diffWriteHtmlToImage, diffHtmlToImage,htmlToImageInit,idUser,idFlyer) {
+            
+        const elapsedHtmlToImage = (diffHtmlToImage[0] * 1e9 + diffHtmlToImage[1]) * 1e-6;
 
+        const elapsedWriteHtmlToImage1 = (diffWriteHtmlToImage[0] * 1e9 + diffWriteHtmlToImage[1]) * 1e-6;
+        console.timeEnd('writeFile');
+
+        let sumTwo = elapsedHtmlToImage + elapsedWriteHtmlToImage1;
+        let logContent = `${elapsedHtmlToImage.toFixed(2)}s, ${elapsedWriteHtmlToImage1.toFixed(2)}s, ${sumTwo.toFixed(2)}s,${idUser},${idFlyer} - ${htmlToImageInit}`;
+
+
+        await fs.promises.appendFile('../log_geracao_imagens.txt', logContent + '\n');
+
+    }
 
 }

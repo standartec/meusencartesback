@@ -1,0 +1,25 @@
+4132 1 -  Fri Oct 27 2023 15:29:38 GMT-0500 (Colombia Standard Time)5207 1 -  Fri Oct 27 2023 15:31:11 GMT-0500 (Colombia Standard Time)3351 1 -  Fri Oct 27 2023 15:31:23 GMT-0500 (Colombia Standard Time)3742 1 -  Fri Oct 27 2023 15:32:15 GMT-0500 (Colombia Standard Time)
+4383 0 -  Fri Oct 27 2023 15:32:28 GMT-0500 (Colombia Standard Time)
+2467 1 -  Fri Oct 27 2023 15:32:42 GMT-0500 (Colombia Standard Time)
+2687 1 -  Fri Oct 27 2023 15:33:17 GMT-0500 (Colombia Standard Time)
+3029 1 -  Fri Oct 27 2023 15:33:28 GMT-0500 (Colombia Standard Time)
+3356 2 -  Fri Oct 27 2023 15:33:39 GMT-0500 (Colombia Standard Time)
+3750 1 -  Fri Oct 27 2023 15:34:03 GMT-0500 (Colombia Standard Time)
+3.45s, 0.00s - 2023-10-27 20:37:27
+3.51s, 0.00s - 2023-10-27 20:38:00
+3.15s, 1.00s - 2023-10-27 20:41:01
+2.78s, 1.000s - 2023-10-27 20:41:38
+2.70s, 1.00s - 2023-10-27 20:42:53
+4.12s, 2.00s - 2023-10-27 20:45:24
+8.44s, 0.00s - 2023-10-27 20:47:40
+4422.765582999999s, 1.791s - Fri Oct 27 2023 16:07:50 GMT-0500 (Colombia Standard Time)
+4945.322375s, 1.085917s - Fri Oct 27 2023 16:09:17 GMT-0500 (Colombia Standard Time)
+4161.238542s, 1.168958s - Fri Oct 27 2023 16:10:40 GMT-0500 (Colombia Standard Time)
+4048.4435s, 1.2389999999999999s - Fri Oct 27 2023 16:11:54 GMT-0500 (Colombia Standard Time)
+3965.626708s, 1.374334s, 3967.001042s - Fri Oct 27 2023 16:14:00 GMT-0500 (Colombia Standard Time)
+4160.711792s, 1.3379999999999999s, 4162.049792s - Fri Oct 27 2023 16:43:22 GMT-0500 (Colombia Standard Time)
+4313.753708s, 0.927792s, 4314.681500000001s - Fri Oct 27 2023 16:44:03 GMT-0500 (Colombia Standard Time)
+3982.0375s, 1.2282499999999998s, 3983.26575s - Fri Oct 27 2023 16:46:51 GMT-0500 (Colombia Standard Time)
+4086.17s, 1.25s, 4087.425249s - Fri Oct 27 2023 16:48:55 GMT-0500 (Colombia Standard Time)
+3957.51s, 1.50s, 3959.01s - Fri Oct 27 2023 16:49:51 GMT-0500 (Colombia Standard Time)
+3897.71s, 1.17s, 3898.88s,610,859 - Fri Oct 27 2023 16:52:54 GMT-0500 (Colombia Standard Time)
