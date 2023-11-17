@@ -65,6 +65,7 @@
     "nodemailer": "6.4.17",
     "pg": "^8.7.3",
     "puppeteer": "^16.1.0",
+    "qrcode": "^1.5.3",
     "rate-limiter-flexible": "^2.3.7",
     "redis": "^4.1.0",
     "reflect-metadata": "^0.1.13",

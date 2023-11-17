@@ -12,7 +12,7 @@ import { getCustomRepository } from "typeorm";
 import { ProductRepository } from "@modules/products/typeorm/repositories/ProductsRepository";
 import ShowUserDetail from "@modules/users/services/ShowUserDetailService";
 import ShowUserDetailService from "@modules/users/services/ShowUserDetailService";
-import { DIR_SAVE_IMAGES, IMAGE_ADDRESS,ADDRESS_TEMPLATES,TEMPLATES_EJS } from "@modules/constants";
+import { DIR_SAVE_IMAGES, IMAGE_ADDRESS,ADDRESS_TEMPLATES,TEMPLATES_EJS,IMAGE_QRCODE_ADDRESS, IMAGE_QRCODE_ADDRESS_GET_IMAGE,ADDRESS_LAND_CUSTOMER } from "@modules/constants";
 
 export default class PublishControllers {
 
@@ -244,6 +244,112 @@ export default class PublishControllers {
         
 
     }
+
+
+
+    public async generateQrcode(request: Request, response: Response): Promise<Response> {
+        
+        const listProductFlyerService = new ListProductFlyerService();
+        
+        const {idUser, idFlyer, idProductPublish,imageQuality} = request.params;
+
+        console.log("Params" + request.params.idUser)
+       
+        const showtTemplateService = new ShowtTemplateService();
+
+        var flyers;
+
+         //Pegar os dados do flye para todos 
+         
+  
+        let fileHTML = '<html><body><h1>TESTE QRCODE</h1></body></html>';
+        // Frirst Way
+        let fileLoad = '';
+    
+
+        const QRCode = require('qrcode');
+        const data = ADDRESS_LAND_CUSTOMER + idUser + '/' + idFlyer;
+
+        
+
+       console.log(fileHTML);
+
+        const filename = idUser + '_qrcode_'  + idFlyer +  '_' + idProductPublish + '_' + `${Date.now()}.png`; // Generates a unique name for each image. 
+       // const filePath = path.join(targetDirectory, filename);
+        const targetDirectory = IMAGE_QRCODE_ADDRESS + filename;  // Change this to where you want to save images.
+
+        QRCode.toFile(targetDirectory, data, function (err) {
+            if (err) throw err;
+            console.log('QR Code salvo como ' + targetDirectory);
+        });
+        
+
+      //  await fs.promises.writeFile(filePath, imageBuffer);
+
+        /*
+        const startHtmlToImage = process.hrtime();
+
+        let htmlToImageInit = new Date();
+
+        let imageBuffer = await htmlToImage(fileHTML);
+        */
+
+        /*
+        const diffHtmlToImage = process.hrtime(startHtmlToImage);
+        
+
+        console.timeEnd('htmlToImageLow');
+
+        console.time('writeFile');
+
+        const startHtmlWriteImage = process.hrtime();
+
+        await fs.promises.writeFile(filePath, imageBuffer);
+
+        const diffWriteHtmlToImage = process.hrtime(startHtmlWriteImage);
+
+
+        await PublishControllers.saveFile (diffWriteHtmlToImage, diffHtmlToImage,htmlToImageInit, request.params.idUser, request.params.idFlyer);
+        */
+
+      
+     /*
+     
+         const getFlyer = await listProductFlyerService.getDataFlyer({idUser, idFlyer, idProductPublish,imageQuality});
+         var flyersData = JSON.parse(JSON.stringify(getFlyer));
+
+         console.log('template data fluerdata =='+flyersData);
+
+         console.log('template data HERE'+flyersData.id_template1);
+
+        const templateData = await showtTemplateService.execute(flyersData.id_template1);
+       
+     
+     
+     
+     
+     if (templateData.type_template == 2 || templateData.type_template == 3) {
+        
+         await listProductFlyerService.updateQrcodeFlyer(idFlyer, filename, IMAGE_QRCODE_ADDRESS);
+         await listProductFlyerService.updateQrcodeProductPublish(idProductPublish, filename, IMAGE_QRCODE_ADDRESS);
+
+       } else if (templateData.type_template == 1) { //ENCARTE
+*/
+        await listProductFlyerService.updateQrcodeFlyer(idFlyer, filename,IMAGE_QRCODE_ADDRESS_GET_IMAGE);
+
+  //     }
+  
+       var returnImage = IMAGE_QRCODE_ADDRESS_GET_IMAGE + filename;
+ 
+       
+       // Return only the filename to the client
+       return response.json({ filename: returnImage });
+        
+
+    }
+
+
+
 
     public static async saveFile (diffWriteHtmlToImage, diffHtmlToImage,htmlToImageInit,idUser,idFlyer) {
             

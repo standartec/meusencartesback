@@ -39,6 +39,30 @@ export class ProductRepository extends Repository<Product> {
 
     }
 
+    async updateQrcodeProductPublish(idProductPublish: any, filename: any, imageAddress: string) {
+        const entityManager = getManager();
+
+        var sql = `update product_publish set qrcode_image_url = "` + imageAddress + `"  ,  qrcode_image_name = "` + filename + `"  where id = ` + idProductPublish;
+        console.log(sql);
+        const response = await entityManager.query(sql);
+
+        return response
+
+    }
+
+
+   async updateQrcodeFlyer(idFlyer: string, filename: string, imageAddress: string) {
+    //qrcod_image_name  ,  qrcod_image_url
+         const entityManager = getManager();
+         console.log(">>> updatePictureNameFlyerupdatePictureNameFlyer");
+         var sql = `update publish set qrcode_image_url = "` + imageAddress + `"  ,  qrcode_image_name = "` + filename + `"  where id = ` + idFlyer;
+         console.log(sql);
+         const response = await entityManager.query(sql);
+ 
+         return response
+   
+     }
+
     public async findByName(name: string): Promise<Product | undefined> {
         const product = this.findOne({
             where: {
@@ -102,4 +126,6 @@ export class ProductRepository extends Repository<Product> {
         return productFlyer[0]
 
     }
+
+
 }
