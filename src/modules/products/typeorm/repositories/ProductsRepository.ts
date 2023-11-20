@@ -128,4 +128,19 @@ export class ProductRepository extends Repository<Product> {
     }
 
 
+    public async getUserData(idUser: string): Promise<undefined> {
+
+        const entityManager = getManager();
+     
+        const sql = `
+        select * from users where id = ` + idUser  
+
+     
+        const productFlyer = await entityManager.query(sql);
+
+        return productFlyer[0]
+
+    }
+
+
 }

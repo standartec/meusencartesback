@@ -253,7 +253,7 @@ export default class PublishControllers {
         
         const {idUser, idFlyer, idProductPublish,imageQuality} = request.params;
 
-        console.log("Params" + request.params.idUser)
+        console.log("Params" + idUser)
        
         const showtTemplateService = new ShowtTemplateService();
 
@@ -265,10 +265,13 @@ export default class PublishControllers {
         let fileHTML = '<html><body><h1>TESTE QRCODE</h1></body></html>';
         // Frirst Way
         let fileLoad = '';
-    
+        console.log("Params" + idUser)
+        var dataUser = await listProductFlyerService.getUserData({idUser});
+        console.log(dataUser.username)
+        console.log("###################### DATA USER")
 
         const QRCode = require('qrcode');
-        const data = ADDRESS_LAND_CUSTOMER + idUser + '/' + idFlyer;
+        const data = ADDRESS_LAND_CUSTOMER + dataUser.username + '/' + idFlyer;
 
         
 

@@ -12,10 +12,10 @@ export default async (html = "") => {
  
 width: 1080,
 height: 1080,
-
  */
 
   //I started to use this parameters to improme image generation.
+  //
   await page.setViewport({
     width: 1080,
     height: 1080,
