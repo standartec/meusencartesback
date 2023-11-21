@@ -135,7 +135,7 @@ export class ProductRepository extends Repository<Product> {
         const sql = `
         select * from users where id = ` + idUser  
 
-     
+        console.log(sql)
         const productFlyer = await entityManager.query(sql);
 
         return productFlyer[0]

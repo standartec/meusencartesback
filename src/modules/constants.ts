@@ -9,8 +9,8 @@ export const ADDRESS_LAND_CUSTOMER = 'http://localhost:3333\/';
 
 export const TEMPLATES_EJS = './src/modules/flyers/views\/';
 export const ADDRESS_TEMPLATES = 'http://postater.com/images/posts/templates\/';
-*/
 
+*/
 //export const TEMPLATES_EJS = '/Users/fabricio/Documents/projects/templates_ejs\/';
 
 
@@ -23,7 +23,7 @@ export const IMAGE_ADDRESS = 'http://postater.com/images/posts\/';
 
 export const IMAGE_QRCODE_ADDRESS = '/var/www/html/images/posts/qrcode\/';
 export const IMAGE_QRCODE_ADDRESS_GET_IMAGE = 'http://postater.com/images/posts/qrcode\/';
-export const ADDRESS_LAND_CUSTOMER = 'http://www.posteter.com\/';
+export const ADDRESS_LAND_CUSTOMER = 'http://posteter.com\/';
 
 export const TEMPLATES_EJS = './src/modules/flyers/views\/';
 export const ADDRESS_TEMPLATES = 'http://postater.com/images/posts/templates\/';
