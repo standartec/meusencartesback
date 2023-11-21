@@ -142,5 +142,21 @@ export class ProductRepository extends Repository<Product> {
 
     }
 
+    public async getUserDataDetail(id: string): Promise<undefined> {
+
+        const entityManager = getManager();
+     
+        const sql = `
+        select * from user_detail where id_user = ` + id  
+
+        console.log(sql)
+        const productFlyer = await entityManager.query(sql);
+
+        return productFlyer[0]
+
+    }
+
+    
+
 
 }

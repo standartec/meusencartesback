@@ -53,6 +53,18 @@ export default class ListProductFlyerService {
 
     }
 
+    public async getUserDataDetail({idUser}: IRequest): Promise<undefined> {
+        console.log("ID USER GET USER DATA")
+        console.log(idUser)
+        const productRepository = getCustomRepository(ProductRepository);
+
+        const userData = await productRepository.getUserDataDetail(idUser);
+     
+        
+        return userData;
+
+    }
+
     async updatePictureNameProductPublish(idProductPublish: string, filename: string, imageAddress: string) {
         
 

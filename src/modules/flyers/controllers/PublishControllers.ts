@@ -266,7 +266,7 @@ export default class PublishControllers {
         // Frirst Way
         let fileLoad = '';
         console.log("Params" + idUser)
-        var dataUser = await listProductFlyerService.getUserData({idUser});
+        var dataUser = await listProductFlyerService.getUserDataDetail({idUser});
         console.log(dataUser.username)
         console.log("###################### DATA USER")
 
