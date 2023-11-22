@@ -281,67 +281,15 @@ export default class PublishControllers {
        // const filePath = path.join(targetDirectory, filename);
         const targetDirectory = IMAGE_QRCODE_ADDRESS + filename;  // Change this to where you want to save images.
 
+
         QRCode.toFile(targetDirectory, data, function (err) {
             if (err) throw err;
             console.log('QR Code salvo como ' + targetDirectory);
         });
         
-
-      //  await fs.promises.writeFile(filePath, imageBuffer);
-
-        /*
-        const startHtmlToImage = process.hrtime();
-
-        let htmlToImageInit = new Date();
-
-        let imageBuffer = await htmlToImage(fileHTML);
-        */
-
-        /*
-        const diffHtmlToImage = process.hrtime(startHtmlToImage);
-        
-
-        console.timeEnd('htmlToImageLow');
-
-        console.time('writeFile');
-
-        const startHtmlWriteImage = process.hrtime();
-
-        await fs.promises.writeFile(filePath, imageBuffer);
-
-        const diffWriteHtmlToImage = process.hrtime(startHtmlWriteImage);
-
-
-        await PublishControllers.saveFile (diffWriteHtmlToImage, diffHtmlToImage,htmlToImageInit, request.params.idUser, request.params.idFlyer);
-        */
-
-      
-     /*
-     
-         const getFlyer = await listProductFlyerService.getDataFlyer({idUser, idFlyer, idProductPublish,imageQuality});
-         var flyersData = JSON.parse(JSON.stringify(getFlyer));
-
-         console.log('template data fluerdata =='+flyersData);
-
-         console.log('template data HERE'+flyersData.id_template1);
-
-        const templateData = await showtTemplateService.execute(flyersData.id_template1);
-       
-     
-     
-     
-     
-     if (templateData.type_template == 2 || templateData.type_template == 3) {
-        
-         await listProductFlyerService.updateQrcodeFlyer(idFlyer, filename, IMAGE_QRCODE_ADDRESS);
-         await listProductFlyerService.updateQrcodeProductPublish(idProductPublish, filename, IMAGE_QRCODE_ADDRESS);
-
-       } else if (templateData.type_template == 1) { //ENCARTE
-*/
         await listProductFlyerService.updateQrcodeFlyer(idFlyer, filename,IMAGE_QRCODE_ADDRESS_GET_IMAGE);
 
-  //     }
-  
+
        var returnImage = IMAGE_QRCODE_ADDRESS_GET_IMAGE + filename;
  
        
@@ -350,9 +298,6 @@ export default class PublishControllers {
         
 
     }
-
-
-
 
     public static async saveFile (diffWriteHtmlToImage, diffHtmlToImage,htmlToImageInit,idUser,idFlyer) {
             
