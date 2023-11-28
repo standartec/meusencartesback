@@ -247,6 +247,94 @@ export default class PublishControllers {
 
 
 
+
+
+    public async generateQrcode(request: Request, response: Response): Promise<Response> {
+
+        const sharp = require('sharp');
+
+        
+        const listProductFlyerService = new ListProductFlyerService();
+        
+        const {idUser, idFlyer, idProductPublish,imageQuality} = request.params;
+
+        console.log("Params" + idUser)
+       
+        const showtTemplateService = new ShowtTemplateService();
+
+        var flyers;
+
+         //Pegar os dados do flye para todos 
+         
+  
+        let fileHTML = '<html><body><h1>TESTE QRCODE</h1></body></html>';
+        // Frirst Way
+        let fileLoad = '';
+        console.log("Params" + idUser)
+        var dataUser = await listProductFlyerService.getUserDataDetail({idUser});
+        console.log(dataUser.username)
+        console.log("###################### DATA USER")
+
+        const QRCode = require('qrcode');
+        const data = ADDRESS_LAND_CUSTOMER + dataUser.username + '/' + idFlyer;
+
+        
+
+       console.log(fileHTML);
+
+        const filename = idUser + '_qrcode_'  + idFlyer +  '_' + idProductPublish + '_' + `${Date.now()}.png`; // Generates a unique name for each image. 
+      
+        const targetDirectory = IMAGE_QRCODE_ADDRESS + filename;  // Change this to where you want to save images.
+
+        const text = 'Seu texto aqui';
+
+
+        QRCode.toFile(targetDirectory, data, function (err) {
+            if (err) throw err;
+
+            console.log('QR Code salvo como ' + targetDirectory);
+
+            // Obter as dimensões da imagem
+    const metadata = await image.metadata();
+
+    // Cria um buffer de texto (como imagem)
+    const textBuffer = Buffer.from(
+        `<svg width="${metadata.width}" height="20">
+            <text x="50%" y="15" alignment-baseline="middle" text-anchor="middle" font-size="14" font-family="Arial">${text}</text>
+        </svg>`
+    );
+
+    // Adiciona o texto à imagem do QR Code
+    image
+        .composite([{ input: textBuffer, top: metadata.height, left: 0 }])
+        .toFile(targetDirectory, (err) => {
+            if (err) throw err;
+            console.log('Texto adicionado ao QR Code e salvo como ' + targetDirectory);
+        });
+
+
+        });
+        
+
+        await listProductFlyerService.updateQrcodeFlyer(idFlyer, filename,IMAGE_QRCODE_ADDRESS_GET_IMAGE);
+
+ 
+  
+       var returnImage = IMAGE_QRCODE_ADDRESS_GET_IMAGE + filename;
+ 
+       
+       // Return only the filename to the client
+       return response.json({ filename: returnImage });
+        
+
+    }
+
+
+
+
+
+
+/*
     public async generateQrcode(request: Request, response: Response): Promise<Response> {
         
         const listProductFlyerService = new ListProductFlyerService();
@@ -298,6 +386,7 @@ export default class PublishControllers {
         
 
     }
+    */
 
     public static async saveFile (diffWriteHtmlToImage, diffHtmlToImage,htmlToImageInit,idUser,idFlyer) {
             

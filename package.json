@@ -69,6 +69,7 @@
     "rate-limiter-flexible": "^2.3.7",
     "redis": "^4.1.0",
     "reflect-metadata": "^0.1.13",
+    "sharp": "^0.32.6",
     "tsconfig-paths": "^3.14.1",
     "typeorm": "^0.2.29",
     "typeorm-pagination": "^2.0.3",
