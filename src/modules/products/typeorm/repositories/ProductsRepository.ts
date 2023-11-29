@@ -100,7 +100,7 @@ export class ProductRepository extends Repository<Product> {
         where p.id_user = ` + idUser + ` and pp.status =  1 and p.id = ` + idFlyer +  filterProduct + ` order by id_product_publish`
 
         console.log(sql)
-        //AJUST
+        //AJUST..
         const productFlyer = await entityManager.query(sql);
 
         return productFlyer
