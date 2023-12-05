@@ -306,7 +306,11 @@ body {
   width: 100%; 
         background-image: url("<%= background_image %>");
       
-        background-size: cover;
+        /*Inclui 100% 100% para cobrir todo o fundo, com cover nao estava*/
+        background-size: 100% 100%;
+
+      /*  background-size: cover;*/
+
 
          /*   background-size: contain;*/
     background-repeat: no-repeat;
