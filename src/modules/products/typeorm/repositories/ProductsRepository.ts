@@ -93,7 +93,7 @@ export class ProductRepository extends Repository<Product> {
         const sql = `
         select pc.id,p.description,pc.id_product,SUBSTRING(rpad(prod.name, 31, " "), 1,31) as name_product,pp.product_price price,
         prod.image_link, pp.id_publish, pp.id as id_product_publish,
-        p.id_user as id_user_publish, p.header2, prod.*, p.id_template,p.*,prod.image_address as image_address
+        p.id_user as id_user_publish, p.header2, prod.*, p.id_template,p.*,prod.image_address as image_address, p.footer_text3 as footer_text3 
         from product_publish pp inner join publish p on p.id = pp.id_publish
         inner join product_customer pc on pc.id = pp.id_product_customer
         inner join products prod on prod.id = pc.id_product
