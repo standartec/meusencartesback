@@ -369,4 +369,124 @@ export default class PublishControllers {
 
     }
 
+
+    public async generateHtmlTest(request: Request, response: Response): Promise<Response> {
+        
+        const listProductFlyerService = new ListProductFlyerService();
+        
+        const { idUser, idFlyer, idProductPublish,imageQuality,templateNumber} = request.params;
+        console.log("Params" + request.params.idUser)
+       
+
+        const showtTemplateService = new ShowtTemplateService();
+
+        var flyers;
+
+         //Pegar os dados do flye para todos 
+         const getFlyer = await listProductFlyerService.getDataFlyer({idUser, idFlyer, idProductPublish,imageQuality});
+         var flyersData = JSON.parse(JSON.stringify(getFlyer));
+
+         console.log('template data fluerdata =='+flyersData);
+
+         console.log('template data HERE'+flyersData.id_template1);
+
+        const templateData = await showtTemplateService.execute(parseInt(templateNumber));
+       
+        console.log('template data HERE');
+
+        console.log(templateData);
+       
+       
+        console.log('HERE HERE');
+
+       // console.log(flyersData);
+
+        if (templateData.type_template != 3 ) {
+         const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer, idProductPublish,imageQuality});
+   
+         flyers = JSON.parse(JSON.stringify(findProductFlyer));
+        }
+
+        console.log(templateData.type_template == 3);
+
+        const showTemplate = JSON.parse(JSON.stringify(templateData));
+
+        const showUserDetail = new ShowUserDetailService();
+
+        const userData = await showUserDetail.execute({idUser});
+
+        console.log(userData);
+        // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
+        let fileHTML = '';
+        // Frirst Way
+        let fileLoad = '';
+    
+        console.log("type template ????");
+
+
+
+        if (templateData.type_template == 1) {
+
+        ejs.renderFile(TEMPLATES_EJS+templateData.template_name, {flyer: flyers, showTemplate: showTemplate, userData: userData, flyersData: flyersData, addressServer: ADDRESS_TEMPLATES}, 
+
+        {}, function (err, template) {
+        if (err) {
+            console.error('Erro ao renderizar o EJS:', err.message, err.stack);
+
+            throw err;
+        } else {
+            fileHTML = template;
+
+        }
+    });
+} else if (templateData.type_template == 2) {
+
+
+    ejs.renderFile(TEMPLATES_EJS+templateData.template_name, {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData, addressServer: ADDRESS_TEMPLATES}, 
+
+    {}, function (err, template) {
+    if (err) {
+        console.error('Erro ao renderizar o EJS:', err.message, err.stack);
+
+        throw err;
+    } else {
+        fileHTML = template;
+
+    }
+});
+
+
+} else if (templateData.type_template == 3) {
+    console.log("type template 3");
+    flyers = null;
+    ejs.renderFile(TEMPLATES_EJS+templateData.template_name, {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData, addressServer: ADDRESS_TEMPLATES}, 
+
+    {}, function (err, template) {
+    if (err) {
+        console.error('Erro ao renderizar o EJS:', err.message, err.stack);
+       
+        throw err;
+    } else {
+        fileHTML = template;
+    }
+});
+
+
+}
+
+       console.log(fileHTML);
+
+       const imageBuffer = await htmlToImage(fileHTML);
+
+       response.set("Content-Type", "image/png");
+       
+       response.send(imageBuffer);
+
+
+    }
+
+
+
+
+
 }

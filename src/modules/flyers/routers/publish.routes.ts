@@ -9,6 +9,7 @@ const publishRouter = Router();
 //publishRouter.get('/', publishController.list);
 
 publishRouter.get('/generateQrcode/:idUser/:idFlyer/:idProductPublish', publishController.generateQrcode);
+publishRouter.get('/generateHtmlTest/:idUser/:idFlyer/:idProductPublish/:imageQuality/:templateNumber', publishController.generateHtmlTest);
 
 publishRouter.get('/:idUser/:idFlyer/:idProductPublish/:imageQuality', publishController.generateImage);
 
