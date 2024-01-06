@@ -12,12 +12,12 @@ let imageHeight = '';
 
   imageLogoWidth = 430;
   imageLogoHeight = 430;
-        if (userData.image_width_big) {
-          imageLogoWidth = userData.image_width_big;
-        } 
-        if (userData.image_height_big) {
-          imageLogoHeight = userData.image_height_big;
-          }
+  if (flyersData.logo_heigh) {
+    imageLogoWidth = userData.image_width;
+  } 
+  if (flyersData.logo_width) {
+    imageLogoHeight = userData.image_height;
+    } 
 
       
       %>
