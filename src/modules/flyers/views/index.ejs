@@ -20,12 +20,12 @@ let imageLogoHeight = '';
 if (showTemplate.type_template == 1) {
      imageLogoWidth = 120;
      imageLogoHeight = 120;
-        if (userData.image_width) {
-          imageLogoWidth = userData.image_width;
-        } 
-        if (userData.image_height) {
-          imageLogoHeight = userData.image_height;
-          }
+     if (flyersData.logo_heigh) {
+      imageLogoWidth = flyersData.logo_heigh;
+    } 
+    if (flyersData.logo_width) {
+      imageLogoHeight = flyersData.logo_heigh;
+      } 
 
 } else if (showTemplate.type_template == 2) {
   imageLogoWidth = 300;
