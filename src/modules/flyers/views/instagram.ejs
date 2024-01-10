@@ -314,7 +314,8 @@ body {
 
               if (userData.image_link) { userData.image_address
               %>
-                <img class="logo" src="<%= userData.image_address + userData.image_link %>"
+              <img class="logo" src= <%= flyersData.logo_publish %> 
+
              
             <% } else { %>
               <h4 class="companyName"> <%=userData.company_name%></h4>
