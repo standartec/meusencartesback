@@ -28,6 +28,4 @@ export const ADDRESS_LAND_CUSTOMER = 'http://posteter.com\/';
 export const TEMPLATES_EJS = './src/modules/flyers/views\/';
 export const ADDRESS_TEMPLATES = 'http://postater.com/images/posts/templates\/';
 
-
-
 //export const TEMPLATES_EJS = '/usr/local/app/templates_ejs\/';

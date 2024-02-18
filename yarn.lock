@@ -4428,6 +4428,18 @@ onetime@^5.1.2:
   dependencies:
     mimic-fn "^2.1.0"
 
+onnxruntime-common@1.17.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/onnxruntime-common/-/onnxruntime-common-1.17.0.tgz#b2534ce021b1c1b19182bec39aaea8d547d2013e"
+  integrity sha512-Vq1remJbCPITjDMJ04DA7AklUTnbYUp4vbnm6iL7ukSt+7VErH0NGYfekRSTjxxurEtX7w41PFfnQlE6msjPJw==
+
+onnxruntime-node@^1.11.0:
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/onnxruntime-node/-/onnxruntime-node-1.17.0.tgz#38af0ba527cb44c1afb639bdcb4e549edba029a1"
+  integrity sha512-pRxdqSP3a6wtiFVkVX1V3/gsEMwBRUA9D2oYmcN3cjF+j+ILS+SIY2L7KxdWapsG6z64i5rUn8ijFZdIvbojBg==
+  dependencies:
+    onnxruntime-common "1.17.0"
+
 p-limit@^2.0.0, p-limit@^2.2.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/p-limit/-/p-limit-2.3.0.tgz"
@@ -4972,6 +4984,13 @@ regjsparser@^0.8.2:
   integrity sha512-J3LABycON/VNEu3abOviqGHuB/LOtOQj8SKmfP9anY5GfAVw/SPjwzSjxGjbZXIxbGfqTHtJw58C2Li/WkStmA==
   dependencies:
     jsesc "~0.5.0"
+
+rembg-node@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/rembg-node/-/rembg-node-2.0.1.tgz#d2f7597039039a5d8685a1efb82d9a02cd304d46"
+  integrity sha512-5Jkx63n8y3bUmbvhr1wIMShw6jsLySAUwUTBYC2Ym+pBWwGRP5xZzfCuJKldRzyYQq9czt3QQH/BBfRvUFLmpQ==
+  dependencies:
+    onnxruntime-node "^1.11.0"
 
 require-directory@^2.1.1:
   version "2.1.1"

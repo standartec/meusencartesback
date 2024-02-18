@@ -10,6 +10,9 @@ import AppError from '@shared/errors/AppError';
 //Já importa e le o arquivo ormconfig
 import '@shared/typeorm';
 import uploadConfig from '@config/upload';
+const {Rembg} = require('rembg-node');
+
+const sharp = require('sharp');
 
 
 const app = express();
@@ -57,5 +60,21 @@ app.use((error: Error, request: Request, response: Response,next: NextFunction) 
 
 app.listen(3333, () =>{
   console.log('Server started ');
+  //removeBg();
 });
 
+
+async function removeBg() {
+
+
+  let input = sharp("bg/78905498.jpg");
+  const rembg = new Rembg({
+      logging: true
+  })
+  const output = await rembg.remove(input);
+
+  await output.webp().toFile("bg/testeImage.webp");
+
+
+
+}
