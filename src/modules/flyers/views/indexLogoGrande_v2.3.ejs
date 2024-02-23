@@ -480,12 +480,33 @@ if (flyer[0].footer_text2) {
 }
 
 %>
-<h4 class="rodape" style="font-size: 15px;"> <%=footer_text %> </h4> 
-<div class="rodape-container" style="font-size: 15px;"> <h4 class="rodape"> <%=footer_text2 %> </h4> </div>
+
+<%
+footer_text_size = 15;
+footer_text2_size = 15;
+footer_text3_size = 15;
+if (flyer[0].footer_text_size) {
+  footer_text_size = flyer[0].footer_text_size;
+}
+
+if (flyer[0].footer_text2_size) {
+  footer_text2_size = flyer[0].footer_text2_size;
+}
+
+if (flyer[0].footer_text3_size) {
+  footer_text3_size = flyer[0].footer_text3_size;
+}
+
+
+%>
+
+
+<h4 class="rodape" style="font-size: <%=footer_text_size%>px;"> <%=footer_text %> </h4> 
+<div class="rodape-container" style="font-size: <%=footer_text2_size%>px;"> <h4 class="rodape"> <%=footer_text2 %> </h4> </div>
 </div>
 
 <div class="right1">
-  <h4 class="rodape1" style="font-size: 15px;"><%=flyer[0].footer_text3%></h4> 
+  <h4 class="rodape1" style="font-size: <%=footer_text3_size%>px;"><%=flyer[0].footer_text3%></h4> 
 </div>
 
 
