@@ -22,6 +22,17 @@ let imageLogoHeight = '';
     <style>
  
 
+ .footer-container {
+    display: flex;
+    justify-content: space-between; /* Isso distribui o espaço igualmente entre os itens */
+    align-items: center; /* Isso alinha os itens verticalmente no centro */
+    width: 95%; /* Ocupa a largura total */
+}
+
+.container_text_button_1, .container_text_footer3 {
+    flex: 3; /* Isso permite que cada contêiner ocupe metade do espaço disponível */
+    margin: 10px; /* Adiciona um pouco de espaço ao redor para não colarem um no outro ou nas bordas */
+}
  
 
 .companyName {
@@ -377,7 +388,8 @@ body {
             
         
     
-    
+    <div class="footer-container">
+
             <div class="container_text_button_1">
           
             <% 
@@ -440,6 +452,25 @@ if (flyer[0].footer_text2) {
           
           </div>
 
+          <div class="container_text_footer3">
+           
+             
+            <div class='container2'>
+            
+            <div class="right">           
+           
+              <%           if (flyer[0].footer_text3) { %>
+            <div> <h5 class="retangulo"> <%=flyer[0].footer_text3%></h5> </div>
+            <%           } %>
+
+            </div>
+          </div>
+          
+          
+          </div>
+
+
+</div>
     
         
      
