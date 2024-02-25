@@ -54,4 +54,24 @@ export default class UserDetail {
     @Column()
     image_address: string;
 
+    @Column()
+    mobile_number_user: string; 
+    
+    @Column()
+    footer_text3: string; 
+    
+    @Column()
+    header_text: string; 
+    
+    @Column()
+    size_logo: number; 
+    
+    @Column()
+    logo_heigh: number; 
+    
+    @Column()
+    logo_width: number; 
+    
+    @Column()
+    header2: string;
 }

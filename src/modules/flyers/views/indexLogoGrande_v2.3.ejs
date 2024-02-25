@@ -385,7 +385,34 @@ body {
 <body>
   <div class="container_text_button">
   
-<% if (showTemplate.has_logo == 0) { 
+<%
+
+var header2 = "";
+
+if (flyer[0].header2) {
+  header2 = flyer[0].header2;
+}else if (userData.header2) {
+ 
+  header2 = userData.header2;
+}
+
+var footer_text3 = "";
+
+console.log("FOOTER TEXT3 USER DATA" + userData.footer_text3)
+  footer_text3 = userData.footer_text3;
+
+if (flyer[0].footer_text3) {
+  console.log("FOOTER TEXT3 FLYER DATA" + flyer[0].footer_text3)
+
+  footer_text3 = flyer[0].footer_text3;
+}else if (userData.footer_text3) {
+  console.log("ENTROU FOOTER TEXT3 USER DATA" + userData.footer_text3)
+  footer_text3 = userData.footer_text3;
+}
+
+
+
+if (showTemplate.has_logo == 0) { 
   
   if (userData.image_link) {   image_address
   %>
@@ -400,7 +427,7 @@ body {
 <img class = "image_format" src= "<%= address_header %>" >
 <img class="logo" src= <%= flyersData.logo_publish %> 
 </div>
-<div class="text_button_right"><% if (flyer[0].header2 != '') { %> <p> <%=flyer[0].header2  %> </p> <% } else { %> <p> <%=showTemplate.header_text_right %> </p> <% } %></div>
+<div class="text_button_right"><% if (header2 != '') { %> <p> <%=header2  %> </p> <% } %></div>
 
 
 <% if (flyer[0].header_left_text != '') { %>
@@ -506,7 +533,7 @@ if (flyer[0].footer_text3_size) {
 </div>
 
 <div class="right1">
-  <h4 class="rodape1" style="font-size: <%=footer_text3_size%>px;"><%=flyer[0].footer_text3%></h4> 
+  <h4 class="rodape1" style="font-size: <%=footer_text3_size%>px;"><%=footer_text3%></h4> 
 </div>
 
 
