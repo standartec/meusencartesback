@@ -97,4 +97,7 @@ export default class Template {
     @Column()
     template_name: string;
 
+    @Column()
+    font_collor_header: string;
+
 }
