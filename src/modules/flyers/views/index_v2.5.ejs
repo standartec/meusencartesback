@@ -20,8 +20,8 @@ let address_header = addressServer + showTemplate.header_image;
 let imageLogoWidth = '';
 let imageLogoHeight = '';
 
-     imageLogoWidth = 100;
-     imageLogoHeight = 100;
+     imageLogoWidth = 150;
+     imageLogoHeight = 150;
        if (flyersData.logo_heigh) {
           imageLogoWidth = flyersData.logo_heigh;
         } 
@@ -261,8 +261,11 @@ div.desc {
   position: absolute;
   top: 0;
   right: 0;
+  /*
   width: <%=imageLogoWidth%>px;
-  height: <%=imageLogoHeight%>px;
+  height: <%=imageLogoHeight%>px;*/
+  width: 100px;
+  height: 100px;
 
 }
 
