@@ -25,10 +25,25 @@ let imageLogoHeight = '';
      imageLogoWidth = 150;
      imageLogoHeight = 150;
        if (flyersData.logo_heigh) {
-          imageLogoWidth = flyersData.logo_heigh;
-        } 
+
+        if (flyersData.logo_heigh == 150) {
+          imageLogoHeight = 80;
+
+        } else {
+          imageLogoHeight = flyersData.logo_heigh;
+        }
+
+          
+        }
+
         if (flyersData.logo_width) {
-          imageLogoHeight = flyersData.logo_width;
+
+          if (flyersData.logo_width == 150) {
+            imageLogoWidth = 80;
+  
+          } else {
+            imageLogoWidth = flyersData.logo_width;
+          }
           } 
 
 
@@ -266,8 +281,7 @@ div.desc {
   /*
   width: <%=imageLogoWidth%>px;
   height: <%=imageLogoHeight%>px;*/
-  width: 80px;
-  height: 80px;
+  
 
 }
 
