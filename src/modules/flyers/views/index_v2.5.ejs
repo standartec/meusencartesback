@@ -20,14 +20,31 @@ let address_header = addressServer + showTemplate.header_image;
 let imageLogoWidth = '';
 let imageLogoHeight = '';
 
-     imageLogoWidth = 150;
-     imageLogoHeight = 150;
-       if (flyersData.logo_heigh) {
-          imageLogoWidth = flyersData.logo_heigh;
-        } 
-        if (flyersData.logo_width) {
-          imageLogoHeight = flyersData.logo_width;
-          } 
+
+imageLogoWidth = 150;
+imageLogoHeight = 150;
+  if (flyersData.logo_heigh) {
+
+   if (flyersData.logo_heigh == 150) {
+     imageLogoHeight = 100;
+
+   } else {
+     imageLogoHeight = flyersData.logo_heigh;
+   }
+
+     
+   }
+
+   if (flyersData.logo_width) {
+
+     if (flyersData.logo_width == 150) {
+       imageLogoWidth = 100;
+
+     } else {
+       imageLogoWidth = flyersData.logo_width;
+     }
+     } 
+
 
 
 let widthFlyer = 490;
@@ -261,11 +278,10 @@ div.desc {
   position: absolute;
   top: 0;
   right: 0;
-  /*
+  
   width: <%=imageLogoWidth%>px;
-  height: <%=imageLogoHeight%>px;*/
-  width: 100px;
-  height: 100px;
+  height: <%=imageLogoHeight%>px;
+
 
 }
 
