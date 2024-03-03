@@ -20,8 +20,8 @@ let address_header = addressServer + showTemplate.header_image;
 let imageLogoWidth = '';
 let imageLogoHeight = '';
 
-     imageLogoWidth = 150;
-     imageLogoHeight = 150;
+     imageLogoWidth = 100;
+     imageLogoHeight = 100;
        if (flyersData.logo_heigh) {
           imageLogoWidth = flyersData.logo_heigh;
         } 
@@ -252,9 +252,12 @@ div.desc {
 }
 
 .logo {
-  margin-top: 10px; 
+ /* margin-top: 10px; 
 
-  margin-right: 10px; 
+  margin-right: 10px; */
+  margin-top: 80px; 
+  margin-right: 200px; 
+
   position: absolute;
   top: 0;
   right: 0;
@@ -262,6 +265,10 @@ div.desc {
   height: <%=imageLogoHeight%>px;
 
 }
+
+
+
+
 .companyName {
   border-radius: 0px;
   padding: 100px;
@@ -406,7 +413,7 @@ if (flyer[0].footer_text3) {
 
   footer_text3 = flyer[0].footer_text3;
 }else if (userData.footer_text3) {
-  console.log("ENTROU FOOTER TEXT3 USER DATA" + userData.footer_text3)
+  console.log("ENTROUFOOTER TEXT3 USER DATA" + userData.footer_text3)
   footer_text3 = userData.footer_text3;
 }
 
