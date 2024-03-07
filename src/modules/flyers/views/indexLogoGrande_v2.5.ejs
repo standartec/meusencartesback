@@ -179,7 +179,9 @@ div.desc {
   margin-right: 1px;
   margin-bottom: 0;
 }
-/* Bottom right text */
+
+
+
 .text-block {
   position: relative;
   text-align: center;
@@ -405,6 +407,83 @@ body {
     background-position: center;
 
       }
+
+      .de, .de_valor, .por_text {
+    margin-right: 4px; /* Adiciona um espaço à direita de cada elemento */
+  }
+
+  /* Corrige o nome da classe .de_valor que estava como .de_vaor */
+  .de_valor {
+    font-weight: bold; /* Exemplo de estilo: torna o texto em negrito */
+    font-size: 15px;
+    
+  }
+
+  .por_text {
+    font-size: 10px;
+  }
+
+
+  div.desc1 {
+   width: 12,5em;
+   word-break: break-all;
+   text-align: left;
+   text-justify: inter-word;
+   white-space: break-spaces;
+   font-family: "Helvetica", sans-serif;
+   color: #000000; 
+   color: <%=textProductCollor%>; 
+  font-size: <%=product_font_size%>px;
+   padding: 4px;
+   text-transform: uppercase;
+   text-align: center;
+   width: 110px;
+   margin-left: 1px;
+   margin-right: 1px;
+   margin-bottom: 5px;
+
+   background-color: #559bf7; 
+   color: #000000; 
+   padding-left: 35px;
+   border-radius: 1px;
+
+
+
+ }
+
+
+ div.desc2 {
+   width: 12,5em;
+   word-break: break-all;
+   text-align: left;
+   text-justify: inter-word;
+   white-space: break-spaces;
+   font-family: "Helvetica", sans-serif;
+   color: #000000; 
+   padding: 4px;
+   text-transform: uppercase;
+   font-size: 9px;
+   text-align: center;
+   width: 110px;
+   margin-left: 1px;
+   margin-right: 1px;
+   margin-bottom: 5px;
+
+
+   color: #000000; 
+   padding-left: 35px;
+   border-radius: 1px;
+
+   display: flex; /* Usa Flexbox */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+  justify-content: center;
+
+
+ }
+
+
+
+
 </style>
 
 
@@ -504,9 +583,19 @@ if (showTemplate.has_logo == 0) {
    
 </div>
   <div class="desc"><%=flyer[i].name_product%></div>
+  <div class="desc1"> <%=flyer[i].observation%>  </div>
+  <div class="desc2">
+   <div class="de"><%=flyer[i].text_de%> </div>
+   <div class="de_valor"><%=flyer[i].de%> </div>
+   <div class="por_text"><%=flyer[i].text_por%></div>
+
+ </div>
+  
+  
   <div class="textocentro">
     <div class="textUpper">R$</div>
     <div class="textBellow"><%=newPrice %></div>
+    <div class="size_type"><%=flyer[i].size_type%></div>
   </div>
   </div>
 
