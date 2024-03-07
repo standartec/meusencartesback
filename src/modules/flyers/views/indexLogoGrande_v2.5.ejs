@@ -586,10 +586,16 @@ if (showTemplate.has_logo == 0) {
   <% if (flyer[i].observation) {%>
   <div class="desc1"> <%=flyer[i].observation%>  </div>
   <% } %>
-  <% if (flyer[i].de) {%>
+  <% if (flyer[i].de) {
+    
+    <% var actDePrice = flyer[i].de; 
+    var newActDePrice = actDePrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
+    %>
+    
+    %>
   <div class="desc2">
    <div class="de"><%=flyer[i].text_de%> </div>
-   <div class="de_valor"><%=flyer[i].de%> </div>
+   <div class="de_valor"><%=newActDePrice%> </div>
    <div class="por_text"><%=flyer[i].text_por%></div>
 
  </div>
