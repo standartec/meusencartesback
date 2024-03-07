@@ -54,6 +54,12 @@ if (flyer[0].show_background == 1) {
   textProductCollor = showTemplate.font_collor_product;
 }
 
+product_font_size = 9;
+if (flyersData.product_font_size) {
+  product_font_size = flyersData.product_font_size;
+}
+
+
 
 %>
 <!-- 162 each column more
@@ -166,7 +172,7 @@ div.desc {
   color: <%=textProductCollor%>; 
   padding: 4px;
   text-transform: uppercase;
-  font-size: 9px;
+  font-size: <%=product_font_size%>px;
   text-align: center;
   width: 150px;
   margin-left: 1px;
@@ -194,6 +200,10 @@ div.desc {
 .textBellow {
   font-size: 25px;
 }
+
+<% if (flyersData.posicao_tag_preco == 1) {  %>
+
+
 .textocentro {
   font-family: "Helvetica", sans-serif;
   position: absolute;
@@ -207,6 +217,25 @@ div.desc {
   padding-right: 10px;
   border-radius: 10px;
 }
+
+<% } else {  %>
+
+
+.textocentro {
+  font-family: "Helvetica", sans-serif;
+  display: flex;
+  bottom: 0px;
+  right: 20px;
+  padding: 5px;
+  background-color: <%=showTemplate.main_color%>; 
+  color: <%=showTemplate.font_color%>; 
+  padding-left: 35px;
+  padding-right: 10px;
+  border-radius: 10px;
+}
+
+  <% } %>
+
 .container_text_button_1 {
   position: relative;
   display: grid;
@@ -444,7 +473,13 @@ if (showTemplate.has_logo == 0) {
 
   console.log("Image>>> " + image_address);
   %>
-    <div class="gallery">
+   
+  
+
+  <% 
+  
+  if (flyersData.posicao_tag_preco == 1) {  %>
+  <div class="gallery">
       <div class="container_picture">
         <img src= "<%=image_address %>"  alt="Snow" width="100" height="130"/>
         <% var actPrice = flyer[i].price; 
@@ -457,6 +492,29 @@ if (showTemplate.has_logo == 0) {
 </div>
     <div class="desc"><%=flyer[i].name_product%></div>
     </div>
+<% } else {%>
+
+
+  <div class="gallery">
+    <div class="container_picture">
+      <img src= "<%=image_address %>"  alt="Snow" width="100" height="130"/>
+      <% var actPrice = flyer[i].price; 
+      var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
+      %>
+   
+</div>
+  <div class="desc"><%=flyer[i].name_product%></div>
+  <div class="textocentro">
+    <div class="textUpper">R$</div>
+    <div class="textBellow"><%=newPrice %></div>
+  </div>
+  </div>
+
+  <% }%>
+
+
+
+    
     <% } %>
 
 </div>

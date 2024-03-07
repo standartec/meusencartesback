@@ -23,4 +23,11 @@ export default class Publish {
 
     @Column()
     header2: string;
+
+    @Column()
+    product_font_size: number;
+
+    @Column()
+    posicao_tag_preco: number;
+
 }
