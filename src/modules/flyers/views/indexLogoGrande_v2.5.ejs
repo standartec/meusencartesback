@@ -583,19 +583,24 @@ if (showTemplate.has_logo == 0) {
    
 </div>
   <div class="desc"><%=flyer[i].name_product%></div>
+  <% if (flyer[i].observation) {%>
   <div class="desc1"> <%=flyer[i].observation%>  </div>
+  <% } %>
+  <% if (flyer[i].de) {%>
   <div class="desc2">
    <div class="de"><%=flyer[i].text_de%> </div>
    <div class="de_valor"><%=flyer[i].de%> </div>
    <div class="por_text"><%=flyer[i].text_por%></div>
 
  </div>
-  
+ <% }%>
   
   <div class="textocentro">
     <div class="textUpper">R$</div>
     <div class="textBellow"><%=newPrice %></div>
+    <% if (flyer[i].size_type) {%>
     <div class="size_type"><%=flyer[i].size_type%></div>
+    <%}%>
   </div>
   </div>
 
