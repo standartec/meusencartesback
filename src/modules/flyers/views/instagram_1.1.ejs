@@ -20,7 +20,66 @@ let imageLogoHeight = '';
       
       %>
     <style>
+
+
+div.desc2 {
+  
+  word-break: break-all;
+  text-align: left;
+  text-justify: inter-word;
+  white-space: break-spaces;
+  font-family: "Helvetica", sans-serif;
+  color: #000000; 
+  padding: 4px;
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: center;
+  width: 110px;
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-bottom: 5px;
+  color: #000000; 
+  
+  border-radius: 1px;
+  display: flex; /* Usa Flexbox */
+ align-items: center; /* Alinha os itens verticalmente ao centro */
+ justify-content: center;
+}
+
+
+.de, .de_valor, .por_text {
+   margin-right: 1px; /* Adiciona um espaço à direita de cada elemento */
+ }
+ /* Corrige o nome da classe .de_valor que estava como .de_vaor */
+ .de_valor {
+   font-weight: bold; /* Exemplo de estilo: torna o texto em negrito */
+   font-size: 20px;
+   
+ }
+ .por_text {
+   font-size: 10px;
+ }
  
+ div.desc3 {
+       font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+   font-stretch: condensed;
+       text-align: left;
+     
+       font-family: "Helvetica", sans-serif;
+      
+       text-transform: uppercase;
+       /*Aqui 2 - Tamanho texto produto*/
+       font-size: 15px;
+       font-weight: 900;
+       /* Ajuste 2: Tamanho da caixa do produto*/
+       width: 800px;
+      
+       color: <%=showTemplate.font_collor_product%>; 
+       margin-left: 140px;
+     
+         /*Espaço entre nome do produto e texto do rodapé.*/
+     padding-bottom: 80px;
+     }
 
  .footer-container {
     display: flex;
@@ -148,7 +207,10 @@ let imageLogoHeight = '';
       margin-left: 140px;
         margin-top: 8rem;
         /*Espaço entre nome do produto e texto do rodapé.*/
-    padding-bottom: 68px;
+        <% if (!flyer[i].observation) {%>
+          padding-bottom: 80px;
+          <%}%>
+    
     }
     
     
@@ -241,12 +303,11 @@ let imageLogoHeight = '';
 }
 .child1 {
 
-  /*CHANGED*/
-  /*display: flex;*/
-  
-  horizontal-align:  middle;
-  margin-left: 20px;
-  width: 100%;
+  display: inline-block;
+   align-self: flex-end;
+   horizontal-align:  middle;
+   margin-left: 20px;
+   width: 100%;
 }
 .child2 {
   /*CHANGED*/
@@ -376,6 +437,23 @@ body {
           </div>      
           <div class='child2'>
         
+            <% if (flyer[i].de) {
+    
+              var actDePrice = flyer[i].de; 
+             var newActDePrice = actDePrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
+           
+             
+             %>
+           <div class="desc2">
+            <div class="de"><%=flyer[i].text_de%> </div>
+            <div class="de_valor"><%=newActDePrice%> </div>
+            <div class="por_text"><%=flyer[i].text_por%></div>
+         
+          </div>
+          <% }%>
+           
+
+
               <div class="textocentro dot">
         <div class="textUpper">R$</div>
         <div class="textBellow"><%=newPrice %></div>
@@ -385,6 +463,9 @@ body {
        
     <div class='child1'>
       <div class="desc"><%=flyer[i].name_product%></div>
+      <% if (flyer[i].observation) {%>
+      <div class="desc3">XO SUJEIRA LIMPADOR            </div>
+      <% } %>
     </div>
             
       <% } %>       
