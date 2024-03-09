@@ -453,6 +453,9 @@ body {
               <div class="textocentro dot">
         <div class="textUpper">R$</div>
         <div class="textBellow"><%=newPrice %></div>
+        <% if (flyer[i].size_type) {%>
+          <div class="size_type"><%=flyer[i].size_type%></div>
+          <%}%>
       </div>
         
      </div>
