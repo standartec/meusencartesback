@@ -207,9 +207,7 @@ div.desc2 {
       margin-left: 140px;
         margin-top: 8rem;
         /*Espaço entre nome do produto e texto do rodapé.*/
-        <% if (!flyer[i].observation) {%>
-          padding-bottom: 80px;
-          <%}%>
+      
     
     }
     
@@ -441,7 +439,7 @@ body {
     
               var actDePrice = flyer[i].de; 
              var newActDePrice = actDePrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
-           
+           instagram_1.1.ejs
              
              %>
            <div class="desc2">
@@ -460,11 +458,17 @@ body {
       </div>
         
      </div>
-       
+       <!--
+
+  <% if (!flyer[i].observation) {%>
+          padding-bottom: 80px;
+          <%}%>
+
+       -->
     <div class='child1'>
-      <div class="desc"><%=flyer[i].name_product%></div>
+      <div class="desc" style="<% if (!flyer[i].observation) { %>padding-bottom: 80px;<% } %>"><%=flyer[i].name_product%></div>
       <% if (flyer[i].observation) {%>
-      <div class="desc3">XO SUJEIRA LIMPADOR            </div>
+      <div class="desc3">flyer[i].observation           </div>
       <% } %>
     </div>
             
