@@ -466,7 +466,7 @@ body {
 
        -->
     <div class='child1'>
-      <div class="desc" style="<% if (!flyer[i].observation) { %>padding-bottom: 80px;<% } %>"><%=flyer[i].name_product%></div>
+      <div class="desc" style="<% if (flyer[i].observation == '') { %>padding-bottom: 80px;<% } %>"><%=flyer[i].name_product%></div>
       <% if (flyer[i].observation) {%>
       <div class="desc3">flyer[i].observation           </div>
       <% } %>
