@@ -232,6 +232,15 @@ div.desc2 {
     
     }
     
+    .textBellow {
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+  font-stretch: condensed;
+      /*Aqui 2 - Tamanho preço*/
+      font-size: 30px;
+      color: <%=showTemplate.font_color%>; 
+      font-weight: 900;
+    
+    }
     
     .textocentro {
       
@@ -454,7 +463,7 @@ body {
         <div class="textUpper">R$</div>
         <div class="textBellow"><%=newPrice %></div>
         <% if (flyer[i].size_type) {%>
-          <div class="size_type"><%=flyer[i].size_type%></div>
+          <div class="textBellow"><%=flyer[i].size_type%></div>
           <%}%>
       </div>
         
