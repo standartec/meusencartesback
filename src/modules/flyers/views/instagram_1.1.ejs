@@ -34,9 +34,9 @@ div.desc2 {
   text-transform: uppercase;
   font-size: 15px;
   text-align: center;
-  width: 110px;
+  width: 200px;
   margin-left: 1px;
-  margin-right: 1px;
+  margin-right: 50px;
   margin-bottom: 5px;
   border-radius: 1px;
   display: flex; /* Usa Flexbox */
@@ -46,17 +46,17 @@ div.desc2 {
 
 
 .de, .de_valor, .por_text {
-   margin-right: 1px; /* Adiciona um espaço à direita de cada elemento */
- }
- /* Corrige o nome da classe .de_valor que estava como .de_vaor */
- .de_valor {
-   font-weight: bold; /* Exemplo de estilo: torna o texto em negrito */
-   font-size: 20px;
-   
- }
- .por_text {
-   font-size: 10px;
- }
+    margin-right: 1px; /* Adiciona um espaço à direita de cada elemento */
+  }
+  /* Corrige o nome da classe .de_valor que estava como .de_vaor */
+  .de_valor {
+    font-weight: bold; /* Exemplo de estilo: torna o texto em negrito */
+    font-size: 35px;
+    
+  }
+  .por_text {
+    font-size: 15px;
+  }
  
  div.desc3 {
        font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
@@ -458,7 +458,7 @@ body {
      </div>
 
     <div class='child1'>
-      <div class="desc" style="<% if (flyer[i].observation) { %>padding-bottom: 80px;<% } %>"><%=flyer[i].name_product%></div>
+      <div class="desc" style="<% if (!flyer[i].observation) { %>padding-bottom: 80px;<% } %>"><%=flyer[i].name_product%></div>
       <% if (flyer[i].observation) {%>
       <div class="desc3"> <%=flyer[i].observation %>           </div>
       <% } %>
