@@ -9,6 +9,9 @@
 
 <%
 
+// if (flyersData.posicao_tag_preco == 1 ||  flyer[i].observation ||  flyer[i].de) 
+
+
 let address_footer = addressServer + showTemplate.footer_image;
 let address_header = addressServer + showTemplate.header_image;
 
@@ -431,8 +434,6 @@ body {
    text-justify: inter-word;
    white-space: break-spaces;
    font-family: "Helvetica", sans-serif;
-   color: #000000; 
-   color: <%=textProductCollor%>; 
   font-size: <%=product_font_size%>px;
    padding: 4px;
    text-transform: uppercase;
@@ -441,12 +442,10 @@ body {
    margin-left: 1px;
    margin-right: 1px;
    margin-bottom: 5px;
-
-   background-color: #559bf7; 
-   color: #000000; 
+   background-color: <%=showTemplate.main_color%>; 
+   color: <%=showTemplate.font_color%>; 
    padding-left: 35px;
-   border-radius: 1px;
-
+   border-radius: 10px;
 
 
  }
