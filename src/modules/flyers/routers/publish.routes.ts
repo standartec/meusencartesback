@@ -10,6 +10,7 @@ const publishRouter = Router();
 
 publishRouter.get('/generateQrcode/:idUser/:idFlyer/:idProductPublish', publishController.generateQrcode);
 publishRouter.get('/generateHtmlTest/:idUser/:idFlyer/:idProductPublish/:imageQuality/:templateNumber', publishController.generateHtmlTest);
+publishRouter.get('/generateHtml/:idUser/:idFlyer/:idProductPublish/:imageQuality/:typeReturn', publishController.generateImageV1);
 
 publishRouter.get('/:idUser/:idFlyer/:idProductPublish/:imageQuality', publishController.generateImage);
 

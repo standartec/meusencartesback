@@ -247,6 +247,202 @@ export default class PublishControllers {
 
 
 
+    public async generateImageV1(request: Request, response: Response): Promise<Response> {
+        
+        const listProductFlyerService = new ListProductFlyerService();
+        
+        const {idUser, idFlyer, idProductPublish,imageQuality,typeReturn} = request.params;
+        console.log("Params" + request.params.idUser)
+       
+
+        const showtTemplateService = new ShowtTemplateService();
+
+        var flyers;
+
+         //Pegar os dados do flye para todos 
+         const getFlyer = await listProductFlyerService.getDataFlyer({idUser, idFlyer, idProductPublish,imageQuality});
+         var flyersData = JSON.parse(JSON.stringify(getFlyer));
+
+         console.log('template data fluerdata =='+flyersData);
+
+         console.log('template data HERE'+flyersData.id_template1);
+
+        const templateData = await showtTemplateService.execute(flyersData.id_template1);
+       
+        console.log('template data HERE');
+
+        console.log(templateData);
+       
+       
+        console.log('HERE HERE');
+
+       // console.log(flyersData);
+
+        if (templateData.type_template != 3 ) {
+         const findProductFlyer = await listProductFlyerService.execute({idUser, idFlyer, idProductPublish,imageQuality});
+   
+         flyers = JSON.parse(JSON.stringify(findProductFlyer));
+        }
+
+        console.log(templateData.type_template == 3);
+
+        const showTemplate = JSON.parse(JSON.stringify(templateData));
+
+        const showUserDetail = new ShowUserDetailService();
+
+        const userData = await showUserDetail.execute({idUser});
+
+        console.log(userData);
+        // I'll need to study more the best way to SSR because the First Way worked, but Second Way too
+        let fileHTML = '';
+        // Frirst Way
+        let fileLoad = '';
+    
+        console.log("type template ????");
+
+
+
+        if (templateData.type_template == 1) {
+
+        ejs.renderFile(TEMPLATES_EJS+templateData.template_name, {flyer: flyers, showTemplate: showTemplate, userData: userData, flyersData: flyersData, addressServer: ADDRESS_TEMPLATES}, 
+
+        {}, function (err, template) {
+        if (err) {
+            console.error('Erro ao renderizar o EJS:', err.message, err.stack);
+
+            throw err;
+        } else {
+            fileHTML = template;
+
+        }
+    });
+} else if (templateData.type_template == 2) {
+
+
+    ejs.renderFile(TEMPLATES_EJS+templateData.template_name, {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData, addressServer: ADDRESS_TEMPLATES}, 
+
+    {}, function (err, template) {
+    if (err) {
+        console.error('Erro ao renderizar o EJS:', err.message, err.stack);
+
+        throw err;
+    } else {
+        fileHTML = template;
+
+    }
+});
+
+
+} else if (templateData.type_template == 3) {
+    console.log("type template 3");
+    flyers = null;
+    ejs.renderFile(TEMPLATES_EJS+templateData.template_name, {flyer: flyers, showTemplate: showTemplate, userData: userData,flyersData: flyersData, addressServer: ADDRESS_TEMPLATES}, 
+
+    {}, function (err, template) {
+    if (err) {
+        console.error('Erro ao renderizar o EJS:', err.message, err.stack);
+       
+        throw err;
+    } else {
+        fileHTML = template;
+    }
+});
+
+
+}
+
+       console.log(fileHTML);
+
+        const targetDirectory = DIR_SAVE_IMAGES;  // Change this to where you want to save images.
+        const filename = idUser + '_'  + idFlyer +  '_' + idProductPublish + '_' + `${Date.now()}.png`; // Generates a unique name for each image. 
+        const filePath = path.join(targetDirectory, filename);
+        
+        response.send(fileHTML);
+        
+        if (typeReturn == '1') {
+       if (imageQuality == 0) {
+        
+
+        console.time('htmlToImageLow');
+
+        let imageBuffer = await htmlToImageLow(fileHTML);
+        
+        console.timeEnd('htmlToImageLow');
+
+        console.time('writeFile');
+
+        await fs.promises.writeFile(filePath, imageBuffer);
+        console.timeEnd('writeFile');
+
+
+       } else {
+
+        
+        console.time('htmlToImageLow');
+        const startHtmlToImage = process.hrtime();
+
+        let htmlToImageInit = new Date();
+
+        let imageBuffer = await htmlToImage(fileHTML);
+        
+        const diffHtmlToImage = process.hrtime(startHtmlToImage);
+        
+
+        console.timeEnd('htmlToImageLow');
+
+        console.time('writeFile');
+
+        const startHtmlWriteImage = process.hrtime();
+
+        await fs.promises.writeFile(filePath, imageBuffer);
+
+        const diffWriteHtmlToImage = process.hrtime(startHtmlWriteImage);
+
+
+        await PublishControllers.saveFile (diffWriteHtmlToImage, diffHtmlToImage,htmlToImageInit, request.params.idUser, request.params.idFlyer);
+        
+    
+
+       }
+
+      
+      
+
+       
+
+
+       //IF TYPE_TEMPLATE == 1 - SALVAR TABELA PUBLISH - INSTAGRAM
+       if (templateData.type_template == 2 || templateData.type_template == 3) {
+        
+         await listProductFlyerService.updatePictureNameFlyer(idFlyer, filename, IMAGE_ADDRESS);
+         await listProductFlyerService.updatePictureNameProductPublish(idProductPublish, filename, IMAGE_ADDRESS);
+
+       } else if (templateData.type_template == 1) { //ENCARTE
+
+        await listProductFlyerService.updatePictureNameFlyer(idFlyer, filename,IMAGE_ADDRESS);
+
+       }
+
+       const returnImage = IMAGE_ADDRESS + filename;
+       //IF TYPE_TEMPLATE == 2 - SAVAR TABELA PRODUCT PUBLISH
+
+       // Choose quality based on imageQuality parameter
+       //let imageBuffer = imageQuality == 0 ? await htmlToImageLow(fileHTML) : await htmlToImage(fileHTML);
+
+       // Save the image buffer to disk
+       
+       // Return only the filename to the client
+       return response.json({ filename: returnImage });
+        
+
+    }
+
+    }
+
+
+
+
+
     public async generateQrcode(request: Request, response: Response): Promise<Response> {
         
         const listProductFlyerService = new ListProductFlyerService();

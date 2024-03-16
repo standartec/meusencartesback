@@ -22,6 +22,14 @@ let imageLogoHeight = '';
     <style>
 
 
+.grid-container {
+  display: grid;
+  
+  /* CHANGE 3*/
+  grid-template-columns: 2;
+  padding: 0px;
+}
+
 div.desc2 {
   
   word-break: break-all;
@@ -80,7 +88,7 @@ div.desc2 {
      }
 
  .footer-container {
-    display: list-item;
+    display: flex;
     justify-content: space-between; /* Isso distribui o espaço igualmente entre os itens */
     align-items: center; /* Isso alinha os itens verticalmente no centro */
     width: 95%; /* Ocupa a largura total */
@@ -128,10 +136,9 @@ div.desc2 {
           position: relative;
     height: 1000px;
     width: 1000px;
-    display: flex;           
-    flex-direction: column;  
-    justify-content: flex-end; 
+        
     
+  
       
         }
         
@@ -260,7 +267,6 @@ div.desc2 {
       margin-bottom: 10px;
       
     }
-
     .container2 {
       text-transform: capitalize;
       font-family: "Helvetica", sans-serif;
@@ -412,66 +418,89 @@ body {
             
             </div>
         
-        
-            <% for (var i=0; i< flyer.length; i++) { %>
-        
 
-  <div class='parent'>
-    <div class='child'>
-   
-
-  
-
-    <div class="gallery">
-             <% var image_address = flyer[i].image_address + flyer[i].image_link;  
-             console.log("Image>> "+image_address);
-
-             %>
-              <img src="<%=image_address %>"  alt="Snow" width="100" height="130"/>
-        <% var actPrice = flyer[i].price; 
-        var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
-        %>
-        
-      </div>
-          </div>      
-          <div class='child2'>
-        
-            <% if (flyer[i].de) {
-    
-              var actDePrice = flyer[i].de; 
-             var newActDePrice = actDePrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
-          
-             
-             %>
-           <div class="desc2">
-            <div class="de"><%=flyer[i].text_de%> </div>
-            <div class="de_valor"><%=newActDePrice%> </div>
-            <div class="por_text"><%=flyer[i].text_por%></div>
-         
-          </div>
-          <% }%>
-           
-
-
-              <div class="textocentro dot">
-        <div class="textUpper">R$</div>
-        <div class="textBellow"><%=newPrice %></div>
-        <% if (flyer[i].size_type) {%>
-          <div class="textBellow"><%=flyer[i].size_type%></div>
-          <%}%>
-      </div>
-        
-     </div>
-
-    <div class='child1'>
-      <div class="desc" style="<% if (!flyer[i].observation) { %>padding-bottom: 80px;<% } %>"><%=flyer[i].name_product%></div>
-      <% if (flyer[i].observation) {%>
-      <div class="desc3"> <%=flyer[i].observation %>           </div>
-      <% } %>
-    </div>
             
-      <% } %>       
-    </div>
+
+              <div class="grid-container">
+              
+              <% for (var i=0; i< flyer.length; i++) { 
+                var image_address = flyer[i].image_address + flyer[i].image_link;  
+              
+                console.log("Image>>> " + image_address);
+                %>
+                 
+                
+              
+                <% 
+                
+                if (flyersData.posicao_tag_preco == 1) {  %>
+                <div class="gallery">
+                    <div class="container_picture">
+                      <img src= "<%=image_address %>"  alt="Snow" width="100" height="130"/>
+                      <% var actPrice = flyer[i].price; 
+                      var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
+                      %>
+                    <div class="textocentro">
+                      <div class="textUpper">R$</div>
+                      <div class="textBellow"><%=newPrice %></div>
+                    </div>
+              </div>
+                  <div class="desc"><%=flyer[i].name_product%></div>
+                  </div>
+              <% } else {%>
+              
+              
+                <div class="gallery">
+                  <div class="container_picture">
+                    <img src= "<%=image_address %>"  alt="Snow" width="100" height="130"/>
+                    <% var actPrice = flyer[i].price; 
+                    var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
+                    %>
+                 
+              </div>
+                <div class="desc"><%=flyer[i].name_product%></div>
+                <% if (flyer[i].observation) {%>
+                <div class="desc1"> <%=flyer[i].observation%>  </div>
+                <% } %>
+                <% if (flyer[i].de) {
+                  
+                   var actDePrice = flyer[i].de; 
+                  var newActDePrice = actDePrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
+                
+                  
+                  %>
+                <div class="desc2">
+                 <div class="de"><%=flyer[i].text_de%> </div>
+                 <div class="de_valor"><%=newActDePrice%> </div>
+                 <div class="por_text"><%=flyer[i].text_por%></div>
+              
+               </div>
+               <% }%>
+                
+                <div class="textocentro">
+                  <div class="textUpper">R$</div>
+                  <div class="textBellow"><%=newPrice %></div>
+                  <% if (flyer[i].size_type) {%>
+                  <div class="size_type"><%=flyer[i].size_type%></div>
+                  <%}%>
+                </div>
+                </div>
+              
+                <% }%>
+              
+              
+              
+                  
+                  <% } %>
+              
+              </div>
+              </div>
+              
+
+
+        
+               
+
         
         
         
