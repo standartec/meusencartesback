@@ -136,9 +136,10 @@ div.desc2 {
           position: relative;
     height: 1000px;
     width: 1000px;
-        
+    display: flex;           
+    flex-direction: column;  
+    justify-content: flex-end; 
     
-  
       
         }
         
@@ -577,7 +578,7 @@ if (flyer[0].footer_text2) {
              
             <div class='container2'>
             
-            <div class="right">           
+                  
            
               <%           if (flyer[0].footer_text3) { %>
             <div> <h5 class="retangulo"> <%=flyer[0].footer_text3%></h5> </div>
