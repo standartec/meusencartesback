@@ -1,0 +1,658 @@
+<%
+/*TAMANHO_TAG*/
+/* FOOTER_PRODUCT - DISTANCIA DA GRID DE PRODUTO DO CABECALHO*/
+/*TAMANHO PRODUTOS*/
+// if (flyersData.posicao_tag_preco == 1 ||  flyer[i].observation ||  flyer[i].de) 
+
+
+let address_footer = addressServer + showTemplate.footer_image;
+let address_header = addressServer + showTemplate.complete_image;
+
+
+
+//let address = 'http://localhost:8888/fivecart3';
+
+
+let imageLogoWidth = '';
+let imageLogoHeight = '';
+
+     imageLogoWidth = 150;
+     imageLogoHeight = 150;
+       if (flyersData.logo_heigh) {
+          imageLogoWidth = flyersData.logo_heigh;
+        } 
+        if (flyersData.logo_width) {
+          imageLogoHeight = flyersData.logo_width;
+          } 
+
+
+let widthFlyer = 1080;
+let column_amount = 'auto auto auto';
+
+
+/*Show image backgroud*/
+let background_image = '';
+let textProductCollor = '';
+console.log(showTemplate);
+if (flyer[0].show_background == 1) {
+  background_image = addressServer + showTemplate.background_image;
+  textProductCollor = showTemplate.product_collor_with_background;
+} else {
+  textProductCollor = showTemplate.font_collor_product;
+}
+
+product_font_size = 9;
+if (flyersData.product_font_size) {
+  product_font_size = flyersData.product_font_size;
+}
+
+
+
+var header2 = "";
+
+if (flyer[0].header2) {
+  header2 = flyer[0].header2;
+}else if (userData.header2) {
+ 
+  header2 = userData.header2;
+}
+
+var footer_text3 = "";
+
+console.log("FOOTER TEXT3 USER DATA" + userData.footer_text3)
+  footer_text3 = userData.footer_text3;
+
+if (flyer[0].footer_text3) {
+  console.log("FOOTER TEXT3 FLYER DATA" + flyer[0].footer_text3)
+
+  footer_text3 = flyer[0].footer_text3;
+}else if (userData.footer_text3) {
+  console.log("ENTROUFOOTER TEXT3 USER DATA" + userData.footer_text3)
+  footer_text3 = userData.footer_text3;
+}
+
+
+
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Produtos</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   width: 1080px;
+   height: 1260px;
+  }
+  .container {
+
+    /* FOOTER_PRODUCT*/
+    margin-top: 280px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .product {
+    box-sizing: border-box;
+    margin: 10px;
+    flex: 0 1 calc(33.333% - 20px);
+
+    /*box-shadow coloca um contorno ao redor da imagem, pode ser útil depois*/
+   /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */
+    border-radius: 5px;
+    overflow: hidden;
+
+    /*Cor de fundo do produto*/
+   /* background: #fff;*/
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .image-container {
+    /*TAMANHO PRODUTOS*/
+    max-width: 250px;
+    max-height: 250px;
+    width: 100%;
+    height: 100%; /* Fixed height for all images */
+
+    /* Esse background pode ser útil no futuro */
+   /* background-color: #eaeaea; */ /* A background color for when the images don't fill the area */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .product img {
+  /* Máximo de altura que a imagem pode ter */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .description {
+    padding: 10px;
+    text-align: center;
+    color: <%=showTemplate.font_collor_product%>; 
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .price {
+    
+    color: <%=showTemplate.font_color%>; 
+    font-weight: bold;
+    padding: 10px;
+    background: #f4f4f4;
+    width: 100%;
+    text-align: center;
+    font-size: 60px;
+  }
+
+  .textBellow {
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+  font-stretch: condensed;
+      /*Aqui 2 - Tamanho preço*/
+      font-size: 50px;
+      color: <%=showTemplate.font_color%>; 
+      font-weight: 900;
+    
+    }
+
+.dot {
+  /*TAMANHO_TAG*/
+  height: 60px;
+  width: 170px;
+  background-color: <%=showTemplate.main_color%>;  
+  
+  /*border-radius: 50%; */ /*Arredondado*/
+    border-radius: 20%;  /*Arredondado*/
+
+  /*CHANGED*/
+  display: grid;
+  
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  
+}
+  .textocentro {
+      
+      font-family: "Helvetica", sans-serif;
+      
+      /*CHANGED*/
+      position: relative;
+     
+      font-weight: 900;
+      /*CHANGED*/
+      /*display: flex;*/
+        /*Aqui 2 - Texto- Alinhamento número*/
+   
+      color: <%=showTemplate.font_color%>; 
+      padding-top: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      padding-bottom: 5px;
+    }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 800px) {
+    .product {
+      flex: 0 1 calc(50% - 20px);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .product {
+      flex: 0 1 100%;
+    }
+  }
+/*
+  .container-geral {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 1080px; 
+      height: 1080px; 
+      background-image: url(<%= address_header %>);
+      background-size: cover;
+      background-position: center;
+      margin: auto;
+    }
+
+    */
+
+    .container-geral {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Isso garante que o conteúdo seja distribuído desde o topo até o rodapé do contêiner */
+    align-items: center;
+    position: relative;
+    width: 1080px;
+    height: 1260px;
+    background-image: url(<%= address_header %>);
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+    overflow: hidden; /* Garante que nada saia dos limites do contêiner */
+  }
+
+/* MIHAS ALTERAÇÕES*/
+
+.logo {
+  position: absolute;
+    top: 20px; /* Ajusta a posição superior da logo */
+    right: 20px; /* Posiciona a logo na lateral direita */
+    width: <%=imageLogoWidth%>px; /* Usa a variável para a largura */
+    height: <%=imageLogoHeight%>px; /* Usa a variável para a altura */
+}
+
+
+h5 {
+      text-transform: capitalize;
+      font-family: "Helvetica", sans-serif;
+      font-size: 22px;
+      margin: 0;
+      width: 400px;
+      color: <%=showTemplate.collor_form_font_bottom%>; 
+      text-transform: capitalize;
+    }
+
+    .container_text_button_1, .container_text_footer3 {
+    flex: 3; /* Isso permite que cada contêiner ocupe metade do espaço disponível */
+    margin: 10px; /* Adiciona um pouco de espaço ao redor para não colarem um no outro ou nas bordas */
+    
+  }
+
+ 
+
+
+
+
+
+
+
+.additional-container {
+  width: 200px; /* Defina a largura do novo container */
+  /* Adicione estilos adicionais aqui, se necessário */
+}
+
+
+    .rodape {
+  max-width: 250px; /* Ajuste a largura máxima conforme necessário */
+  word-wrap: break-word;
+  text-transform: uppercase;
+
+}
+.rodape1 {
+  max-width: 150px; /* Ajuste a largura máxima conforme necessário */
+  word-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.rodape-container {
+ 
+  float: left;
+  padding-top: 5px;
+  text-transform: capitalize;
+  text-transform: uppercase;
+
+}
+
+
+.container2 {
+      text-transform: capitalize;
+      font-family: "Helvetica", sans-serif;
+      font-size: 15px;
+      color: #000000;
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 2px;
+      left: 43px;
+      height: auto;
+      padding: 0%;
+      float: left;
+    }
+h4 {
+  margin: 0;
+  font-size: 12px;
+  width: 450px;
+  color: <%=showTemplate.font_collor_bottom%>; 
+  text-transform: capitalize;
+  text-transform: uppercase;
+
+}
+
+.footer_text {
+  font-size: 25px;
+  position: absolute;
+  bottom: 10;
+  left: 10px;
+  color: <%=showTemplate.font_color%>; 
+  text: bold;
+  padding-left: 20px;
+  padding-right: 20px;
+  align: left;
+}
+.iconDetails {
+  margin-left: 2%;
+  float: left;
+  height: 20px;
+  width: 20px;
+}
+
+.footer-container {
+    display: flex; /* Mudei de flex para contents para descer o footer_text3. Não identifiquei porque foi necessário*/
+    justify-content: space-between; /* Isso distribui o espaço igualmente entre os itens */
+    align-items: center; /* Isso alinha os itens verticalmente no centro */
+    width: 95%; /* Ocupa a largura total */
+    
+  }
+
+  .footer-container {
+  margin: 10px !important;
+}
+
+ 
+.container_text_footer3 {
+      
+       position: relative;
+    
+       margin-bottom: 10px;
+       
+     }
+
+
+.retangulo {
+  background-color: <%=showTemplate.collor_form_bottom%>;  
+  border-radius: 6%;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  width: 100%;
+ 
+}
+
+.formatar {
+
+margin-bottom: 10px;
+
+}
+
+
+
+div.desc2 {
+ 
+   word-break: break-all;
+   text-align: left;
+   text-justify: inter-word;
+   white-space: break-spaces;
+   font-family: "Helvetica", sans-serif;
+   color: <%=showTemplate.font_collor_product%>; 
+
+   padding: 4px;
+   text-transform: uppercase;
+   font-size: 9px;
+   text-align: center;
+   
+   margin-left: 1px;
+   margin-right: 1px;
+   margin-bottom: 5px;
+
+
+ 
+   padding-left: 35px;
+   border-radius: 1px;
+
+   display: flex; /* Usa Flexbox */
+  align-items: center; /* Alinha os itens verticalmente ao centro */
+  justify-content: center;
+
+
+ }
+
+ .de, .de_valor, .por_text {
+    font-weight: bold;
+    margin-right: 2px; /* Adiciona um espaço à direita de cada elemento */
+  }
+
+
+  .de {
+ font-size: 25px;
+}
+
+  .de_valor {
+ font-size: 25px;
+}
+
+.por_text {
+ font-size: 15px;
+}
+
+
+div.desc3 {
+       font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+   font-stretch: condensed;
+       text-align: left;
+     
+       font-family: "Helvetica", sans-serif;
+      
+       text-transform: uppercase;
+       /*Aqui 2 - Tamanho texto produto*/
+       font-size: 15px;
+       font-weight: 900px;
+       /* Ajuste 2: Tamanho da caixa do produto*/
+       width: 800px;
+      
+       color: <%=showTemplate.font_collor_product%>; 
+     
+    
+     }
+
+     .additional-footer-container {
+    text-transform: capitalize;
+    font-family: "Helvetica", sans-serif;
+    font-size: 22px;
+    color: <%=showTemplate.collor_form_font_bottom%>; 
+    background-color: <%=showTemplate.collor_form_bottom%>;  
+    border-radius: 6%;
+    width: 300px; /* Ocupa a largura total */
+    height: 80px; /* Altura fixa de 40px */
+    display: block; /* Garante que ele avance para a próxima linha */
+    padding: 10px; /* Espaçamento interno para o texto, ajuste conforme necessário */
+    box-sizing: border-box; /* Garante que o padding não aumente o tamanho do container além de 40px */
+}
+
+
+
+
+
+
+    .container_text_button_1, .container_text_footer3 {
+    flex: 3; /* Isso permite que cada contêiner ocupe metade do espaço disponível */
+    margin: 10px; /* Adiciona um pouco de espaço ao redor para não colarem um no outro ou nas bordas */
+    
+  }
+
+  .grouped-footer-content {
+    display: flex;
+
+}
+
+
+</style>
+</head>
+<body>
+
+  <div class="container-geral">
+    <img src="<%= flyersData.logo_publish %>" alt="Logo" class="logo">
+
+  <div class="container">
+   
+    <% for (var i=0; i< flyer.length; i++) { 
+      var image_address = flyer[i].image_address + flyer[i].image_link;  
+    
+      console.log("Image>>> " + image_address);
+      var actPrice = flyer[i].price; 
+          var newPrice = actPrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
+          
+          var partes1 = newPrice.split(',');
+          var inteiros1 = partes1[0]; // Parte inteira
+          var centavos1 = partes1[1]; // Parte dos centavos
+
+      %>
+
+      <div class="product">
+        <div class="image-container">
+          <img src="<%=image_address %>" alt="<%=flyer[i].name_product%>">
+        </div>
+        <div class="description"><%=flyer[i].name_product%></div>
+        <% if (flyer[i].de) {
+    
+          var actDePrice = flyer[i].de; 
+         var newActDePrice = actDePrice.toLocaleString('pt-br', {minimumFractionDigits: 2});
+       
+        var partes = newActDePrice.split(',');
+        var inteiros = partes[0]; // Parte inteira
+        var centavos = partes[1]; // Parte dos centavos
+
+         
+         %>
+       <div class="desc2">
+        <div class="de"><%=flyer[i].text_de%> </div>
+        <div class="de_valor"><span style="font-size: 0.75em;">R$</span><%=inteiros%><span style="font-size: 0.75em;">,<%=centavos%></span> </div>
+        <div class="por_text">&nbsp;<%=flyer[i].text_por%></div>
+     
+      </div>
+      <% }%>
+
+
+      <div class="textocentro dot">
+        
+        <div class="textBellow"><span style="font-size: 0.75em;">R$</span><%=inteiros1%><span style="font-size: 0.75em;">,<%=centavos1%></span>
+
+          <% if (flyer[i].size_type) {%>
+           <sup style="font-size: 0.35em;"> <%=flyer[i].size_type%>
+            </sup>
+            <%}%>
+        </div>
+       
+      </div>
+
+
+  <% if (flyer[i].observation) {%>
+  <div class="desc1"> <%=flyer[i].observation%>  </div>
+  <% } %>
+  
+      </div>
+    <% }; %>
+  </div>
+
+
+
+ 
+    
+  <div class="footer-container">
+   
+
+    <div class="container_text_button_1">
+  
+    <% 
+    
+    if (showTemplate.has_footer_text == 0) {
+    //Must observate it, becouse sometimes the template will be complete.
+      %>
+    <div class='container2'>
+    
+    <div class="right">
+  <%
+  let footer_text = "";
+  let footer_text2 = "";
+
+  
+if (flyer[0].footer_text) {
+footer_text = flyer[0].footer_text;
+}else if (userData.footer_text) {
+
+footer_text = userData.footer_text;
+} else if (showTemplate.footer_text2) {
+
+footer_text = showTemplate.footer_text;
+
+}
+
+
+
+if (flyer[0].footer_text2) {
+footer_text2 = flyer[0].footer_text2;
+console.log("ENTROU 1 >>>> >>>> ");
+
+}else if (userData.footer_text2) {
+console.log("ENTROU 2 >>>> >>>> ");
+
+footer_text2 = userData.footer_text2;
+} else if (showTemplate.footer_text2) {
+console.log("ENTROU 3");
+footer_text2 = showTemplate.footer_text2;
+
+}
+
+
+
+
+
+
+
+  %>
+  <%           if (footer_text) { %>
+   <h5 class="retangulo formatar"> <%=footer_text %> </h5> 
+   <%}%>
+
+
+  
+
+
+
+   <%           if (footer_text2) { %>
+
+    <div> <h5 class="retangulo formatar"> <%=footer_text2 %> </h5> </div>
+    <%}%>
+
+    <%           if (flyer[0].footer_text3) { %>
+
+      <div> 
+        <h5 class="retangulo formatar">
+        <!-- Adicione seu novo conteúdo aqui -->
+        <%=flyer[0].footer_text3%>
+      </h5>
+      </div>
+  
+  
+      <%           } %>
+  
+
+
+    </div>
+  </div>
+  <% } %>
+  </div>
+</div>
+
+  
+  
+
+
+
+
+
+  
+</div>
+</body>
+</html>

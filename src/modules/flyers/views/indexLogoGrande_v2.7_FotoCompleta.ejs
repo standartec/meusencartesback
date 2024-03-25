@@ -33,17 +33,17 @@ let imageLogoHeight = '';
           } 
 
 
-let widthFlyer = 490;
+let widthFlyer = 1080;
 let column_amount = 'auto auto auto';
 if (flyer[0].column_amount == 4) {
   column_amount = 'auto auto auto auto';
-  widthFlyer = 650
+  widthFlyer = 1080
 } else if (flyer[0].column_amount == 5) {
   column_amount = 'auto auto auto auto auto';
-  widthFlyer = 812
+  widthFlyer = 1080
 } else if (flyer[0].column_amount == 6) {
   column_amount = 'auto auto auto auto auto auto';
-  widthFlyer = 974
+  widthFlyer = 1080
 }
 
 /*Show image backgroud*/
@@ -127,7 +127,7 @@ if (flyersData.product_font_size) {
 .grid-container {
   display: grid;
   position: absolute;
-  top: 250px;
+  top: 600px;
   width: 100%;
   z-index: 2;
   /* CHANGE 3*/
@@ -138,7 +138,7 @@ div.gallery {
   margin: 5px;
   border: 0px solid #ccc;
   float: left;
-  width: 150px;
+  width: 180px;
   margin-bottom: -1;
   display: inline-block;
   align-self: flex-end;
@@ -163,8 +163,8 @@ div.gallery img {
   margin-left: -70px;
   align: center;
       object-fit: scale-down;
-      width:  150px;
-      height: 150px;
+      width:  250px;
+      height: 250px;
       object-position: bottom;
       
 }
@@ -395,7 +395,7 @@ h4 {
 
 body {
     width: <%=widthFlyer%>px;
-    
+    height: 1350px;
     /* CHANGE 2 */
    
     background-color: #FFFFFF; 
