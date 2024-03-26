@@ -100,4 +100,22 @@ export default class Template {
     @Column()
     font_collor_header: string;
 
+    @Column()
+    min_product: number;
+
+    @Column()
+    max_product: number;
+
+    @Column()
+    footer_products: number;
+
+    @Column()
+    size_products: number;
+
+    @Column()
+    width_image_bg: number;
+
+    @Column()
+    heigth_image_bg: number;
+
 }
