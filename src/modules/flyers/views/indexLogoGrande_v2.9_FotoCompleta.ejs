@@ -5,7 +5,7 @@
 // if (flyersData.posicao_tag_preco == 1 ||  flyer[i].observation ||  flyer[i].de) 
 
 
-let address_header = addressServer + showTemplate.middle_image;
+let address_header = addressServer + showTemplate.complete_image;
 
 
 
@@ -70,20 +70,7 @@ if (flyer[0].footer_text3) {
   footer_text3 = userData.footer_text3;
 }
 
-var feed = 1;
 
-if (feed == 1 ) {
-  var width1 = 1080;
-var heigth1 = 1350;
-
-}
-
-if (feed == 2 ) {
-
-var width1 = 1080;
-var heigth1 = 1920;
-
-}
 
 %>
 <!DOCTYPE html>
@@ -100,8 +87,8 @@ var heigth1 = 1920;
     font-family: Arial, sans-serif;
     margin-top: 0px;
     padding: 0;
-   width: <%=width1%>px;
-   height: <%=heigth1%>px;
+   width: 1080px;
+   height: 1350px;
   }
   .container {
 
@@ -177,7 +164,7 @@ var heigth1 = 1920;
       font-size: 50px;
       color: <%=showTemplate.font_color%>; 
       font-weight: 900;
-      
+    
     }
 
 .dot {
@@ -236,8 +223,8 @@ var heigth1 = 1920;
     justify-content: center; /* Isso garante que o conteúdo seja distribuído desde o topo até o rodapé do contêiner */
     align-items: center;
     position: relative;
-    width: <%=width1%>px;
-    height: <%=heigth1%>px;
+    width: 1080px;
+    height: 1350px;
     background-image: url(<%= address_header %>);
     background-size: cover;
     background-position: top;
@@ -263,6 +250,7 @@ h5 {
       margin: 0;
       width: 400px;
       color: <%=showTemplate.collor_form_font_bottom%>; 
+      text-transform: capitalize;
     }
 
     .container_text_button_1, .container_text_footer3 {
@@ -378,7 +366,19 @@ h4 {
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 5px;
-  width: 550px;
+  width: 100%;
+ 
+}
+
+
+.retangulo1 {
+  background-color: <%=showTemplate.collor_form_bottom%>;  
+  border-radius: 6%;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  width: 200px%;
  
 }
 
@@ -490,46 +490,12 @@ div.desc3 {
 
 
 .footer-container4 {
-  margin-right: 100px;
+  margin-left: 700px;
     display: flex; 
   justify-content: flex-end; 
   align-items: center; 
-  width: 100%; 
+  width: 550px; 
   
-}
-
-
-.text_button_right1 {
-  position: absolute;
-  text-transform: capitalize;
-      font-family: "Helvetica", sans-serif;
-      font-size: 22px;
-  margin-top: -550px;
-  text-transform: uppercase;
-  padding-left: 58%;
-  color: <%=showTemplate.font_collor_header%>; 
-
-
-  text: bold;
-  width: 250px;
-  
-  
-  padding-right: 10px;
-  align: right;
-}
-
-.text_button_right {
-  text-transform: capitalize;
-      font-family: "Helvetica", sans-serif;
-      font-size: 22px;
-
-  position: absolute;
-  bottom: 40px;
-  padding-left: 58%;
-  color: <%=showTemplate.collor_form_font_bottom%>;
-  width: 250px;
-  padding-right: 10px;
-  align: right;
 }
 
 </style>
@@ -538,18 +504,6 @@ div.desc3 {
 
   <div class="container-geral">
     <img src="<%= flyersData.logo_publish %>" alt="Logo" class="logo">
-    <div class="text_button_right1"><% if (header2 != '') { %> <p> <%=header2  %> </p> <% } %></div>
-
-
-    <%           if (flyer[0].footer_text3) { %>
-
-      <div class="text_button_right"> 
-      <!-- Adicione seu novo conteúdo aqui -->
-        <%=flyer[0].footer_text3%>
-      </div>
-  
-  
-      <%           } %>
 
   <div class="container">
    
@@ -570,11 +524,7 @@ div.desc3 {
         <div class="image-container">
           <img src="<%=image_address %>" alt="<%=flyer[i].name_product%>">
         </div>
-       
         <div class="description"><%=flyer[i].name_product%></div>
-        <% if (flyer[i].observation) {%>
-          <div class="desc1"> <%=flyer[i].observation%>  </div>
-          <% } %>
         <% if (flyer[i].de) {
     
           var actDePrice = flyer[i].de; 
@@ -607,6 +557,10 @@ div.desc3 {
        
       </div>
 
+
+  <% if (flyer[i].observation) {%>
+  <div class="desc1"> <%=flyer[i].observation%>  </div>
+  <% } %>
   
       </div>
     <% }; %>
@@ -672,38 +626,50 @@ footer_text2 = showTemplate.footer_text2;
    <h5 class="retangulo formatar"> <%=footer_text %> </h5> 
    <%}%>
 
+   <div class="footer-container4">
+   
 
-  
 
-
-
-   <%           if (footer_text2) { %>
-
-    <div> <h5 class="retangulo formatar"> <%=footer_text2 %> </h5> </div>
-    <%}%>
-<!--
     <%           if (flyer[0].footer_text3) { %>
-
+  
       <div> 
         <h5 class="retangulo formatar">
-         
+        <!-- Adicione seu novo conteúdo aqui -->
         <%=flyer[0].footer_text3%>
       </h5>
       </div>
   
   
       <%           } %>
-   -->
+  
+  
+  
+  
+  </div>
+  
+
+
+
+   <%           if (footer_text2) { %>
+
+    <div> <h5 class="retangulo1 formatar"> <%=footer_text2 %> </h5> </div>
+    <%}%>
+
+  
 
 
     </div>
+   
   </div>
+  
   <% } %>
   </div>
 </div>
 
   
-  
+    
+
+
   
 
 
