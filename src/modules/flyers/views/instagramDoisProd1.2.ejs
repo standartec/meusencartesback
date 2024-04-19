@@ -79,6 +79,18 @@ if (flyer[0].footer_text3) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Produtos</title>
 <style>
+
+
+
+.info-container {
+  display: flex;
+  flex-direction: column; /* Organiza .desc2 e .textocentro dot verticalmente */
+  align-items: center; /* Centraliza horizontalmente se necessário */
+  justify-content: center; /* Centraliza verticalmente os itens dentro */
+  padding: 0 15px; /* Espaço interno para não colar nas bordas */
+  margin-bottom: 50px;
+}
+
   body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -89,13 +101,13 @@ if (flyer[0].footer_text3) {
     margin-top: 250px;
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
     justify-content: space-around;
   }
   .product {
     box-sizing: border-box;
     margin: 10px;
-    flex: 0 1 calc(33.333% - 20px);
+    
 
     /*box-shadow coloca um contorno ao redor da imagem, pode ser útil depois*/
    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); */
@@ -110,8 +122,8 @@ if (flyer[0].footer_text3) {
     align-items: center;
   }
   .image-container {
-    max-width: 400px;
-    max-height: 400px;
+    max-width: 600px;
+    max-height: 600px;
     width: 100%;
     height: 100%; /* Fixed height for all images */
 
@@ -161,7 +173,7 @@ if (flyer[0].footer_text3) {
   background-color: <%=showTemplate.main_color%>;  
   
   /*border-radius: 50%; */ /*Arredondado*/
-    border-radius: 20%;  /*Arredondado*/
+    border-radius: 50%;  /*Arredondado*/
 
   /*CHANGED*/
   display: grid;
@@ -507,6 +519,17 @@ div.desc3 {
           <img src="<%=image_address %>" alt="<%=flyer[i].name_product%>">
         </div>
         <div class="description"><%=flyer[i].name_product%></div>
+       
+
+
+  <% if (flyer[i].observation) {%>
+  <div class="desc1"> <%=flyer[i].observation%>  </div>
+  <% } %>
+  
+      </div>
+
+      <div class="info-container">
+
         <% if (flyer[i].de) {
     
           var actDePrice = flyer[i].de; 
@@ -518,6 +541,7 @@ div.desc3 {
 
          
          %>
+
        <div class="desc2">
         <div class="de"><%=flyer[i].text_de%> </div>
         <div class="de_valor"><span style="font-size: 0.75em;">R$</span><%=inteiros%><span style="font-size: 0.75em;">,<%=centavos%></span> </div>
@@ -538,13 +562,8 @@ div.desc3 {
         </div>
        
       </div>
+    </div>
 
-
-  <% if (flyer[i].observation) {%>
-  <div class="desc1"> <%=flyer[i].observation%>  </div>
-  <% } %>
-  
-      </div>
     <% }; %>
   </div>
 

@@ -1,11 +1,10 @@
 <%
-/*TAMANHO_TAG*/
-/* FOOTER_PRODUCT - DISTANCIA DA GRID DE PRODUTO DO CABECALHO*/
-/*TAMANHO PRODUTOS*/
+
 // if (flyersData.posicao_tag_preco == 1 ||  flyer[i].observation ||  flyer[i].de) 
 
 
-let address_header = addressServer + showTemplate.complete_image;
+let address_footer = addressServer + showTemplate.footer_image;
+let address_header = addressServer + showTemplate.header_image;
 
 
 
@@ -25,7 +24,7 @@ let imageLogoHeight = '';
           } 
 
 
-let widthFlyer = 1080;
+let widthFlyer = 1000;
 let column_amount = 'auto auto auto';
 
 
@@ -80,20 +79,14 @@ if (flyer[0].footer_text3) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Produtos</title>
 <style>
-
-
-
   body {
     font-family: Arial, sans-serif;
-    margin-top: 0px;
+    margin: 0;
     padding: 0;
-   width: 1080px;
-   height: 1350px;
+   
   }
   .container {
-
-    /* FOOTER_PRODUCT*/
-    margin-top: 280px;
+    margin-top: 250px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
@@ -117,9 +110,8 @@ if (flyer[0].footer_text3) {
     align-items: center;
   }
   .image-container {
-    /*TAMANHO PRODUTOS*/
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 400px;
+    max-height: 400px;
     width: 100%;
     height: 100%; /* Fixed height for all images */
 
@@ -136,7 +128,6 @@ if (flyer[0].footer_text3) {
     object-fit: contain;
   }
   .description {
-    word-break: keep-all;
     padding: 10px;
     text-align: center;
     color: <%=showTemplate.font_collor_product%>; 
@@ -154,10 +145,6 @@ if (flyer[0].footer_text3) {
     font-size: 60px;
   }
 
-  .desc1 {
-    color: <%=showTemplate.font_collor_product%>; 
-
-  }
   .textBellow {
       font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
   font-stretch: condensed;
@@ -169,9 +156,8 @@ if (flyer[0].footer_text3) {
     }
 
 .dot {
-  /*TAMANHO_TAG*/
-  height: 60px;
-  width: 170px;
+  height: 100px;
+  width: 250px;
   background-color: <%=showTemplate.main_color%>;  
   
   /*border-radius: 50%; */ /*Arredondado*/
@@ -201,8 +187,8 @@ if (flyer[0].footer_text3) {
    
       color: <%=showTemplate.font_color%>; 
       padding-top: 5px;
-      padding-left: 5px;
-      padding-right: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
       padding-bottom: 5px;
     }
   
@@ -218,6 +204,23 @@ if (flyer[0].footer_text3) {
       flex: 0 1 100%;
     }
   }
+/*
+  .container-geral {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 1080px; 
+      height: 1080px; 
+      background-image: url(<%= address_header %>);
+      background-size: cover;
+      background-position: center;
+      margin: auto;
+    }
+
+    */
+
     .container-geral {
     display: flex;
     flex-direction: column;
@@ -225,10 +228,10 @@ if (flyer[0].footer_text3) {
     align-items: center;
     position: relative;
     width: 1080px;
-    height: 1350px;
+    height: 1080px;
     background-image: url(<%= address_header %>);
     background-size: cover;
-    background-position: top;
+    background-position: center;
     margin: auto;
     overflow: hidden; /* Garante que nada saia dos limites do contêiner */
   }
@@ -344,7 +347,6 @@ h4 {
     width: 95%; /* Ocupa a largura total */
     
   }
-  
 
   .footer-container {
   margin: 10px !important;
@@ -368,18 +370,6 @@ h4 {
   padding-right: 5px;
   padding-top: 5px;
   width: 100%;
- 
-}
-
-
-.retangulo1 {
-  background-color: <%=showTemplate.collor_form_bottom%>;  
-  border-radius: 6%;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 5px;
-  width: 200px%;
  
 }
 
@@ -489,15 +479,6 @@ div.desc3 {
 
 }
 
-
-.footer-container4 {
-  margin-left: 700px;
-    display: flex; 
-  justify-content: flex-end; 
-  align-items: center; 
-  width: 550px; 
-  
-}
 
 </style>
 </head>
@@ -627,50 +608,37 @@ footer_text2 = showTemplate.footer_text2;
    <h5 class="retangulo formatar"> <%=footer_text %> </h5> 
    <%}%>
 
-   <div class="footer-container4">
-   
+
+   <%           if (flyer[0].footer_text3) { %>
+
+    <div> 
+      <h5 class="retangulo formatar">
+      <!-- Adicione seu novo conteúdo aqui -->
+      <%=flyer[0].footer_text3%>
+    </h5>
+    </div>
 
 
-    <%           if (flyer[0].footer_text3) { %>
-  
-      <div> 
-        <h5 class="retangulo formatar">
-        <!-- Adicione seu novo conteúdo aqui -->
-        <%=flyer[0].footer_text3%>
-      </h5>
-      </div>
-  
-  
-      <%           } %>
-  
-  
-  
-  
-  </div>
-  
+    <%           } %>
 
 
 
    <%           if (footer_text2) { %>
 
-    <div> <h5 class="retangulo1 formatar"> <%=footer_text2 %> </h5> </div>
+    <div> <h5 class="retangulo formatar"> <%=footer_text2 %> </h5> </div>
     <%}%>
+
 
   
 
 
     </div>
-   
   </div>
-  
   <% } %>
   </div>
 </div>
 
   
-    
-
-
   
 
 
