@@ -139,7 +139,7 @@ console.log(showTemplate)
     object-fit: contain;
   }
   .description {
-     word-break: keep-all;
+    word-break: keep-all;
     padding: 10px;
     text-align: center;
     color: <%=showTemplate.font_collor_product%>; 
@@ -240,14 +240,20 @@ console.log(showTemplate)
 
 .logo {
   position: absolute;
-    top: 20px; /* Ajusta a posição superior da logo */
-    right: 20px; /* Posiciona a logo na lateral direita */
+    top: <%=showTemplate.logo_top%>px; /* Ajusta a posição superior da logo */
+    right: <%=showTemplate.logo_rigth%>px; /* Posiciona a logo na lateral direita */
     width: <%=imageLogoWidth%>px; /* Usa a variável para a largura */
     height: <%=imageLogoHeight%>px; /* Usa a variável para a altura */
 }
 
 
+
 .texto_direita_cabecalho {
+  text-transform: capitalize;
+      font-family: "Helvetica", sans-serif;
+      font-size: 22px;
+      color: <%=showTemplate.font_collor_header%>; 
+
   position: absolute;
     top: 350px; /* Ajusta a posição superior da logo */
     right: 40px; /* Posiciona a logo na lateral direita */
@@ -502,6 +508,7 @@ div.desc3 {
   text-transform: capitalize;
       font-family: "Helvetica", sans-serif;
       font-size: 22px;
+      
   margin-top: -550px;
   text-transform: uppercase;
   padding-left: 58%;
