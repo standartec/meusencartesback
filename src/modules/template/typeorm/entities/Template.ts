@@ -117,5 +117,12 @@ export default class Template {
 
     @Column()
     heigth_image_bg: number;
-
+    
+    @Column()
+    logo_top: number;
+    
+    @Column()
+    logo_rigth: number;
+    
+    
 }
