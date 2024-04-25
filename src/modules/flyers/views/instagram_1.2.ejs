@@ -64,7 +64,7 @@ div.desc2 {
        text-align: left;
      
        font-family: "Helvetica", sans-serif;
-       word-break: keep-all;
+      
        text-transform: uppercase;
        /*Aqui 2 - Tamanho texto produto*/
        font-size: 15px;
@@ -80,7 +80,7 @@ div.desc2 {
      }
 
  .footer-container {
-    display: flex;
+    display: list-item;
     justify-content: space-between; /* Isso distribui o espaço igualmente entre os itens */
     align-items: center; /* Isso alinha os itens verticalmente no centro */
     width: 95%; /* Ocupa a largura total */
@@ -162,27 +162,31 @@ div.desc2 {
     
       div.gallery {
     /* Ajuste 1: POSIÇÃO DO PRODUTO*/
-      margin-top: -500px;
-      position: absolute;
+    margin-bottom: -80px;
+        
     
     }
     
       div.gallery img {
     
-        margin-left: -100px;
-
-    object-fit: scale-down;
-    width: 650px;
-    height: 650px;
-    object-position: bottom;
     
+      /** @todo Ficou feio isso, esse -70 pra alinhar a esquerda */
+      margin-left: -100px;
+          margin-top: -10px;
+    
+    
+          object-fit: scale-down;
+           /*Aqui 2 - Tamanho imagem*/
+          width:  650px;
+          height: 650px;
+     
+          object-position: bottom;
 
     
     
     }
     
     div.desc {
-      word-break: keep-all;
       font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
   font-stretch: condensed;
       text-align: left;
