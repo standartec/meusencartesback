@@ -7,7 +7,10 @@
 
 let address_header = addressServer + showTemplate.middle_image;
 
-
+product_font_size = 9;
+if (flyersData.product_font_size) {
+  product_font_size = flyersData.product_font_size;
+}
 
 //let address = 'http://localhost:8888/fivecart3';
 
@@ -40,10 +43,7 @@ if (flyer[0].show_background == 1) {
   textProductCollor = showTemplate.font_collor_product;
 }
 
-product_font_size = 9;
-if (flyersData.product_font_size) {
-  product_font_size = flyersData.product_font_size;
-}
+
 
 
 
@@ -144,7 +144,7 @@ console.log(showTemplate)
     text-align: center;
     color: <%=showTemplate.font_collor_product%>; 
     font-weight: bold;
-    font-size: 20px;
+    font-size: <%=product_font_size%>px;
   }
   .price {
     
