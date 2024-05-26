@@ -149,7 +149,7 @@ console.log(showTemplate)
     text-align: center;
     color: <%=showTemplate.font_collor_product%>; 
     font-weight: bold;
-    font-size: <%=product_font_size%>px;
+    font-size: <%=product_font_size * 3%>px;
   }
   .price {
     
@@ -748,7 +748,7 @@ footer_text2 = showTemplate.footer_text2;
 
     if (products.length === 1) {
       container.classList.add('one-product');
-    } else if (products.length < 7) {
+    } else if (products.length < 5) {
       container.classList.add('two-products');
     }
     else {
