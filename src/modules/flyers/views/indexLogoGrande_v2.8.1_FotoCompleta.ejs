@@ -7,7 +7,10 @@
 
 let address_header = addressServer + showTemplate.middle_image;
 
-
+product_font_size = 9;
+if (flyersData.product_font_size) {
+  product_font_size = flyersData.product_font_size;
+}
 
 //let address = 'http://localhost:8888/fivecart3';
 
@@ -40,10 +43,7 @@ if (flyer[0].show_background == 1) {
   textProductCollor = showTemplate.font_collor_product;
 }
 
-product_font_size = 9;
-if (flyersData.product_font_size) {
-  product_font_size = flyersData.product_font_size;
-}
+
 
 
 
@@ -93,6 +93,7 @@ console.log(showTemplate)
    width: <%=width1%>px;
    height: <%=heigth1%>px;
   }
+
   .container {
 
     /* FOOTER_PRODUCT*/
@@ -102,6 +103,7 @@ console.log(showTemplate)
     flex-wrap: wrap;
     justify-content: space-around;
   }
+
   .product {
     box-sizing: border-box;
     margin: 10px;
@@ -119,10 +121,13 @@ console.log(showTemplate)
     flex-direction: column;
     align-items: center;
   }
+
+
   .image-container {
-    /*TAMANHO_PRODUTOS*/
+    /*TAMANHO_PRODUTOS
     max-width: <%=showTemplate.size_products%>px;
     max-height: <%=showTemplate.size_products%>px;
+    */
     width: 100%;
     height: 100%; /* Fixed height for all images */
 
@@ -144,7 +149,7 @@ console.log(showTemplate)
     text-align: center;
     color: <%=showTemplate.font_collor_product%>; 
     font-weight: bold;
-    font-size: 20px;
+    font-size: <%=product_font_size%>px;
   }
   .price {
     
@@ -537,11 +542,29 @@ div.desc3 {
   align: right;
 }
 
+.container {
+        width: 100%;
+        margin-bottom: 350px;
+        margin-top: 660px;
+      }
+      .container.two-products .product {
+        flex: 0 1 calc(50% - 20px);
+      }
+      .container.one-product .product {
+        flex: 0 1 100%;
+      }
+      .container.multi-products .image-container{
+        max-width: 70%;
+      }
+
+
 </style>
 </head>
 <body>
 
   <div class="container-geral">
+    <div class="top-container">
+
     <img src="<%= flyersData.logo_publish %>" alt="Logo" class="logo">
     <div class="texto_direita_cabecalho"><% if (header2 != '') { %> <p> <%=header2  %> </p> <% } %></div>
 
@@ -555,7 +578,7 @@ div.desc3 {
   
   
       <%           } %>
-
+    </div>
   <div class="container">
    
     <% for (var i=0; i< flyer.length; i++) { 
@@ -717,5 +740,21 @@ footer_text2 = showTemplate.footer_text2;
 
   
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    const container = document.querySelector('.container');
+    const products = container.querySelectorAll('.product');
+
+    if (products.length === 1) {
+      container.classList.add('one-product');
+    } else if (products.length < 7) {
+      container.classList.add('two-products');
+    }
+    else {
+      container.classList.add('multi-products');
+    }
+  });
+</script>
 </body>
 </html>
