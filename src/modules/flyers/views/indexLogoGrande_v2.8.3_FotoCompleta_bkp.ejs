@@ -122,9 +122,6 @@ console.log(showTemplate)
     align-items: center;
   }
 
-  /*
-flyersData.size_price
-  */
   
   <%
   var sizeProd = 1;
@@ -147,18 +144,7 @@ flyersData.size_price
     sizeProd = 1.2
     increaseSizePrice = 10
     increaseSizePriceBox = 10
-  }
-  
-  var font_product_size = increaseSizePrice + 80
-
-  console.log("Size fontss" + flyersData.sizePrice)
-  console.log(flyersData)
-  if (flyersData.size_price) {
-    font_product_size = 80 + flyersData.size_price
-  }
-  
-  
-  %>
+  } %>
 
 
   .image-container {
@@ -240,32 +226,39 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
 
   }
 
-   
+
   .textBellow {
-    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
-    font-stretch: condensed;
-    font-size: <%=font_product_size%>px;
-    color: <%=showTemplate.font_color%>; 
-    font-weight: 900;
-    line-height: 1.2; /* Ajuste conforme necessário para centralizar verticalmente */
-}
+
+      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+  font-stretch: condensed;
+      /*Aqui 2 - Tamanho preço*/
+
+      /*TAMANHO_PRECO*/
+      font-size: <%=increaseSizePrice + 80%>px;
+      color: <%=showTemplate.font_color%>; 
+      font-weight: 900;
+      
+    }
 
 .dot {
-    display: inline-block;
-    background-color: <%=showTemplate.main_color%>;  
-    color: #fff;
-    text-align: center;
-    border-radius: 20%; /* Arredondado */
-    padding: 0.5em 1em; /* Ajuste conforme necessário para aumentar o espaço interno */
-    font-size: inherit; /* Herdar o tamanho da fonte do .textBellow */
+  /*  TAMANHO_PRECO TAG*/
+  height: <%=increaseSizePrice + 80%>px;
+  width: <%=increaseSizePriceBox + 280%>px;
+  background-color: <%=showTemplate.main_color%>;  
+  
+  /*border-radius: 50%; */ /*Arredondado*/
+    border-radius: 20%;  /*Arredondado*/
+
+  /*CHANGED*/
+  display: grid;
+  
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  
 }
-
-
-
-
-
-
-
   .textocentro {
       
       font-family: "Helvetica", sans-serif;

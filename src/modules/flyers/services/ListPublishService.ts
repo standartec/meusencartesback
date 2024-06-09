@@ -13,5 +13,14 @@ export default class ListPublishService {
         return publish;
     }
 
+    public async updateData () {
+
+        const publishRepositorie = getCustomRepository(PublishRepository);
+
+        const publish = await publishRepositorie.find();
+
+        return publish;
+    }
+
 
 }

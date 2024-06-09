@@ -83,6 +83,16 @@ export default class ListProductFlyerService {
      
     }
 
+        
+    async updateData(idFlyer: string, sizePrice: string) {
+        console.log("ENTROU >>>>LLLL updatePictureNameFlyer");
+
+        const productRepository = getCustomRepository(ProductRepository);
+
+        const productFlyer = await productRepository.updateData(idFlyer, sizePrice);
+     
+    }
+
     async updateQrcodeProductPublish(idProductPublish: string, filename: string, imageAddress: string) {
         
 

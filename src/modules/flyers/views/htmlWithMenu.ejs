@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Image</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+           
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 4px; /* Espaço entre os itens */
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column; /* Coloca o texto acima do combo */
+            align-items: center;
+            font-size: 18px;
+            margin-top: 5px;
+            background-color: #3a0382; /* Background color for buttons */
+            color: #FFFFFF; /* Text color */
+            border-radius: 5px;
+            padding: 5px;
+            width: calc(50% - 8px); /* Define a largura para caber dois por linha */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item span {
+            margin-bottom: 10px;
+        }
+
+        .menu-item select {
+            font-size: 18px;
+            padding: 10px;
+            background-color: #FFFFFF; /* Background color for select */
+            color: #3a0382; /* Text color for select */
+            border: none;
+            border-radius: 5px;
+            width: 100%; /* Largura total do select */
+        }
+
+        .badge {
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Media queries for smaller screens */
+        @media (max-width: 600px) {
+            .menu-item {
+                width: calc(40% - 8px); /* Ajusta a largura para caber dois por linha em telas menores */
+                padding: 5px; /* Reduz o padding para economizar espaço */
+                margin-top: 5px; /* Reduz o espaço superior */
+                margin-bottom: 5px; 
+            }
+
+            .menu-item select {
+                padding: 5px; /* Reduz o padding interno do select */
+                font-size: 14px; /* Reduz o tamanho da fonte */
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="menu-container">
+        <div class="menu-item">
+            <span>Fonte Preço:</span>
+            <select id="priceSelect" onchange="updateProductPrice()">
+                <option value="10" <% if (flyersData.size_price == 10) { %> selected <% } %>>10</option>
+                <option value="20" <% if (flyersData.size_price == 20) { %> selected <% } %>>20</option>
+                <option value="30" <% if (flyersData.size_price == 30) { %> selected <% } %>>30</option>
+                <option value="40" <% if (flyersData.size_price == 40) { %> selected <% } %>>40</option>
+                <option value="50" <% if (flyersData.size_price == 50) { %> selected <% } %>>50</option>
+                <option value="70" <% if (flyersData.size_price == 70) { %> selected <% } %>>70</option>
+                <option value="80" <% if (flyersData.size_price == 80) { %> selected <% } %>>80</option>
+                <option value="90" <% if (flyersData.size_price == 90) { %> selected <% } %>>90</option>
+                <option value="120" <% if (flyersData.size_price == 120) { %> selected <% } %>>120</option>
+                <option value="150" <% if (flyersData.size_price == 150) { %> selected <% } %>>150</option>
+            </select>
+        </div>
+
+        <!-- Add more menu items below in the same format -->
+        <div class="menu-item">
+            <span>Fonte Produto:</span>
+            <select>
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+                <option value="3">Opção 3</option>
+            </select>
+        </div>
+
+        <div class="menu-item">
+            <span>Cor Fonte Produto:</span>
+            <select>
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+                <option value="3">Opção 3</option>
+            </select>
+        </div>
+        
+        <div class="menu-item">
+            <span>Cor Tag Preço:</span>
+            <select>
+                <option value="1">Opção 1</option>
+                <option value="2">Opção 2</option>
+                <option value="3">Opção 3</option>
+            </select>
+        </div>
+    </div>
+
+    <img src="<%= imageSrc %>" alt="Generated Image">
+
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+            const priceSelect = document.getElementById('priceSelect');
+            const initialPrice = priceSelect.value;
+
+            priceSelect.addEventListener('change', function() {
+                if (priceSelect.value !== initialPrice) {
+                    updateProductPrice();
+                }
+            });
+
+            // Inicializando o Pickr
+            const pickr = Pickr.create({
+                el: '#colorPicker',
+                theme: 'classic', // 'classic', 'monolith', 'nano'
+                default: '#ff0000',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            });
+
+            pickr.on('change', (color) => {
+                const rgbaColor = color.toRGBA().toString();
+                document.getElementById('badge').style.backgroundColor = rgbaColor;
+                document.getElementById('colorCode').value = color.toHEXA().toString();
+            });
+        });
+
+        function updateProductPrice() {
+            const price = document.getElementById('priceSelect').value;
+            const idFlyer = '<%= idFlyer %>';
+            
+            fetch(`/publish/flyer/updateTemplate/${idFlyer}/${price}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }) 
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Preço atualizado com sucesso!');
+                } else {
+                    alert('Falha ao atualizar o preço.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Ocorreu um erro ao atualizar o preço.');
+            });
+        }
+
+        function updateBadgeColor() {
+            const colorCode = document.getElementById('colorCode').value;
+            const badge = document.getElementById('badge');
+            badge.style.backgroundColor = colorCode;
+            pickr.setColor(colorCode);
+        }
+    </script>
+</body>
+</html>
