@@ -8,26 +8,25 @@ export default async (html = "") => {
 
   const content = await page.$("body");
 
-/**
- 
-width: 1080,z
-height: 1080,
-
- */
-
-  //I started to use this parameters to improme image generation.
+  // Ajuste as dimensões da viewport para gerar uma imagem menor
   await page.setViewport({
-    width: 1080,
-    height: 1080,
+    width: 720, // Reduza a largura
+    height: 720, // Reduza a altura
     deviceScaleFactor: 1
   });
-  const imageBuffer = await content.screenshot({ omitBackground: true });
+
+  // Captura de tela em formato WebP
+  const imageBuffer = await content.screenshot({ 
+    omitBackground: true,
+    type: 'webp',
+    quality: 10 // Ajuste a qualidade da imagem (para WebP)
+  });
 
   await page.close();
   await browser.close();
   
-  console.log('Case 2 - Width  :', page.viewport().width);  // Width  : 800
-  console.log('Case 2 - Height :', page.viewport().height); // Height : 600
+  console.log('Width  :', page.viewport().width);
+  console.log('Height :', page.viewport().height);
 
   return imageBuffer;
 };

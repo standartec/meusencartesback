@@ -807,10 +807,10 @@ export default class PublishControllers {
 
   //     console.log(fileHTML);
 
-       const imageBuffer = await htmlToImage(fileHTML);
+       const imageBuffer = await htmlToImageLow(fileHTML);
 
        const imageBase64 = imageBuffer.toString('base64');
-       const imageSrc = `data:image/png;base64,${imageBase64}`;
+       const imageSrc = `data:image/webp;base64,${imageBase64}`;
 
        
        //response.set("Content-Type", "image/png");
@@ -837,6 +837,10 @@ export default class PublishControllers {
     return response;
 
     }
+
+
+
+
 
 
 

@@ -41,6 +41,9 @@ export default class ListProductFlyerService {
 
     }
 
+
+ 
+
     public async getUserData({idUser}: IRequest): Promise<undefined> {
         console.log("ID USER GET USER DATA")
         console.log(idUser)

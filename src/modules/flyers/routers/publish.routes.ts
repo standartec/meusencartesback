@@ -6,7 +6,7 @@ import PublishController from "@modules/flyers/controllers/PublishControllers";
 const publishController = new PublishController();
 const publishRouter = Router();
 
-//publishRouter.get('/', publishController.list);
+//
 
 publishRouter.get('/generateQrcode/:idUser/:idFlyer/:idProductPublish', publishController.generateQrcode);
 publishRouter.get('/generateHtmlTest/:idUser/:idFlyer/:idProductPublish/:imageQuality/:templateNumber', publishController.generateHtmlTest);

@@ -14,7 +14,7 @@ export const ADDRESS_TEMPLATES = 'http://postater.com/images/posts/templates\/';
 //asfasdf  export const TEMPLATES_EJS = '/Users/fabricio/Documents/projects/templates_ejs\/';
 
 
-
+//
 //PRODUÇÃO
 
 export const DIR_SAVE_IMAGES = '/var/www/html/images/posts';
