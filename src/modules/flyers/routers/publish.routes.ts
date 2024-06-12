@@ -12,7 +12,7 @@ publishRouter.get('/generateQrcode/:idUser/:idFlyer/:idProductPublish', publishC
 publishRouter.get('/generateHtmlTest/:idUser/:idFlyer/:idProductPublish/:imageQuality/:templateNumber', publishController.generateHtmlTest);
 publishRouter.get('/generateHtml/:idUser/:idFlyer/:idProductPublish/:imageQuality/:typeReturn', publishController.generateImageV1);
 publishRouter.get('/generateHtmlWithMenu/:idUser/:idFlyer/:idProductPublish/:imageQuality/:templateNumber', publishController.generateHtmlWithMenu);
-publishRouter.post('/flyer/updateTemplate/:idFlyer/:sizePrice', publishController.updateTemplate);
+publishRouter.post('/flyer/updateTemplate/:idFlyer/:sizePrice/:type', publishController.updateTemplate);
 
 publishRouter.get('/:idUser/:idFlyer/:idProductPublish/:imageQuality', publishController.generateImage);
 

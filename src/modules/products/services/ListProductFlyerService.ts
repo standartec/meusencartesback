@@ -87,12 +87,12 @@ export default class ListProductFlyerService {
     }
 
         
-    async updateData(idFlyer: string, sizePrice: string) {
+    async updateData(idFlyer: string, sizePrice: string, type: string) {
         console.log("ENTROU >>>>LLLL updatePictureNameFlyer");
 
         const productRepository = getCustomRepository(ProductRepository);
 
-        const productFlyer = await productRepository.updateData(idFlyer, sizePrice);
+        const productFlyer = await productRepository.updateData(idFlyer, sizePrice, type);
      
     }
 

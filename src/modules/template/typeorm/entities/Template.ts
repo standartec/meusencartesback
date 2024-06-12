@@ -124,5 +124,6 @@ export default class Template {
     @Column()
     logo_rigth: number;
     
-    
+    @Column()
+    background_template_collor: string
 }

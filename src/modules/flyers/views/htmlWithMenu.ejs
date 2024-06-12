@@ -10,7 +10,6 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-           
         }
 
         h1 {
@@ -88,8 +87,6 @@
     </style>
 </head>
 <body>
-
-
     <div class="menu-container">
         <div class="menu-item">
             <span>Fonte Preço:</span>
@@ -107,7 +104,6 @@
             </select>
         </div>
 
-        <!-- Add more menu items below in the same format -->
         <div class="menu-item">
             <span>Fonte Produto:</span>
             <select>
@@ -118,29 +114,40 @@
         </div>
 
         <div class="menu-item">
-            <span>Cor Fonte Produto:</span>
+            <span>Fonte Textos:</span>
             <select>
                 <option value="1">Opção 1</option>
                 <option value="2">Opção 2</option>
                 <option value="3">Opção 3</option>
             </select>
+        </div>
+
+        <div class="menu-item">
+            <span>Cor Fonte Textos:</span>
+            <div id="productColorPicker" class="color-picker"></div>
         </div>
         
         <div class="menu-item">
             <span>Cor Tag Preço:</span>
-            <select>
-                <option value="1">Opção 1</option>
-                <option value="2">Opção 2</option>
-                <option value="3">Opção 3</option>
-            </select>
+            <div id="priceTagColorPicker" class="color-picker"></div>
         </div>
+        <div class="menu-item">
+            <span>Cor Fundo:</span>
+            <div id="backgroundCollorPost" class="color-picker"></div>
+        </div>
+        <div class="menu-item">
+            <span>Cor Textos:</span>
+            <div id="textCollors" class="color-picker"></div>
+        </div>
+
+        
     </div>
 
     <img src="<%= imageSrc %>" alt="Generated Image">
 
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script>
-         document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const priceSelect = document.getElementById('priceSelect');
             const initialPrice = priceSelect.value;
 
@@ -150,9 +157,27 @@
                 }
             });
 
-            // Inicializando o Pickr
-            const pickr = Pickr.create({
-                el: '#colorPicker',
+            // Inicializando os Pickr para cada color picker
+            const productColorPicker = Pickr.create({
+                el: '#productColorPicker',
+                theme: 'classic', // 'classic', 'monolith', 'nano'
+                default: '#000000',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            });
+
+            const priceTagColorPicker = Pickr.create({
+                el: '#priceTagColorPicker',
                 theme: 'classic', // 'classic', 'monolith', 'nano'
                 default: '#ff0000',
                 components: {
@@ -169,18 +194,91 @@
                 }
             });
 
-            pickr.on('change', (color) => {
-                const rgbaColor = color.toRGBA().toString();
-                document.getElementById('badge').style.backgroundColor = rgbaColor;
-                document.getElementById('colorCode').value = color.toHEXA().toString();
+            const backgroundCollorPost = Pickr.create({
+                el: '#backgroundCollorPost',
+                theme: 'classic', // 'classic', 'monolith', 'nano'
+                default: '#ff0000',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
             });
+
+            const textCollors = Pickr.create({
+                el: '#textCollors',
+                theme: 'classic', // 'classic', 'monolith', 'nano'
+                default: '#ff0000',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            });
+
+            productColorPicker.on('change', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                // Atualize a cor da fonte do produto aqui
+                console.log('Cor Fonte Produto:', rgbaColor);
+                sendRequest(rgbaColor, "PRODUCT_COLLOR");
+                
+
+            });
+
+            priceTagColorPicker.on('change', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                // Atualize a cor da tag de preço aqui
+                console.log('Cor Tag Preço:', rgbaColor);
+                sendRequest(rgbaColor, "TAG_PRODUCT_COLLOR");
+
+            });
+
+            
+            backgroundCollorPost.on('change', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                // Atualize a cor da tag de preço aqui
+                console.log('Cor Tag Preço:', rgbaColor);
+                sendRequest(rgbaColor, "BACKGROUND_COLLOR_POST");
+
+            });
+
+            textCollors.on('change', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                // Atualize a cor da tag de preço aqui
+                console.log('Cor Tag Preço:', rgbaColor);
+                sendRequest(rgbaColor, "TEXT_COLLORS");
+
+            });
+
+
         });
 
         function updateProductPrice() {
+            console.log("######################### updatePrice")
             const price = document.getElementById('priceSelect').value;
+            sendRequest(price, "SIZE_PRICE");
+        }
+
+        function sendRequest (valor, type) {
+            console.log("chamou"+valor)
             const idFlyer = '<%= idFlyer %>';
-            
-            fetch(`/publish/flyer/updateTemplate/${idFlyer}/${price}`, {
+            const url = `/publish/flyer/updateTemplate/${idFlyer}/${encodeURIComponent(valor)}/${type}`;
+
+            fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -198,13 +296,6 @@
                 console.error('Erro:', error);
                 alert('Ocorreu um erro ao atualizar o preço.');
             });
-        }
-
-        function updateBadgeColor() {
-            const colorCode = document.getElementById('colorCode').value;
-            const badge = document.getElementById('badge');
-            badge.style.backgroundColor = colorCode;
-            pickr.setColor(colorCode);
         }
     </script>
 </body>

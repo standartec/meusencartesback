@@ -36,10 +36,12 @@ export default class PublishControllers {
         
         const listProductFlyerService = new ListProductFlyerService();
 
-        const { idFlyer,sizePrice } = request.params;
+        const { idFlyer,sizePrice,type } = request.params;
         console.log("ID FLYER" + idFlyer)
         console.log("SIZE PRICE" + sizePrice)
-        await listProductFlyerService.updateData(idFlyer,sizePrice);
+        console.log("TYPE" + type)
+
+        await listProductFlyerService.updateData(idFlyer,sizePrice,type);
 
        return response.status(101)
 
