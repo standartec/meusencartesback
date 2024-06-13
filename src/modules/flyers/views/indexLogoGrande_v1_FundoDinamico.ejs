@@ -7,10 +7,12 @@
 
 let address_header = addressServer + showTemplate.footer_image;
 
-product_font_size = 9;
-if (flyersData.product_font_size) {
-  product_font_size = flyersData.product_font_size;
+product_font_size = flyersData.product_font_size * 3;
+if (flyer[0].font_product) {
+  product_font_size = flyer[0].font_product * 3;
 }
+
+
 
 //let address = 'http://localhost:8888/fivecart3';
 
@@ -99,11 +101,15 @@ if (flyer[0].font_collor_product) {
 var price_product_collor = showTemplate.font_color
 
 if (flyer[0].price_product_collor) {
-  price_product_collor = flyer[0].font_color
+  price_product_collor = flyer[0].price_product_collor
 }
 
 
+var collor_form_font_bottom = showTemplate.collor_form_font_bottom 
 
+if (flyer[0].font_color) {
+  collor_form_font_bottom = flyer[0].font_color
+}
  
 
 
@@ -254,7 +260,7 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
     text-align: center;
     color: <%=font_collor_product%>; 
     font-weight: bold;
-    font-size: <%=product_font_size * 3%>px;
+    font-size: <%=product_font_size%>px;
   }
   .price {
     
@@ -381,7 +387,7 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
       font-family: "Helvetica", sans-serif;
       font-size: 22px;
   text-transform: uppercase;
-  color: <%=showTemplate.font_collor_header%>; 
+  color: <%=collor_form_font_bottom%>; 
 
   position: absolute;
     top: 350px; /* Ajusta a posição superior da logo */
@@ -395,7 +401,7 @@ h5 {
       font-size: 22px;
       margin: 0;
       width: 400px;
-      color: <%=showTemplate.collor_form_font_bottom%>; 
+      color: <%=collor_form_font_bottom%>; 
     }
 
     .container_text_button_1, .container_text_footer3 {
@@ -596,7 +602,7 @@ div.desc3 {
     text-transform: capitalize;
     font-family: "Helvetica", sans-serif;
     font-size: 22px;
-    color: <%=showTemplate.collor_form_font_bottom%>; 
+    color: <%=collor_form_font_bottom%>; 
     background-color: <%=showTemplate.collor_form_bottom%>;  
     border-radius: 6%;
     width: 300px; /* Ocupa a largura total */
@@ -660,7 +666,7 @@ div.desc3 {
   position: absolute;
   bottom: 40px;
   padding-left: 58%;
-  color: <%=showTemplate.collor_form_font_bottom%>;
+  color: <%=collor_form_font_bottom%>;
   width: 250px;
   padding-right: 10px;
   align: right;

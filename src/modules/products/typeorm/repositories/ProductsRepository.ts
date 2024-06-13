@@ -30,16 +30,11 @@ export class ProductRepository extends Repository<Product> {
 
     async updateData(idFlyer: string, sizePrice: string, type: string) {
         
-        var value = "";
-        if (type == "BACKGROUND_COLLOR_POST") {
-            value = "background_template_collor"
-        } else if (type == "SIZE_PRICE") {
-            value = "size_price"
-        }
+     
 
         const entityManager = getManager();
         console.log(">>> updatePictureNameFlyerupdatePictureNameFlyer");
-        var sql = `update publish set `+value+` = "` + sizePrice + `"  where id = ` + idFlyer;
+        var sql = `update publish set `+type+` = "` + sizePrice + `"  where id = ` + idFlyer;
         console.log(sql);
         const response = await entityManager.query(sql);
 
