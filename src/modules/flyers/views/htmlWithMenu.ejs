@@ -287,8 +287,9 @@
             });
 
             // Função para enviar a cor atualizada para o servidor
-            function sendRequest(valor, type) {
+           /* function sendRequest(valor, type) {
                 console.log("chamou", valor, type);
+
                 const idFlyer = '<%= idFlyer %>';
                 const url = `/publish/flyer/updateTemplate/${idFlyer}/${encodeURIComponent(valor)}/${encodeURIComponent(type)}`;
 
@@ -310,7 +311,7 @@
                     console.error('Erro:', error);
                     alert('Ocorreu um erro ao atualizar.');
                 });
-            }
+            }*/
 
             
 
@@ -318,6 +319,8 @@
                 const rgbaColor = color.toHEXA().toString();
                 console.log('Cor Fonte Preço:', rgbaColor);
                 sendRequest(rgbaColor, "price_product_collor");
+                productColorPicker.hide();
+
             });
 
             productColorPicker.on('change', (color) => {
@@ -376,6 +379,7 @@
                 sendRequest(rgbaColor, "font_color");
                 textCollors.hide();
             });
+            
         });
 
         function updateProductPrice(id) {
@@ -387,6 +391,8 @@
         }
 
         function sendRequest(valor, type) {
+            console.log("Valor" + valor)
+            console.log("type" + type)
             console.log("chamou", valor, type);
             const idFlyer = '<%= idFlyer %>';
             const url = `/publish/flyer/updateTemplate/${idFlyer}/${encodeURIComponent(valor)}/${encodeURIComponent(type)}`;
@@ -397,19 +403,28 @@
                     'Content-Type': 'application/json'
                 }
             }) 
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Atualizado com sucesso!');
-                } else {
-                    alert('Falha ao atualizar.');
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert('Ocorreu um erro ao atualizar.');
-            });
+    .then(response => {
+        if (!response.ok) {
+            console.log(response.statusText);
         }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            console.log('Atualizado com sucesso!');
+        } else {
+            console.log('Falha ao atualizar.');
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        console.log('Ocorreu um erro ao atualizar: ' + error.message);
+    });
+
+
+        }
+
+
     </script>
 </body>
 </html>
