@@ -126,4 +126,14 @@ export default class Template {
     
     @Column()
     background_template_collor: string
+
+    @Column()
+    font_bottom_size: string
+
+    @Column()
+    font_header_size: string
+
+    
+
+    
 }

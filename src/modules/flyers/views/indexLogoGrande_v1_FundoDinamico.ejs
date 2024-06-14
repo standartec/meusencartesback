@@ -113,6 +113,19 @@ if (flyer[0].font_color) {
  
 
 
+var font_bottom = showTemplate.font_bottom_size 
+
+if (flyer[0].font_bottom_size) {
+  font_bottom = flyer[0].font_bottom_size * 3
+}
+
+
+var font_header_size = showTemplate.font_header_size
+if (flyer[0].font_header_size) {
+  font_header_size = flyer[0].font_header_size * 3
+}
+
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -385,7 +398,7 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
 
   text-transform: capitalize;
       font-family: "Helvetica", sans-serif;
-      font-size: 22px;
+      font-size: <%=font_header_size%>px;
   text-transform: uppercase;
   color: <%=collor_form_font_bottom%>; 
 
@@ -398,7 +411,7 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
 h5 {
       text-transform: capitalize;
       font-family: "Helvetica", sans-serif;
-      font-size: 22px;
+      font-size: <%=font_bottom%>px;
       margin: 0;
       width: 400px;
       color: <%=collor_form_font_bottom%>; 
@@ -661,7 +674,7 @@ div.desc3 {
 .text_button_right {
   text-transform: capitalize;
       font-family: "Helvetica", sans-serif;
-      font-size: 22px;
+      font-size: <%=font_bottom%>px;
 
   position: absolute;
   bottom: 40px;

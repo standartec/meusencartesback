@@ -134,7 +134,11 @@ export class ProductRepository extends Repository<Product> {
         select p.description,
         
         p.id_user as id_user_publish, p.header2, p.id_template as id_template1,p.*, ul.image_link,ul.image_address, concat(ul.image_address,ul.image_link) as logo_publish, p.size_price, p.background_template_collor, p.collor_tag_price, p.price_product_collor,
-        p.font_collor_product,p.price_product_collor 
+        p.font_collor_product,p.price_product_collor, p.background_template_collor,
+        p.collor_tag_price,
+        p.price_product_collor,
+        p.font_collor_product,
+        p.font_color, p.font_bottom_size,p.font_header_size
         from publish p left join user_logo ul on ul.id = p.logo_id 
 
         where p.id_user = ` + idUser + ` and p.id = ` + idFlyer 
