@@ -108,13 +108,16 @@
             margin-top: 20px;
         }
 
+        .hidden {
+            display: none;
+        }
     </style>
-
-  
 </head>
 <body>
-  
-    <form id="updateTemplateWithoutJs" action="/publish/flyer/updateTemplateWithoutJs" method="POST">
+    <div class="button-container">
+        <button id="toggleFormButton" type="button">Mais Opções &#9660;</button>
+    </div>
+    <form id="updateTemplateWithoutJs" action="/publish/flyer/updateTemplateWithoutJs" method="POST" class="hidden">
         <div class="menu-container">
             <div class="menu-item">
                 <span>Tamanho Fonte Preço:</span>
@@ -134,8 +137,6 @@
             <input type="hidden" id="idFlyer" name="idFlyer" value="<%=idFlyer%>" />
             <input type="hidden" id="idUser" name="idUser" value="<%=idUser%>" />
             <input type="hidden" id="idProductPublish" name="idProductPublish" value="<%=idProductPublish%>" />
-
-       
 
             <div class="menu-item">
                 <span>Tamanho Fonte Produto:</span>
@@ -216,5 +217,18 @@
     </form>
     <br/>
     <img src="<%= imageSrc %>" alt="Generated Image">
+
+    <script>
+        document.getElementById('toggleFormButton').addEventListener('click', function() {
+            var form = document.getElementById('updateTemplateWithoutJs');
+            if (form.classList.contains('hidden')) {
+                form.classList.remove('hidden');
+                this.innerHTML = 'Menos Opções &#9650;';
+            } else {
+                form.classList.add('hidden');
+                this.innerHTML = 'Mais Opções &#9660;';
+            }
+        });
+    </script>
 </body>
 </html>
