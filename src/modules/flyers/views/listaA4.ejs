@@ -18,6 +18,13 @@ let imageLogoHeight = '';
     imageLogoHeight = flyersData.logo_heigh;
     } 
       
+
+  
+    product_font_size = 9;
+if (flyersData.product_font_size) {
+  product_font_size = flyersData.product_font_size * 20;
+}
+
       %>
     <style>
 
@@ -166,49 +173,31 @@ div.desc2 {
         
     
     }
-    
-      div.gallery img {
-    
-    
-      /** @todo Ficou feio isso, esse -70 pra alinhar a esquerda */
-      margin-left: -100px;
-          margin-top: -10px;
-    
-    
-          object-fit: scale-down;
-           /*Aqui 2 - Tamanho imagem*/
-          width:  650px;
-          height: 650px;
-     
-          object-position: bottom;
-
-    
-    
-    }
+    div.gallery img {
+    margin-left: auto; /* Centraliza horizontalmente */
+    margin-right: auto; /* Centraliza horizontalmente */
+    display: block; /* Para centralizar margin auto no bloco */
+    object-fit: scale-down;
+    width: 100%; /* Ajuste a largura ao contêiner pai */
+    max-width: 650px; /* Limite máximo de largura */
+    height: auto; /* Ajusta a altura proporcionalmente */
+    object-position: bottom;
+}
     
     div.desc {
-      font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
-  font-stretch: condensed;
-      text-align: left;
-    
-      font-family: "Helvetica", sans-serif;
-     
-      text-transform: uppercase;
-      /*Aqui 2 - Tamanho texto produto*/
-      font-size: 100px;
-      font-weight: 900;
-
-      /* Ajuste 2: Tamanho da caixa do produto*/
-      width: 2000px;
-     
-      color: <%=showTemplate.font_collor_product%>; 
-      margin-left: 140px;
-        margin-top: 8rem;
-        /*Espaço entre nome do produto e texto do rodapé.*/
-      
-    
-    }
-    
+    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
+    font-stretch: condensed;
+    text-align: center; /* Alinha o texto dentro da div */
+    font-family: "Helvetica", sans-serif;
+    text-transform: uppercase;
+    font-size: <%=product_font_size%>px;
+    font-weight: 900;
+    width: 3000px;
+    max-width: 100%; /* Limita a largura máxima ao tamanho do contêiner pai */
+    color: <%=showTemplate.font_collor_product%>; 
+    margin: 0 auto; /* Centraliza a div horizontalmente */
+    margin-top: 8rem;
+}
     
     .textUpper {
       font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
@@ -300,7 +289,7 @@ div.desc2 {
 
   .child1 {
    
-    margin-left: 800px;
+ 
     width: 100%;
   }
 
