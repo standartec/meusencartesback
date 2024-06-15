@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Image</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .menu-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 4px; /* Espaço entre os itens */
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column; /* Coloca o texto acima do combo */
+            align-items: center;
+            font-size: 18px;
+            margin-top: 5px;
+            background-color: #3a0382; /* Background color for buttons */
+            color: #FFFFFF; /* Text color */
+            border-radius: 5px;
+            padding: 5px;
+            width: calc(50% - 8px); /* Define a largura para caber dois por linha */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item span {
+            margin-bottom: 10px;
+        }
+
+        .menu-item select {
+            font-size: 18px;
+            padding: 10px;
+            background-color: #FFFFFF; /* Background color for select */
+            color: #3a0382; /* Text color for select */
+            border: none;
+            border-radius: 5px;
+            width: 100%; /* Largura total do select */
+        }
+
+        .badge {
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Media queries for smaller screens */
+        @media (max-width: 600px) {
+            .menu-item {
+                width: calc(40% - 8px); /* Ajusta a largura para caber dois por linha em telas menores */
+                padding: 5px; /* Reduz o padding para economizar espaço */
+                margin-top: 5px; /* Reduz o espaço superior */
+                margin-bottom: 5px; 
+            }
+
+            .menu-item select {
+                padding: 5px; /* Reduz o padding interno do select */
+                font-size: 14px; /* Reduz o tamanho da fonte */
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-item">
+            <span>Fonte Preço:</span>
+            <select id="size_price" onchange="updateProductPrice('size_price')">
+                <option value="10" <% if (flyersData.size_price == 10) { %> selected <% } %>>10</option>
+                <option value="20" <% if (flyersData.size_price == 20) { %> selected <% } %>>20</option>
+                <option value="30" <% if (flyersData.size_price == 30) { %> selected <% } %>>30</option>
+                <option value="40" <% if (flyersData.size_price == 40) { %> selected <% } %>>40</option>
+                <option value="50" <% if (flyersData.size_price == 50) { %> selected <% } %>>50</option>
+                <option value="70" <% if (flyersData.size_price == 70) { %> selected <% } %>>70</option>
+                <option value="80" <% if (flyersData.size_price == 80) { %> selected <% } %>>80</option>
+                <option value="90" <% if (flyersData.size_price == 90) { %> selected <% } %>>90</option>
+                <option value="120" <% if (flyersData.size_price == 120) { %> selected <% } %>>120</option>
+                <option value="150" <% if (flyersData.size_price == 150) { %> selected <% } %>>150</option>
+            </select>
+        </div>
+
+        <div class="menu-item">
+            <span>Fonte Produto:</span>
+            <select id="font_product" onchange="updateProductPrice('font_product')">
+                <option value="10" <% if (flyersData.font_product == 10) { %> selected <% } %>>10</option>
+                <option value="11" <% if (flyersData.font_product == 11) { %> selected <% } %>>11</option>
+                <option value="12" <% if (flyersData.font_product == 12) { %> selected <% } %>>12</option>
+                <option value="13" <% if (flyersData.font_product == 13) { %> selected <% } %>>13</option>
+                <option value="14" <% if (flyersData.font_product == 14) { %> selected <% } %>>14</option>
+                <option value="15" <% if (flyersData.font_product == 15) { %> selected <% } %>>15</option>
+                <option value="16" <% if (flyersData.font_product == 16) { %> selected <% } %>>16</option>
+                <option value="17" <% if (flyersData.font_product == 17) { %> selected <% } %>>17</option>
+                <option value="18" <% if (flyersData.font_product == 18) { %> selected <% } %>>18</option>
+                <option value="19" <% if (flyersData.font_product == 19) { %> selected <% } %>>19</option>
+            </select>
+        </div>
+
+        <div class="menu-item">
+            <span>Fonte cabeçalho:</span>
+            <select id="font_header_size" onchange="updateProductPrice('font_header_size')">
+                <option value="10" <% if (flyersData.font_header_size == 10) { %> selected <% } %>>10</option>
+                <option value="11" <% if (flyersData.font_header_size == 11) { %> selected <% } %>>11</option>
+                <option value="12" <% if (flyersData.font_header_size == 12) { %> selected <% } %>>12</option>
+                <option value="13" <% if (flyersData.font_header_size == 13) { %> selected <% } %>>13</option>
+                <option value="14" <% if (flyersData.font_header_size == 14) { %> selected <% } %>>14</option>
+                <option value="15" <% if (flyersData.font_header_size == 15) { %> selected <% } %>>15</option>
+                <option value="16" <% if (flyersData.font_header_size == 16) { %> selected <% } %>>16</option>
+                <option value="17" <% if (flyersData.font_header_size == 17) { %> selected <% } %>>17</option>
+                <option value="18" <% if (flyersData.font_header_size == 18) { %> selected <% } %>>18</option>
+                <option value="19" <% if (flyersData.font_header_size == 19) { %> selected <% } %>>19</option>
+            </select>
+        </div>
+
+        <div class="menu-item">
+            <span>Fonte Rodapé:</span>
+            <select id="font_bottom_size" onchange="updateProductPrice('font_bottom_size')">
+                <option value="10" <% if (flyersData.font_bottom_size == 10) { %> selected <% } %>>10</option>
+                <option value="11" <% if (flyersData.font_bottom_size == 11) { %> selected <% } %>>11</option>
+                <option value="12" <% if (flyersData.font_bottom_size == 12) { %> selected <% } %>>12</option>
+                <option value="13" <% if (flyersData.font_bottom_size == 13) { %> selected <% } %>>13</option>
+                <option value="14" <% if (flyersData.font_bottom_size == 14) { %> selected <% } %>>14</option>
+                <option value="15" <% if (flyersData.font_bottom_size == 15) { %> selected <% } %>>15</option>
+                <option value="16" <% if (flyersData.font_bottom_size == 16) { %> selected <% } %>>16</option>
+                <option value="17" <% if (flyersData.font_bottom_size == 17) { %> selected <% } %>>17</option>
+                <option value="18" <% if (flyersData.font_bottom_size == 18) { %> selected <% } %>>18</option>
+                <option value="19" <% if (flyersData.font_bottom_size == 19) { %> selected <% } %>>19</option>
+            </select>
+        </div>
+
+        <div class="menu-item">
+            <span>Cor Fonte Produto:</span>
+            <div id="productColorPicker" class="color-picker"></div>
+        </div>
+        
+
+        
+        <div class="menu-item">
+            <span>Cor Preço:</span>
+            <div id="price_product_collor" class="color-picker"></div>
+        </div>
+
+        <div class="menu-item">
+            <span>Cor Tag Preço:</span>
+            <div id="priceTagColorPicker" class="color-picker"></div>
+        </div>
+        <div class="menu-item">
+            <span>Cor Fundo:</span>
+            <div id="backgroundCollorPost" class="color-picker"></div>
+        </div>
+        <div class="menu-item">
+            <span>Cor Textos:</span>
+            <div id="textCollors" class="color-picker"></div>
+        </div>
+    </div>
+
+    <img src="<%= imageSrc %>" alt="Generated Image">
+
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sizePrice = document.getElementById('size_price');
+            const initialPrice = sizePrice.value;
+
+            sizePrice.addEventListener('change', function() {
+                if (sizePrice.value !== initialPrice) {
+                    updateProductPrice('size_price');
+                }
+            });
+
+            // Inicializando os Pickr para cada color picker
+            const productColorPicker = Pickr.create({
+                el: '#productColorPicker',
+                theme: 'classic', // 'classic', 'monolith', 'nano'
+                default: '<%=flyersData.font_collor_product%>',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            });
+
+            const priceTagColorPicker = Pickr.create({
+                el: '#priceTagColorPicker',
+                theme: 'classic', // 'classic', 'monolith', 'nano'
+                default: '<%=flyersData.collor_tag_price%>',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            });
+
+
+            const price_product_collor = Pickr.create({
+                el: '#price_product_collor',
+                theme: 'classic', // 'classic', 'monolith', 'nano'
+                default: '<%=flyersData.price_product_collor%>',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            });
+
+            
+
+            const backgroundCollorPost = Pickr.create({
+                el: '#backgroundCollorPost',
+                theme: 'classic', // 'classic', 'monolith', 'nano'
+                default: '<%=flyersData.background_template_collor%>',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            });
+            
+            const textCollors = Pickr.create({
+                el: '#textCollors',
+                theme: 'classic', // 'classic', 'monolith', 'nano'
+                default: '<%=flyersData.font_color%>',
+                components: {
+                    preview: true,
+                    opacity: true,
+                    hue: true,
+                    interaction: {
+                        hex: true,
+                        rgba: true,
+                        input: true,
+                        clear: true,
+                        save: true
+                    }
+                }
+            });
+
+            // Função para enviar a cor atualizada para o servidor
+           /* function sendRequest(valor, type) {
+                console.log("chamou", valor, type);
+
+                const idFlyer = '<%= idFlyer %>';
+                const url = `/publish/flyer/updateTemplate/${idFlyer}/${encodeURIComponent(valor)}/${encodeURIComponent(type)}`;
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }) 
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Atualizado com sucesso!');
+                    } else {
+                        alert('Falha ao atualizar.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Erro:', error);
+                    alert('Ocorreu um erro ao atualizar.');
+                });
+            }*/
+
+            
+
+            price_product_collor.on('change', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                console.log('Cor Fonte Preço:', rgbaColor);
+                sendRequest(rgbaColor, "price_product_collor");
+                productColorPicker.hide();
+
+            });
+
+            productColorPicker.on('change', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                console.log('Cor Fonte Produto:', rgbaColor);
+                sendRequest(rgbaColor, "font_collor_product");
+            });
+
+            priceTagColorPicker.on('change', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                console.log('Cor Tag Preço:', rgbaColor);
+                sendRequest(rgbaColor, "collor_tag_price");
+            });
+
+            backgroundCollorPost.on('change', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                console.log('Cor Fundo:', rgbaColor);
+                sendRequest(rgbaColor, "background_template_collor");
+            });
+
+            textCollors.on('change', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                console.log('Cor Fonte Textos:', rgbaColor);
+                sendRequest(rgbaColor, "font_color");
+            });
+
+            // Fechar o picker após salvar
+
+            price_product_collor.on('save', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                sendRequest(rgbaColor, "price_product_collor");
+                price_product_collor.hide();
+            });
+
+
+            productColorPicker.on('save', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                sendRequest(rgbaColor, "font_collor_product");
+                productColorPicker.hide();
+            });
+
+            priceTagColorPicker.on('save', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                sendRequest(rgbaColor, "collor_tag_price");
+                priceTagColorPicker.hide();
+            });
+
+            backgroundCollorPost.on('save', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                sendRequest(rgbaColor, "background_template_collor");
+                backgroundCollorPost.hide();
+            });
+
+            textCollors.on('save', (color) => {
+                const rgbaColor = color.toHEXA().toString();
+                sendRequest(rgbaColor, "font_color");
+                textCollors.hide();
+            });
+            
+        });
+
+        function updateProductPrice(id) {
+            console.log("######################### updatePrice");
+            const value = document.getElementById(id).value;
+            console.log("Value - " + value);
+            console.log("ID - " + id);
+            sendRequest(value, id);
+        }
+
+        function sendRequest(valor, type) {
+            console.log("Valor" + valor)
+            console.log("type" + type)
+            console.log("chamou", valor, type);
+            const idFlyer = '<%= idFlyer %>';
+            const url = `/publish/flyer/updateTemplate/${idFlyer}/${encodeURIComponent(valor)}/${encodeURIComponent(type)}`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }) 
+    .then(response => {
+        if (!response.ok) {
+            console.log(response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            console.log('Atualizado com sucesso!');
+        } else {
+            console.log('Falha ao atualizar.');
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        console.log('Ocorreu um erro ao atualizar: ' + error.message);
+    });
+
+
+        }
+
+
+    </script>
+</body>
+</html>

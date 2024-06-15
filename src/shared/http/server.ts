@@ -7,6 +7,8 @@ import {errors} from 'celebrate';
 import {pagination} from 'typeorm-pagination';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
+const bodyParser = require('body-parser');
+
 //Já importa e le o arquivo ormconfig
 import '@shared/typeorm';
 import uploadConfig from '@config/upload';
@@ -24,6 +26,7 @@ app.set('views', './src/modules/flyers/views/');
 app.use(express.static("./src/modules/flyers/views/css"));
 
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //We need to insert the middleware of rate-limite above express() because needs before everithing
 

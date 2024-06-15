@@ -42,6 +42,66 @@ export class ProductRepository extends Repository<Product> {
   
     }
 
+    async updateDataForm(
+        idFlyer: string, size_price: string, font_product: string, font_header_size: string, font_bottom_size: string, font_collor_product: string,price_product_collor: string,collor_tag_price: string,background_template_collor: string,font_color: string
+) {
+        
+     
+
+        const entityManager = getManager();
+        console.log(">>> updatePictureNameFlyerupdatePictureNameFlyer");
+        
+    const sql = `
+    UPDATE publish 
+    SET 
+        size_price = ?,
+        font_product = ?,
+        font_header_size = ?,
+        font_bottom_size = ?,
+        font_collor_product = ?,
+        price_product_collor = ?,
+        collor_tag_price = ?,
+        background_template_collor = ?,
+        font_color = ?
+    WHERE id = ?
+`;
+
+const values = [
+    size_price,
+    font_product,
+    font_header_size,
+    font_bottom_size,
+    font_collor_product,
+    price_product_collor,
+    collor_tag_price,
+    background_template_collor,
+    font_color,
+    idFlyer
+];
+
+const formattedSQL = await this.formatSQL(sql, values);
+console.log('SQL query:', formattedSQL);
+
+
+
+
+        const response = await entityManager.query(sql,values);
+
+        return response
+  
+    }
+
+ formatSQL(sql, values) {
+        let i = 0;
+        return sql.replace(/\?/g, () => {
+            const value = values[i++];
+            if (typeof value === 'string') {
+                return `'${value}'`;
+            }
+            return value;
+        });
+    }
+
   async updatePictureNameProductPublish(idProductPublish: any, filename: any, imageAddress: string) {
         const entityManager = getManager();
 

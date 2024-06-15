@@ -13,6 +13,7 @@ import { ProductRepository } from "@modules/products/typeorm/repositories/Produc
 import ShowUserDetail from "@modules/users/services/ShowUserDetailService";
 import ShowUserDetailService from "@modules/users/services/ShowUserDetailService";
 import { DIR_SAVE_IMAGES, IMAGE_ADDRESS,ADDRESS_TEMPLATES,TEMPLATES_EJS,IMAGE_QRCODE_ADDRESS, IMAGE_QRCODE_ADDRESS_GET_IMAGE,ADDRESS_LAND_CUSTOMER } from "@modules/constants";
+import { constants } from "buffer";
 
 export default class PublishControllers {
 
@@ -46,6 +47,36 @@ export default class PublishControllers {
        return response.status(101)
 
     }
+
+    public async updateTemplateWithoutJs (request: Request, response: Response): Promise<Response> {
+        console.log("call update")
+        const listPublishService = new ListPublishService();
+        console.log(request)
+        const list = await listPublishService.updateData();
+        
+        const listProductFlyerService = new ListProductFlyerService();
+        console.log(request.params)
+
+        const {idFlyer, size_price, font_product, font_header_size, font_bottom_size, font_collor_product,price_product_collor,collor_tag_price,background_template_collor,font_color,idProductPublish,idUser } = request.body;
+        console.log("size price" + size_price );
+        console.log("font_product" + font_product );
+        console.log("size font_header_size" + font_header_size );
+        console.log("idFlyer" + idFlyer );
+        console.log("size font_header_size" + font_header_size );
+        console.log("size font_header_size" + font_header_size );
+
+        await listProductFlyerService.updateDataForm(idFlyer, size_price, font_product, font_header_size, font_bottom_size, font_collor_product,price_product_collor,collor_tag_price,background_template_collor,font_color);
+
+       // const redirectUrl = `http://localhost:3333/publish/generateHtmlWithMenu/${idUser}/${idFlyer}/${idProductPublish}/0/0`;
+    
+        response.redirect(`/publish/generateHtmlWithMenu/${idUser}/${idFlyer}/${idProductPublish}/0/0`);
+
+
+        
+        //response.redirect(redirectUrl);
+        return response.status(101)
+
+        }
 
     public async showFlyer (request: Request, response: Response): Promise<void> {
 
@@ -705,6 +736,8 @@ export default class PublishControllers {
 
     public async generateHtmlWithMenu(request: Request, response: Response): Promise<Response> {
         
+        try {
+
         const listProductFlyerService = new ListProductFlyerService();
         
         const { idUser, idFlyer, idProductPublish,imageQuality,templateNumber} = request.params;
@@ -835,6 +868,13 @@ export default class PublishControllers {
         // Envia o HTML contendo a imagem
         response.send(resultHTML);
       });
+
+    } catch (err) {
+     //   logger.error(`Unhandled error: ${err.message}`, err.stack);
+     console.log( `Unhandled error: ${err.message}`, err.stack);
+    
+        response.status(500).send('Internal Server Error');
+      }
 
     return response;
 

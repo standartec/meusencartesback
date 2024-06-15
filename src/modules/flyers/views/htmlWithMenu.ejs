@@ -84,347 +84,137 @@
                 font-size: 24px;
             }
         }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #3a0382; /* Same background color as other elements */
+            color: #FFFFFF; /* Text color */
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2e0266; /* Slightly darker shade for hover effect */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
     </style>
+
+  
 </head>
 <body>
-    <div class="menu-container">
-        <div class="menu-item">
-            <span>Fonte Preço:</span>
-            <select id="size_price" onchange="updateProductPrice('size_price')">
-                <option value="10" <% if (flyersData.size_price == 10) { %> selected <% } %>>10</option>
-                <option value="20" <% if (flyersData.size_price == 20) { %> selected <% } %>>20</option>
-                <option value="30" <% if (flyersData.size_price == 30) { %> selected <% } %>>30</option>
-                <option value="40" <% if (flyersData.size_price == 40) { %> selected <% } %>>40</option>
-                <option value="50" <% if (flyersData.size_price == 50) { %> selected <% } %>>50</option>
-                <option value="70" <% if (flyersData.size_price == 70) { %> selected <% } %>>70</option>
-                <option value="80" <% if (flyersData.size_price == 80) { %> selected <% } %>>80</option>
-                <option value="90" <% if (flyersData.size_price == 90) { %> selected <% } %>>90</option>
-                <option value="120" <% if (flyersData.size_price == 120) { %> selected <% } %>>120</option>
-                <option value="150" <% if (flyersData.size_price == 150) { %> selected <% } %>>150</option>
-            </select>
-        </div>
+  
+    <form id="updateTemplateWithoutJs" action="/publish/flyer/updateTemplateWithoutJs" method="POST">
+        <div class="menu-container">
+            <div class="menu-item">
+                <span>Tamanho Fonte Preço:</span>
+                <select name="size_price" id="size_price">
+                    <option value="10" <% if (flyersData.size_price == 10) { %> selected <% } %>>10</option>
+                    <option value="20" <% if (flyersData.size_price == 20) { %> selected <% } %>>20</option>
+                    <option value="30" <% if (flyersData.size_price == 30) { %> selected <% } %>>30</option>
+                    <option value="40" <% if (flyersData.size_price == 40) { %> selected <% } %>>40</option>
+                    <option value="50" <% if (flyersData.size_price == 50) { %> selected <% } %>>50</option>
+                    <option value="70" <% if (flyersData.size_price == 70) { %> selected <% } %>>70</option>
+                    <option value="80" <% if (flyersData.size_price == 80) { %> selected <% } %>>80</option>
+                    <option value="90" <% if (flyersData.size_price == 90) { %> selected <% } %>>90</option>
+                    <option value="120" <% if (flyersData.size_price == 120) { %> selected <% } %>>120</option>
+                    <option value="150" <% if (flyersData.size_price == 150) { %> selected <% } %>>150</option>
+                </select>
+            </div>
+            <input type="hidden" id="idFlyer" name="idFlyer" value="<%=idFlyer%>" />
+            <input type="hidden" id="idUser" name="idUser" value="<%=idUser%>" />
+            <input type="hidden" id="idProductPublish" name="idProductPublish" value="<%=idProductPublish%>" />
 
-        <div class="menu-item">
-            <span>Fonte Produto:</span>
-            <select id="font_product" onchange="updateProductPrice('font_product')">
-                <option value="10" <% if (flyersData.font_product == 10) { %> selected <% } %>>10</option>
-                <option value="11" <% if (flyersData.font_product == 11) { %> selected <% } %>>11</option>
-                <option value="12" <% if (flyersData.font_product == 12) { %> selected <% } %>>12</option>
-                <option value="13" <% if (flyersData.font_product == 13) { %> selected <% } %>>13</option>
-                <option value="14" <% if (flyersData.font_product == 14) { %> selected <% } %>>14</option>
-                <option value="15" <% if (flyersData.font_product == 15) { %> selected <% } %>>15</option>
-                <option value="16" <% if (flyersData.font_product == 16) { %> selected <% } %>>16</option>
-                <option value="17" <% if (flyersData.font_product == 17) { %> selected <% } %>>17</option>
-                <option value="18" <% if (flyersData.font_product == 18) { %> selected <% } %>>18</option>
-                <option value="19" <% if (flyersData.font_product == 19) { %> selected <% } %>>19</option>
-            </select>
-        </div>
+       
 
-        <div class="menu-item">
-            <span>Fonte cabeçalho:</span>
-            <select id="font_header_size" onchange="updateProductPrice('font_header_size')">
-                <option value="10" <% if (flyersData.font_header_size == 10) { %> selected <% } %>>10</option>
-                <option value="11" <% if (flyersData.font_header_size == 11) { %> selected <% } %>>11</option>
-                <option value="12" <% if (flyersData.font_header_size == 12) { %> selected <% } %>>12</option>
-                <option value="13" <% if (flyersData.font_header_size == 13) { %> selected <% } %>>13</option>
-                <option value="14" <% if (flyersData.font_header_size == 14) { %> selected <% } %>>14</option>
-                <option value="15" <% if (flyersData.font_header_size == 15) { %> selected <% } %>>15</option>
-                <option value="16" <% if (flyersData.font_header_size == 16) { %> selected <% } %>>16</option>
-                <option value="17" <% if (flyersData.font_header_size == 17) { %> selected <% } %>>17</option>
-                <option value="18" <% if (flyersData.font_header_size == 18) { %> selected <% } %>>18</option>
-                <option value="19" <% if (flyersData.font_header_size == 19) { %> selected <% } %>>19</option>
-            </select>
-        </div>
+            <div class="menu-item">
+                <span>Tamanho Fonte Produto:</span>
+                <select name="font_product" id="font_product">
+                    <option value="10" <% if (flyersData.font_product == 10) { %> selected <% } %>>10</option>
+                    <option value="11" <% if (flyersData.font_product == 11) { %> selected <% } %>>11</option>
+                    <option value="12" <% if (flyersData.font_product == 12) { %> selected <% } %>>12</option>
+                    <option value="13" <% if (flyersData.font_product == 13) { %> selected <% } %>>13</option>
+                    <option value="14" <% if (flyersData.font_product == 14) { %> selected <% } %>>14</option>
+                    <option value="15" <% if (flyersData.font_product == 15) { %> selected <% } %>>15</option>
+                    <option value="16" <% if (flyersData.font_product == 16) { %> selected <% } %>>16</option>
+                    <option value="17" <% if (flyersData.font_product == 17) { %> selected <% } %>>17</option>
+                    <option value="18" <% if (flyersData.font_product == 18) { %> selected <% } %>>18</option>
+                    <option value="19" <% if (flyersData.font_product == 19) { %> selected <% } %>>19</option>
+                </select>
+            </div>
 
-        <div class="menu-item">
-            <span>Fonte Rodapé:</span>
-            <select id="font_bottom_size" onchange="updateProductPrice('font_bottom_size')">
-                <option value="10" <% if (flyersData.font_bottom_size == 10) { %> selected <% } %>>10</option>
-                <option value="11" <% if (flyersData.font_bottom_size == 11) { %> selected <% } %>>11</option>
-                <option value="12" <% if (flyersData.font_bottom_size == 12) { %> selected <% } %>>12</option>
-                <option value="13" <% if (flyersData.font_bottom_size == 13) { %> selected <% } %>>13</option>
-                <option value="14" <% if (flyersData.font_bottom_size == 14) { %> selected <% } %>>14</option>
-                <option value="15" <% if (flyersData.font_bottom_size == 15) { %> selected <% } %>>15</option>
-                <option value="16" <% if (flyersData.font_bottom_size == 16) { %> selected <% } %>>16</option>
-                <option value="17" <% if (flyersData.font_bottom_size == 17) { %> selected <% } %>>17</option>
-                <option value="18" <% if (flyersData.font_bottom_size == 18) { %> selected <% } %>>18</option>
-                <option value="19" <% if (flyersData.font_bottom_size == 19) { %> selected <% } %>>19</option>
-            </select>
-        </div>
+            <div class="menu-item">
+                <span>Tamanho Fonte cabeçalho:</span>
+                <select name="font_header_size" id="font_header_size">
+                    <option value="10" <% if (flyersData.font_header_size == 10) { %> selected <% } %>>10</option>
+                    <option value="11" <% if (flyersData.font_header_size == 11) { %> selected <% } %>>11</option>
+                    <option value="12" <% if (flyersData.font_header_size == 12) { %> selected <% } %>>12</option>
+                    <option value="13" <% if (flyersData.font_header_size == 13) { %> selected <% } %>>13</option>
+                    <option value="14" <% if (flyersData.font_header_size == 14) { %> selected <% } %>>14</option>
+                    <option value="15" <% if (flyersData.font_header_size == 15) { %> selected <% } %>>15</option>
+                    <option value="16" <% if (flyersData.font_header_size == 16) { %> selected <% } %>>16</option>
+                    <option value="17" <% if (flyersData.font_header_size == 17) { %> selected <% } %>>17</option>
+                    <option value="18" <% if (flyersData.font_header_size == 18) { %> selected <% } %>>18</option>
+                    <option value="19" <% if (flyersData.font_header_size == 19) { %> selected <% } %>>19</option>
+                </select>
+            </div>
 
-        <div class="menu-item">
-            <span>Cor Fonte Produto:</span>
-            <div id="productColorPicker" class="color-picker"></div>
-        </div>
-        
+            <div class="menu-item">
+                <span>Tamanho Fonte Rodapé:</span>
+                <select name="font_bottom_size" id="font_bottom_size">
+                    <option value="10" <% if (flyersData.font_bottom_size == 10) { %> selected <% } %>>10</option>
+                    <option value="11" <% if (flyersData.font_bottom_size == 11) { %> selected <% } %>>11</option>
+                    <option value="12" <% if (flyersData.font_bottom_size == 12) { %> selected <% } %>>12</option>
+                    <option value="13" <% if (flyersData.font_bottom_size == 13) { %> selected <% } %>>13</option>
+                    <option value="14" <% if (flyersData.font_bottom_size == 14) { %> selected <% } %>>14</option>
+                    <option value="15" <% if (flyersData.font_bottom_size == 15) { %> selected <% } %>>15</option>
+                    <option value="16" <% if (flyersData.font_bottom_size == 16) { %> selected <% } %>>16</option>
+                    <option value="17" <% if (flyersData.font_bottom_size == 17) { %> selected <% } %>>17</option>
+                    <option value="18" <% if (flyersData.font_bottom_size == 18) { %> selected <% } %>>18</option>
+                    <option value="19" <% if (flyersData.font_bottom_size == 19) { %> selected <% } %>>19</option>
+                </select>
+            </div>
 
-        
-        <div class="menu-item">
-            <span>Cor Preço:</span>
-            <div id="price_product_collor" class="color-picker"></div>
-        </div>
+            <div class="menu-item">
+                <span>Cor Fonte Produto:</span>
+                <input type="color" name="font_collor_product" value="<%=flyersData.font_collor_product%>">
+            </div>
 
-        <div class="menu-item">
-            <span>Cor Tag Preço:</span>
-            <div id="priceTagColorPicker" class="color-picker"></div>
-        </div>
-        <div class="menu-item">
-            <span>Cor Fundo:</span>
-            <div id="backgroundCollorPost" class="color-picker"></div>
-        </div>
-        <div class="menu-item">
-            <span>Cor Textos:</span>
-            <div id="textCollors" class="color-picker"></div>
-        </div>
-    </div>
+            <div class="menu-item">
+                <span>Cor Fonte Preço:</span>
+                <input type="color" name="price_product_collor" value="<%=flyersData.price_product_collor%>">
+            </div>
 
+            <div class="menu-item">
+                <span>Cor Tag Preço:</span>
+                <input type="color" name="collor_tag_price" value="<%=flyersData.collor_tag_price%>">
+            </div>
+
+            <div class="menu-item">
+                <span>Cor Fundo:</span>
+                <input type="color" name="background_template_collor" value="<%=flyersData.background_template_collor%>">
+            </div>
+
+            <div class="menu-item">
+                <span>Cor Textos:</span>
+                <input type="color" name="font_color" value="<%=flyersData.font_color%>">
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="submit">Salvar Alterações</button>
+        </div>
+    </form>
+    <br/>
     <img src="<%= imageSrc %>" alt="Generated Image">
-
-    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sizePrice = document.getElementById('size_price');
-            const initialPrice = sizePrice.value;
-
-            sizePrice.addEventListener('change', function() {
-                if (sizePrice.value !== initialPrice) {
-                    updateProductPrice('size_price');
-                }
-            });
-
-            // Inicializando os Pickr para cada color picker
-            const productColorPicker = Pickr.create({
-                el: '#productColorPicker',
-                theme: 'classic', // 'classic', 'monolith', 'nano'
-                default: '<%=flyersData.font_collor_product%>',
-                components: {
-                    preview: true,
-                    opacity: true,
-                    hue: true,
-                    interaction: {
-                        hex: true,
-                        rgba: true,
-                        input: true,
-                        clear: true,
-                        save: true
-                    }
-                }
-            });
-
-            const priceTagColorPicker = Pickr.create({
-                el: '#priceTagColorPicker',
-                theme: 'classic', // 'classic', 'monolith', 'nano'
-                default: '<%=flyersData.collor_tag_price%>',
-                components: {
-                    preview: true,
-                    opacity: true,
-                    hue: true,
-                    interaction: {
-                        hex: true,
-                        rgba: true,
-                        input: true,
-                        clear: true,
-                        save: true
-                    }
-                }
-            });
-
-
-            const price_product_collor = Pickr.create({
-                el: '#price_product_collor',
-                theme: 'classic', // 'classic', 'monolith', 'nano'
-                default: '<%=flyersData.price_product_collor%>',
-                components: {
-                    preview: true,
-                    opacity: true,
-                    hue: true,
-                    interaction: {
-                        hex: true,
-                        rgba: true,
-                        input: true,
-                        clear: true,
-                        save: true
-                    }
-                }
-            });
-
-            
-
-            const backgroundCollorPost = Pickr.create({
-                el: '#backgroundCollorPost',
-                theme: 'classic', // 'classic', 'monolith', 'nano'
-                default: '<%=flyersData.background_template_collor%>',
-                components: {
-                    preview: true,
-                    opacity: true,
-                    hue: true,
-                    interaction: {
-                        hex: true,
-                        rgba: true,
-                        input: true,
-                        clear: true,
-                        save: true
-                    }
-                }
-            });
-            
-            const textCollors = Pickr.create({
-                el: '#textCollors',
-                theme: 'classic', // 'classic', 'monolith', 'nano'
-                default: '<%=flyersData.font_color%>',
-                components: {
-                    preview: true,
-                    opacity: true,
-                    hue: true,
-                    interaction: {
-                        hex: true,
-                        rgba: true,
-                        input: true,
-                        clear: true,
-                        save: true
-                    }
-                }
-            });
-
-            // Função para enviar a cor atualizada para o servidor
-           /* function sendRequest(valor, type) {
-                console.log("chamou", valor, type);
-
-                const idFlyer = '<%= idFlyer %>';
-                const url = `/publish/flyer/updateTemplate/${idFlyer}/${encodeURIComponent(valor)}/${encodeURIComponent(type)}`;
-
-                fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                }) 
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Atualizado com sucesso!');
-                    } else {
-                        alert('Falha ao atualizar.');
-                    }
-                })
-                .catch(error => {
-                    console.error('Erro:', error);
-                    alert('Ocorreu um erro ao atualizar.');
-                });
-            }*/
-
-            
-
-            price_product_collor.on('change', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                console.log('Cor Fonte Preço:', rgbaColor);
-                sendRequest(rgbaColor, "price_product_collor");
-                productColorPicker.hide();
-
-            });
-
-            productColorPicker.on('change', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                console.log('Cor Fonte Produto:', rgbaColor);
-                sendRequest(rgbaColor, "font_collor_product");
-            });
-
-            priceTagColorPicker.on('change', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                console.log('Cor Tag Preço:', rgbaColor);
-                sendRequest(rgbaColor, "collor_tag_price");
-            });
-
-            backgroundCollorPost.on('change', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                console.log('Cor Fundo:', rgbaColor);
-                sendRequest(rgbaColor, "background_template_collor");
-            });
-
-            textCollors.on('change', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                console.log('Cor Fonte Textos:', rgbaColor);
-                sendRequest(rgbaColor, "font_color");
-            });
-
-            // Fechar o picker após salvar
-
-            price_product_collor.on('save', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                sendRequest(rgbaColor, "price_product_collor");
-                price_product_collor.hide();
-            });
-
-
-            productColorPicker.on('save', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                sendRequest(rgbaColor, "font_collor_product");
-                productColorPicker.hide();
-            });
-
-            priceTagColorPicker.on('save', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                sendRequest(rgbaColor, "collor_tag_price");
-                priceTagColorPicker.hide();
-            });
-
-            backgroundCollorPost.on('save', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                sendRequest(rgbaColor, "background_template_collor");
-                backgroundCollorPost.hide();
-            });
-
-            textCollors.on('save', (color) => {
-                const rgbaColor = color.toHEXA().toString();
-                sendRequest(rgbaColor, "font_color");
-                textCollors.hide();
-            });
-            
-        });
-
-        function updateProductPrice(id) {
-            console.log("######################### updatePrice");
-            const value = document.getElementById(id).value;
-            console.log("Value - " + value);
-            console.log("ID - " + id);
-            sendRequest(value, id);
-        }
-
-        function sendRequest(valor, type) {
-            console.log("Valor" + valor)
-            console.log("type" + type)
-            console.log("chamou", valor, type);
-            const idFlyer = '<%= idFlyer %>';
-            const url = `/publish/flyer/updateTemplate/${idFlyer}/${encodeURIComponent(valor)}/${encodeURIComponent(type)}`;
-
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }) 
-    .then(response => {
-        if (!response.ok) {
-            console.log(response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        if (data.success) {
-            console.log('Atualizado com sucesso!');
-        } else {
-            console.log('Falha ao atualizar.');
-        }
-    })
-    .catch(error => {
-        console.error('Erro:', error);
-        console.log('Ocorreu um erro ao atualizar: ' + error.message);
-    });
-
-
-        }
-
-
-    </script>
 </body>
 </html>
