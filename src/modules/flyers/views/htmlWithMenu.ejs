@@ -37,6 +37,20 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        .menu-container1 {
+            display: flex;
+            flex-direction: column; /* Coloca o texto acima do combo */
+            align-items: center;
+            font-size: 18px;
+            margin-top: 5px;
+            background-color: #3a0382; /* Background color for buttons */
+            color: #FFFFFF; /* Text color */
+            border-radius: 5px;
+            padding: 5px;
+            width: calc(100% - 8px); /* Define a largura para caber dois por linha */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
         .menu-item span {
             margin-bottom: 10px;
         }
@@ -114,6 +128,7 @@
     </style>
 </head>
 <body>
+    <% if (showTemplate.type_edit_template == 2 || showTemplate.type_edit_template == 3) { %>
     <div class="button-container">
         <button id="toggleFormButton" type="button">Mais Opções &#9660;</button>
     </div>
@@ -187,6 +202,17 @@
             </div>
 
             <div class="menu-item">
+                <span>Tamanho Logo:</span>
+                <select name="size_logo" id="size_logo">
+                    <option value="1" <% if (flyersData.size_logo == 1) { %> selected <% } %>>1</option>
+                    <option value="2" <% if (flyersData.size_logo == 2) { %> selected <% } %>>2</option>
+                    <option value="3" <% if (flyersData.size_logo == 3) { %> selected <% } %>>3</option>
+                    <option value="4" <% if (flyersData.size_logo == 4) { %> selected <% } %>>4</option>
+                    <option value="5" <% if (flyersData.size_logo == 5) { %> selected <% } %>>5</option>
+                   </select>
+            </div>
+
+            <div class="menu-item">
                 <span>Cor Fonte Produto:</span>
                 <input type="color" name="font_collor_product" value="<%=flyersData.font_collor_product%>">
             </div>
@@ -201,10 +227,13 @@
                 <input type="color" name="collor_tag_price" value="<%=flyersData.collor_tag_price%>">
             </div>
 
+            <% if (showTemplate.type_edit_template == 3) { %>
+
             <div class="menu-item">
                 <span>Cor Fundo:</span>
                 <input type="color" name="background_template_collor" value="<%=flyersData.background_template_collor%>">
             </div>
+            <% } %>
 
             <div class="menu-item">
                 <span>Cor Textos:</span>
@@ -215,6 +244,13 @@
             <button type="submit">Salvar Alterações</button>
         </div>
     </form>
+    <% } else { %>
+        <div class="menu-container1">
+            <span>Visualização do Post  </span>
+            <span>Modelo não permite edição de Fonte ou Fundo. Altere o modelo, caso não goste.</span>
+
+</div>
+  <%  }%>
     <br/>
     <img src="<%= imageSrc %>" alt="Generated Image">
 

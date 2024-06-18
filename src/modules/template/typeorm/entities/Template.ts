@@ -133,7 +133,7 @@ export default class Template {
     @Column()
     font_header_size: string
 
-    
-
+    @Column()
+    type_edit_template: string;
     
 }

@@ -7,9 +7,9 @@
 
 let address_header = addressServer + showTemplate.middle_image;
 
-product_font_size = 9;
-if (flyersData.product_font_size) {
-  product_font_size = flyersData.product_font_size;
+product_font_size = flyersData.product_font_size * 3;
+if (flyer[0].font_product) {
+  product_font_size = flyer[0].font_product * 3;
 }
 
 //let address = 'http://localhost:8888/fivecart3';
@@ -74,6 +74,58 @@ var width1 = showTemplate.width_image_bg;
 var heigth1 = showTemplate.heigth_image_bg;
 
 console.log(showTemplate)
+
+
+var collor_tag_price = showTemplate.main_color
+
+if (flyer[0].collor_tag_price) {
+  collor_tag_price = flyer[0].collor_tag_price
+}
+
+
+/* Esse template não muda */
+var background_template_collor = showTemplate.background_template_collor
+if (flyer[0].background_template_collor) {
+  background_template_collor = flyer[0].background_template_collor
+}
+
+   
+var font_collor_product = showTemplate.font_collor_product
+
+if (flyer[0].font_collor_product) {
+  font_collor_product = flyer[0].font_collor_product
+}
+
+
+
+var price_product_collor = showTemplate.font_color
+
+if (flyer[0].price_product_collor) {
+  price_product_collor = flyer[0].price_product_collor
+}
+
+
+var collor_form_font_bottom = showTemplate.collor_form_font_bottom 
+
+if (flyer[0].font_color) {
+  collor_form_font_bottom = flyer[0].font_color
+}
+ 
+
+
+var font_bottom = showTemplate.font_bottom_size 
+
+if (flyer[0].font_bottom_size) {
+  font_bottom = flyer[0].font_bottom_size * 3
+}
+
+
+var font_header_size = showTemplate.font_header_size
+if (flyer[0].font_header_size) {
+  font_header_size = flyer[0].font_header_size * 3
+}
+
+
 
 %>
 <!DOCTYPE html>
@@ -209,21 +261,21 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
 
 
 
-
-
-
-
-
-
-
-  .description {
+.description {
     word-break: keep-all;
     padding: 10px;
     text-align: center;
-    color: <%=showTemplate.font_collor_product%>; 
+    color: <%=font_collor_product%>; 
     font-weight: bold;
-    font-size: <%=product_font_size * 3%>px;
+    font-size: <%=product_font_size%>px;
   }
+
+
+
+
+
+
+
   .price {
     
     color: <%=showTemplate.font_color%>; 
@@ -245,14 +297,14 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
     font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic";
     font-stretch: condensed;
     font-size: <%=font_product_size%>px;
-    color: <%=showTemplate.font_color%>; 
+    color: <%=price_product_collor%>; 
     font-weight: 900;
     line-height: 1.2; /* Ajuste conforme necessário para centralizar verticalmente */
 }
 
 .dot {
     display: inline-block;
-    background-color: <%=showTemplate.main_color%>;  
+    background-color: <%=collor_tag_price%>;  
     color: #fff;
     text-align: center;
     border-radius: 20%; /* Arredondado */
@@ -278,7 +330,7 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
       /*display: flex;*/
         /*Aqui 2 - Texto- Alinhamento número*/
    
-      color: <%=showTemplate.font_color%>; 
+        color: <%=font_collor_product%>; 
       padding-top: 5px;
       padding-left: 5px;
       padding-right: 5px;
@@ -327,9 +379,9 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
 
   text-transform: capitalize;
       font-family: "Helvetica", sans-serif;
-      font-size: 22px;
+      font-size: <%=font_header_size%>px;
   text-transform: uppercase;
-  color: <%=showTemplate.font_collor_header%>; 
+  color: <%=collor_form_font_bottom%>; 
 
   position: absolute;
     top: 350px; /* Ajusta a posição superior da logo */
@@ -340,10 +392,10 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
 h5 {
       text-transform: capitalize;
       font-family: "Helvetica", sans-serif;
-      font-size: 22px;
+      font-size: <%=font_bottom%>px;
       margin: 0;
       width: 400px;
-      color: <%=showTemplate.collor_form_font_bottom%>; 
+      color: <%=collor_form_font_bottom%>; 
     }
 
     .container_text_button_1, .container_text_footer3 {

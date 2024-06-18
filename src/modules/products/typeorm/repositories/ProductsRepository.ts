@@ -43,10 +43,28 @@ export class ProductRepository extends Repository<Product> {
     }
 
     async updateDataForm(
-        idFlyer: string, size_price: string, font_product: string, font_header_size: string, font_bottom_size: string, font_collor_product: string,price_product_collor: string,collor_tag_price: string,background_template_collor: string,font_color: string
+        idFlyer: string, size_price: string, font_product: string, font_header_size: string, font_bottom_size: string, font_collor_product: string,price_product_collor: string,collor_tag_price: string,background_template_collor: string,font_color: string, size_logo: string
 ) {
         
-     
+   let logo_heigh;
+   let logo_width;
+
+    if (size_logo == "1") {
+        logo_heigh = '150';
+        logo_width = '150';
+      } else if (size_logo == "2") {
+        logo_heigh = '200';
+        logo_width = '200';
+      } else if (size_logo == "3") {
+        logo_heigh = '250';
+        logo_width = '250';
+      } else if (size_logo == "4") {
+        logo_heigh = '300';
+        logo_width = '300';
+      } else if (size_logo == "5") {
+        logo_heigh = '350';
+        logo_width = '350';
+      }
 
         const entityManager = getManager();
         console.log(">>> updatePictureNameFlyerupdatePictureNameFlyer");
@@ -62,7 +80,10 @@ export class ProductRepository extends Repository<Product> {
         price_product_collor = ?,
         collor_tag_price = ?,
         background_template_collor = ?,
-        font_color = ?
+        font_color = ?,
+        size_logo = ?,
+         logo_heigh = ?,
+        logo_width = ?
     WHERE id = ?
 `;
 
@@ -76,6 +97,9 @@ const values = [
     collor_tag_price,
     background_template_collor,
     font_color,
+    size_logo,
+    logo_heigh,
+    logo_width,
     idFlyer
 ];
 
