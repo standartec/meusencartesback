@@ -363,7 +363,6 @@ body {
         <div class="div-2 imagem">
     
     
-          <div class="container_text_button">
   
             <% if (showTemplate.has_logo == 0) { 
               console.log(userData.image_address);
@@ -371,7 +370,7 @@ body {
 
               if (flyersData.logo_publish) { userData.image_address
               %>
-              <img class="logo" src= <%= flyersData.logo_publish %> 
+              <img class="logo"  src= <%= flyersData.logo_publish %> 
 
              
             <% } else { %>
@@ -390,7 +389,7 @@ body {
               <div class="text_button_left"> <p><%=flyer[0].header_left_text %> </p></div>
             <% } %>
             
-            </div>
+       
         
         
             <% for (var i=0; i< flyer.length; i++) { %>
