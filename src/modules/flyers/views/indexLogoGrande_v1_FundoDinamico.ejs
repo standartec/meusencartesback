@@ -350,12 +350,12 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
   }
 
   .top-container {
- 
+   /* DIA 02-07 somente retirei a cor do background que estava branco aqui*/
 
     width: 1080px; /* Define a largura do contêiner */
     height: 354px; /* Define a altura do contêiner */
-    background-color: #f0f0f0; /* Adiciona uma cor de fundo */
-    background-repeat: no-repeat; /* Evita que a imagem se repita */
+   
+    /* Evita que a imagem se repita */
 }
 
     .container-geral {
@@ -369,7 +369,7 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
     height: <%=heigth1%>px;
     background-size: cover;
     background-color: <%=background_template_collor%>;
-
+    
     background-position: top;
     margin: auto;
     overflow: hidden; /* Garante que nada saia dos limites do contêiner */
@@ -386,6 +386,7 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
 }
 .logo1 {
   position: absolute;
+ 
     top: <%=showTemplate.logo_top - 20%>px; /* Ajusta a posição superior da logo */
     right: <%=showTemplate.logo_rigth%>px; /* Posiciona a logo na lateral direita */
     width: 1080px; /* Define a largura do contêiner */
