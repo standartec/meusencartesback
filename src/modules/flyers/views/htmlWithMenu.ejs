@@ -128,7 +128,11 @@
     </style>
 </head>
 <body>
-    <% if (showTemplate.type_edit_template == 2 || showTemplate.type_edit_template == 3) { %>
+    <%
+    console.log(showTemplate);
+
+
+    if (showTemplate.type_edit_template == 2 || showTemplate.type_edit_template == 3) { %>
     <div class="button-container">
         <button id="toggleFormButton" type="button">Mais Opções &#9660;</button>
     </div>
@@ -137,6 +141,17 @@
             <div class="menu-item">
                 <span>Tamanho Fonte Preço:</span>
                 <select name="size_price" id="size_price">
+                    <option value="1" <% if (flyersData.size_price == 1) { %> selected <% } %>>1</option>
+                    <option value="2" <% if (flyersData.size_price == 2) { %> selected <% } %>>2</option>
+                    <option value="3" <% if (flyersData.size_price == 3) { %> selected <% } %>>3</option>
+
+                    <option value="4" <% if (flyersData.size_price == 4) { %> selected <% } %>>4</option>
+                    <option value="5" <% if (flyersData.size_price == 5) { %> selected <% } %>>5</option>
+                    <option value="6" <% if (flyersData.size_price == 6) { %> selected <% } %>>6</option>
+
+                    <option value="7" <% if (flyersData.size_price == 7) { %> selected <% } %>>7</option>
+                    <option value="8" <% if (flyersData.size_price == 8) { %> selected <% } %>>8</option>
+                    <option value="9" <% if (flyersData.size_price == 9) { %> selected <% } %>>9</option>
                     <option value="10" <% if (flyersData.size_price == 10) { %> selected <% } %>>10</option>
                     <option value="20" <% if (flyersData.size_price == 20) { %> selected <% } %>>20</option>
                     <option value="30" <% if (flyersData.size_price == 30) { %> selected <% } %>>30</option>
@@ -156,16 +171,15 @@
             <div class="menu-item">
                 <span>Tamanho Fonte Produto:</span>
                 <select name="font_product" id="font_product">
-                    <option value="10" <% if (flyersData.font_product == 10) { %> selected <% } %>>10</option>
-                    <option value="11" <% if (flyersData.font_product == 11) { %> selected <% } %>>11</option>
-                    <option value="12" <% if (flyersData.font_product == 12) { %> selected <% } %>>12</option>
-                    <option value="13" <% if (flyersData.font_product == 13) { %> selected <% } %>>13</option>
-                    <option value="14" <% if (flyersData.font_product == 14) { %> selected <% } %>>14</option>
-                    <option value="15" <% if (flyersData.font_product == 15) { %> selected <% } %>>15</option>
-                    <option value="16" <% if (flyersData.font_product == 16) { %> selected <% } %>>16</option>
-                    <option value="17" <% if (flyersData.font_product == 17) { %> selected <% } %>>17</option>
-                    <option value="18" <% if (flyersData.font_product == 18) { %> selected <% } %>>18</option>
-                    <option value="19" <% if (flyersData.font_product == 19) { %> selected <% } %>>19</option>
+                    <% 
+                    // Definindo o intervalo de valores para as opções
+                    const minValue = 1;
+                    const maxValue = 20; // Ajuste conforme necessário
+                    for (let i = minValue; i <= maxValue; i++) { 
+                    %>
+    <option value="<%= i %>" <% if (flyersData.font_product == i) { %> selected <% } %>><%= i %></option>
+  <% } %>
+                
                 </select>
             </div>
 
@@ -188,16 +202,15 @@
             <div class="menu-item">
                 <span>Tamanho Fonte Rodapé:</span>
                 <select name="font_bottom_size" id="font_bottom_size">
-                    <option value="10" <% if (flyersData.font_bottom_size == 10) { %> selected <% } %>>10</option>
-                    <option value="11" <% if (flyersData.font_bottom_size == 11) { %> selected <% } %>>11</option>
-                    <option value="12" <% if (flyersData.font_bottom_size == 12) { %> selected <% } %>>12</option>
-                    <option value="13" <% if (flyersData.font_bottom_size == 13) { %> selected <% } %>>13</option>
-                    <option value="14" <% if (flyersData.font_bottom_size == 14) { %> selected <% } %>>14</option>
-                    <option value="15" <% if (flyersData.font_bottom_size == 15) { %> selected <% } %>>15</option>
-                    <option value="16" <% if (flyersData.font_bottom_size == 16) { %> selected <% } %>>16</option>
-                    <option value="17" <% if (flyersData.font_bottom_size == 17) { %> selected <% } %>>17</option>
-                    <option value="18" <% if (flyersData.font_bottom_size == 18) { %> selected <% } %>>18</option>
-                    <option value="19" <% if (flyersData.font_bottom_size == 19) { %> selected <% } %>>19</option>
+                   
+                    <% 
+                    // Definindo o intervalo de valores para as opções
+                     // Ajuste conforme necessário
+                    for (let i = minValue; i <= maxValue; i++) { 
+                    %>
+    <option value="<%= i %>" <% if (flyersData.font_bottom_size == i) { %> selected <% } %>><%= i %></option>
+  <% } %>
+               
                 </select>
             </div>
 
@@ -211,6 +224,36 @@
                     <option value="5" <% if (flyersData.size_logo == 5) { %> selected <% } %>>5</option>
                    </select>
             </div>
+
+            <%
+            /* Só vou liberar acesso de altearção do tipo do post e do tamanho do produto 
+            para os de fundo editável, testar os demais para liberar.*/
+            if (showTemplate.type_edit_template == 3) { %>
+
+            %>
+            <div class="menu-item">
+                <span>Tamanho Produtos:</span>
+                <select name="size_product" id="size_product">
+                    <option value="100" <% if (flyersData.size_product == 100) { %> selected <% } %>>100</option>
+                    <option value="150" <% if (flyersData.size_product == 150) { %> selected <% } %>>150</option>
+                    <option value="200" <% if (flyersData.size_product == 200) { %> selected <% } %>>200</option>
+                    <option value="250" <% if (flyersData.size_product == 250) { %> selected <% } %>>250</option>
+                    <option value="300" <% if (flyersData.size_product == 300) { %> selected <% } %>>300</option>
+                   </select>
+            </div>
+
+            <div class="menu-item">
+                <span>Tipo Post:</span>
+                <select name="type_post" id="type_post">
+                    <option value="1" <% if (flyersData.type_post == 1) { %> selected <% } %>>Story</option>
+                    <option value="2" <% if (flyersData.type_post == 2) { %> selected <% } %>>Feed</option>
+                 </select>
+            </div>
+
+            <%
+        }
+
+            %>
 
             <div class="menu-item">
                 <span>Cor Fonte Produto:</span>

@@ -43,7 +43,7 @@ export class ProductRepository extends Repository<Product> {
     }
 
     async updateDataForm(
-        idFlyer: string, size_price: string, font_product: string, font_header_size: string, font_bottom_size: string, font_collor_product: string,price_product_collor: string,collor_tag_price: string,background_template_collor: string,font_color: string, size_logo: string
+        idFlyer: string, size_price: string, font_product: string, font_header_size: string, font_bottom_size: string, font_collor_product: string,price_product_collor: string,collor_tag_price: string,background_template_collor: string,font_color: string, size_logo: string, type_post: string,size_product: string
 ) {
         
    let logo_heigh;
@@ -83,7 +83,9 @@ export class ProductRepository extends Repository<Product> {
         font_color = ?,
         size_logo = ?,
          logo_heigh = ?,
-        logo_width = ?
+        logo_width = ?,
+        type_post = ?,
+        size_product = ?
     WHERE id = ?
 `;
 
@@ -100,6 +102,8 @@ const values = [
     size_logo,
     logo_heigh,
     logo_width,
+    type_post,
+    size_product,
     idFlyer
 ];
 
@@ -222,7 +226,7 @@ console.log('SQL query:', formattedSQL);
         p.collor_tag_price,
         p.price_product_collor,
         p.font_collor_product,
-        p.font_color, p.font_bottom_size,p.font_header_size
+        p.font_color, p.font_bottom_size,p.font_header_size, p.size_product,p.type_post
         from publish p left join user_logo ul on ul.id = p.logo_id 
 
         where p.id_user = ` + idUser + ` and p.id = ` + idFlyer 

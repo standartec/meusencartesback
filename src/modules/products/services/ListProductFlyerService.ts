@@ -97,7 +97,7 @@ export default class ListProductFlyerService {
     }
 
     async updateDataForm(
-        idFlyer: string, size_price: string, font_product: string, font_header_size: string, font_bottom_size: string, font_collor_product: string,price_product_collor: string,collor_tag_price: string,background_template_collor: string,font_color: string, size_logo: string
+        idFlyer: string, size_price: string, font_product: string, font_header_size: string, font_bottom_size: string, font_collor_product: string,price_product_collor: string,collor_tag_price: string,background_template_collor: string,font_color: string, size_logo: string, type_post: string,size_product: string
 
     ) {
         console.log("ENTROU >>>>LLLL updatePictureNameFlyer");
@@ -105,7 +105,7 @@ export default class ListProductFlyerService {
         const productRepository = getCustomRepository(ProductRepository);
        
 
-        const productFlyer = await productRepository.updateDataForm(idFlyer, size_price, font_product, font_header_size, font_bottom_size, font_collor_product,price_product_collor,collor_tag_price,background_template_collor,font_color,size_logo);
+        const productFlyer = await productRepository.updateDataForm(idFlyer, size_price, font_product, font_header_size, font_bottom_size, font_collor_product,price_product_collor,collor_tag_price,background_template_collor,font_color,size_logo, type_post,size_product);
      
     }
 

@@ -57,7 +57,7 @@ export default class PublishControllers {
         const listProductFlyerService = new ListProductFlyerService();
         console.log(request.params)
 
-        const {idFlyer, size_price, font_product, font_header_size, font_bottom_size, font_collor_product,price_product_collor,collor_tag_price,background_template_collor,font_color,idProductPublish,idUser,size_logo } = request.body;
+        const {idFlyer, size_price, font_product, font_header_size, font_bottom_size, font_collor_product,price_product_collor,collor_tag_price,background_template_collor,font_color,idProductPublish,idUser,size_logo,type_post,size_product } = request.body;
         console.log("size price" + size_price );
         console.log("font_product" + font_product );
         console.log("size font_header_size" + font_header_size );
@@ -66,7 +66,7 @@ export default class PublishControllers {
         console.log("size font_header_size" + font_header_size );
         console.log("size_logo" + size_logo );
 
-        await listProductFlyerService.updateDataForm(idFlyer, size_price, font_product, font_header_size, font_bottom_size, font_collor_product,price_product_collor,collor_tag_price,background_template_collor,font_color,size_logo);
+        await listProductFlyerService.updateDataForm(idFlyer, size_price, font_product, font_header_size, font_bottom_size, font_collor_product,price_product_collor,collor_tag_price,background_template_collor,font_color,size_logo,type_post,size_product);
 
        // const redirectUrl = `http://localhost:3333/publish/generateHtmlWithMenu/${idUser}/${idFlyer}/${idProductPublish}/0/0`;
     
