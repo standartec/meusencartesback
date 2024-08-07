@@ -131,7 +131,6 @@
     <%
     console.log(showTemplate);
 
-
     if (showTemplate.type_edit_template == 2 || showTemplate.type_edit_template == 3) { %>
     <div class="button-container">
         <button id="toggleFormButton" type="button">Mais Opções &#9660;</button>
@@ -239,7 +238,11 @@
                     <option value="200" <% if (flyersData.size_product == 200) { %> selected <% } %>>200</option>
                     <option value="250" <% if (flyersData.size_product == 250) { %> selected <% } %>>250</option>
                     <option value="300" <% if (flyersData.size_product == 300) { %> selected <% } %>>300</option>
-                   </select>
+                    <option value="400" <% if (flyersData.size_product == 400) { %> selected <% } %>>400</option>
+                    <option value="500" <% if (flyersData.size_product == 500) { %> selected <% } %>>500</option>
+                    <option value="600" <% if (flyersData.size_product == 600) { %> selected <% } %>>600</option>
+  
+                </select>
             </div>
 
             <div class="menu-item">
@@ -308,6 +311,20 @@
                 this.innerHTML = 'Mais Opções &#9660;';
             }
         });
+
+
+        document.getElementById('type_post').addEventListener('change', function() {
+        if (this.value == '2') {
+            document.getElementById('size_price').value = '5';
+            document.getElementById('font_product').value = '5';
+            document.getElementById('font_bottom_size').value = '5';
+            document.getElementById('size_product').value = '100';
+        }
+    });
+
+
+
+
     </script>
 </body>
 </html>

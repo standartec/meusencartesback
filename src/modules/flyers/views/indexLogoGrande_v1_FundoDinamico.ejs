@@ -192,8 +192,9 @@ flyersData.size_price
   var size_products = 0;
 
   if (type_template === 1) {
+
+    console.log("************ ENTROU ******************")
     font_product_size = increaseSizePrice + 50
-    size_products = showTemplate.size_products*sizeProd;
 
     if (flyer.length <= 1) {
     sizeProd = 4
@@ -212,12 +213,15 @@ flyersData.size_price
     increaseSizePrice = 10
     increaseSizePriceBox = 10
   }
+  size_products = showTemplate.size_products*sizeProd;
 
 
   } else if (type_template === 2) {
+    console.log("************ ENTROU ****************** 111")
 
-    size_products = 100
+    size_products = flyersData.size_product
 
+    console.log("#########-----------"+size_products)
 
     if (flyer.length <= 1) {
     sizeProd = 2
@@ -394,8 +398,8 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
 
   .top-container {
    /* DIA 02-07 somente retirei a cor do background que estava branco aqui*/
-
-    width: 1080px; /* Define a largura do contêiner */
+    
+    width: <%=width1%>px; /* Define a largura do contêiner */
     height: 354px; /* Define a altura do contêiner */
    
     /* Evita que a imagem se repita */
@@ -432,7 +436,7 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
  
     top: <%=showTemplate.logo_top - 20%>px; /* Ajusta a posição superior da logo */
     right: <%=showTemplate.logo_rigth%>px; /* Posiciona a logo na lateral direita */
-    width: 1080px; /* Define a largura do contêiner */
+    width: <%=width1%>px; /* Define a largura do contêiner */
     height: 354px;
 }
 

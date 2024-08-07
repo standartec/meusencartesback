@@ -841,7 +841,7 @@ export default class PublishControllers {
 
 }
 
-  //     console.log(fileHTML);
+      console.log(fileHTML);
 
        const imageBuffer = await htmlToImageLow(fileHTML);
 
