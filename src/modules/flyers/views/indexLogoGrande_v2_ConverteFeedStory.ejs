@@ -1,4 +1,8 @@
 <%
+
+//type_template = 1 (Feed) 2 - Story
+var type_template = flyer[0].type_post
+
 /*TAMANHO_TAG*/
 /* FOOTER_PRODUCT - DISTANCIA DA GRID DE PRODUTO DO CABECALHO*/
 /*TAMANHO_PRODUTOS*/
@@ -45,10 +49,6 @@ if (flyer[0].show_background == 1) {
   textProductCollor = showTemplate.font_collor_product;
 }
 
-
-
-
-
 var header2 = "";
 
 if (flyer[0].header2) {
@@ -72,8 +72,20 @@ if (flyer[0].footer_text3) {
   footer_text3 = userData.footer_text3;
 }
 
-var width1 = showTemplate.width_image_bg;
-var heigth1 = showTemplate.heigth_image_bg;
+var width1 = 0;
+var heigth1 = 0;
+
+
+if (flyer[0].type_post === 1) {
+  width1 = showTemplate.width_image_bg;
+  heigth1 = showTemplate.heigth_image_bg;
+
+} else if (flyer[0].type_post === 2) {
+   width1 = 1000;
+   heigth1 = 1000;
+}
+
+
 
 console.log(showTemplate)
 
@@ -89,14 +101,11 @@ if (flyer[0].background_template_collor) {
   background_template_collor = flyer[0].background_template_collor
 }
 
-   
 var font_collor_product = showTemplate.font_collor_product
 
 if (flyer[0].font_collor_product) {
   font_collor_product = flyer[0].font_collor_product
 }
-
-
 
 var price_product_collor = showTemplate.font_color
 
@@ -111,8 +120,6 @@ if (flyer[0].font_color) {
   collor_form_font_bottom = flyer[0].font_color
 }
  
-
-
 var font_bottom = showTemplate.font_bottom_size 
 
 if (flyer[0].font_bottom_size) {
@@ -181,8 +188,15 @@ flyersData.size_price
   var sizeProd = 1;
   var increaseSizePrice = 0
   var increaseSizePriceBox = 0
+  var font_product_size = 0
+  var size_products = 0;
 
-  if (flyer.length <= 1) {
+  if (type_template === 1) {
+
+    console.log("************ ENTROU ******************")
+    font_product_size = increaseSizePrice + 50
+
+    if (flyer.length <= 1) {
     sizeProd = 4
     increaseSizePrice = 120
     increaseSizePriceBox = 220
@@ -199,23 +213,56 @@ flyersData.size_price
     increaseSizePrice = 10
     increaseSizePriceBox = 10
   }
-  
-  var font_product_size = increaseSizePrice + 50
+  size_products = showTemplate.size_products*sizeProd;
 
-  console.log("Size fontss" + flyersData.sizePrice)
-  console.log(flyersData)
-  if (flyersData.size_price) {
-    font_product_size = 50 + flyersData.size_price
+
+  } else if (type_template === 2) {
+    console.log("************ ENTROU ****************** 111")
+
+    size_products = flyersData.size_product
+
+    console.log("#########-----------"+size_products)
+
+    if (flyer.length <= 1) {
+    sizeProd = 2
+    increaseSizePrice = 120
+    increaseSizePriceBox = 220
+  } if (flyer.length <= 2) {
+    sizeProd = 2
+    increaseSizePrice = 80
+    increaseSizePriceBox = 180
+  } else if (flyer.length <= 4) {
+    sizeProd = 1
+    increaseSizePrice = 20
+    increaseSizePriceBox = 20
+  }  else if (flyer.length <= 6) {
+    sizeProd = 1
+    increaseSizePrice = 1
+    increaseSizePriceBox = 1
   }
+
+
+  font_product_size = increaseSizePrice + 10
+
+  if (flyersData.size_price) {
+  font_product_size = 30 + flyersData.size_price
+  }
+
+  }
+
+
   
+
   
+
+
   %>
 
 
   .image-container {
     
-    max-width: <%=showTemplate.size_products*sizeProd%>px;
-    max-height: <%=showTemplate.size_products*sizeProd%>px;
+    max-width: <%=size_products%>px;
+    max-height: <%=size_products%>px;
     
     width: 100%;
     height: 100%; /* Fixed height for all images */
@@ -351,8 +398,8 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
 
   .top-container {
    /* DIA 02-07 somente retirei a cor do background que estava branco aqui*/
-
-    width: 1080px; /* Define a largura do contêiner */
+    
+    width: <%=width1%>px; /* Define a largura do contêiner */
     height: 354px; /* Define a altura do contêiner */
    
     /* Evita que a imagem se repita */
@@ -389,7 +436,7 @@ tinha quer ser algo que ajusto , mas sem perder a flexibilidade do tamanho.
  
     top: <%=showTemplate.logo_top - 20%>px; /* Ajusta a posição superior da logo */
     right: <%=showTemplate.logo_rigth%>px; /* Posiciona a logo na lateral direita */
-    width: 1080px; /* Define a largura do contêiner */
+    width: <%=width1%>px; /* Define a largura do contêiner */
     height: 354px;
 }
 
@@ -893,7 +940,12 @@ footer_text2 = showTemplate.footer_text2;
     const container = document.querySelector('.container');
     const products = container.querySelectorAll('.product');
 
+    const type_template1 = <%=type_template %>;
+
+    if (type_template1 === 1) {
+
     if (products.length === 1) {
+
       container.classList.add('one-product');
     } else if (products.length <= 6) {
       container.classList.add('two-products');
@@ -901,6 +953,26 @@ footer_text2 = showTemplate.footer_text2;
     else {
       container.classList.add('multi-products');
     }
+
+
+    } else if (type_template1 === 2) {
+  
+    if (products.length === 1) {
+      container.classList.add('one-product');
+    } else if (products.length <= 2) {
+      container.classList.add('two-products');
+    } 
+    else {
+      container.classList.add('multi-products');
+    }
+
+    }
+
+
+
+
+
+    
   });
 </script>
 </body>
